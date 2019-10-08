@@ -1,0 +1,35 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Brand]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.brand {
+
+  display: block;
+
+  width: 100%;
+  height: $navbar-height;
+
+  text-align: center;
+  font-weight: $font-weight-primary-bold;
+
+  background-color: transparent;
+
+} // .brand
+
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Alternate colors
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@include brand-colored(brand-red,        $color-red       );
+@include brand-colored(brand-orange,     $color-orange    );
+@include brand-colored(brand-green,      $color-green     );
+@include brand-colored(brand-light-blue, $color-light-blue);
+@include brand-colored(brand-blue,       $color-blue      );
+@include brand-colored(brand-purple,     $color-purple    );
+@include brand-colored(brand-dark,       $color-dark      );
+@include brand-colored(brand-light,      $color-light     );
+@include brand-colored(brand-white,      $color-white     );
+@include brand-colored(brand-black,      $color-black     );

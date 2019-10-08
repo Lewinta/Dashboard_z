@@ -1,0 +1,22 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Alert Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin alert-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, $color-text-inverse);
+  $_color-text-heading: pf-foreground-color($color, $color-text-heading, $color-text-inverse-heading);
+
+  .#{$class} {
+
+    color: $color-text;
+    background: #fff;
+    border-color: $color;
+
+    .alert-title {
+      color: $color-text-heading;
+    } // .alert-title
+
+  } // .#{$class}
+
+} // @mixin alert-colored($class, $color)

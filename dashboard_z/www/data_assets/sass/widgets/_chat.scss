@@ -1,0 +1,367 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Chat]
+ *
+ *   + .chat
+ *   + .chat-toggle
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.chat {
+
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+
+  width: 300px;
+  height: 400px;
+
+  max-width: calc(100% - 100px);
+  max-height: calc(100% - 100px);
+
+  opacity: .0;
+  background: #fff;
+
+  @include border-radius(50%);
+  @include transform(scale(0));
+  @include transform-origin(100% 100% 0);
+  @include transition($transition);
+  @include box-shadow(0 2px 2px rgba(0, 0, 0, .07), 0 0 10px 10px rgba(0, 0, 0, .1));
+
+  .widget-layer-main {
+    opacity: .0;
+    @include transition($transition .25s);
+  } // .widget-layer-main
+
+  &.chat-open {
+
+    opacity: 1.0;
+    @include transform(none);
+    @include border-radius($border-radius-md);
+
+    .widget-layer-main {
+      opacity: 1.0;
+    } // .widget-layer-main
+
+  } // &.chat-open
+
+  .widget-heading {
+
+    color: $color-text-inverse-heading;
+    background: $color-dark;
+
+    .widget-controls > li > a {
+
+      color: fade-out($color-text-inverse, .2);
+
+      &:hover, &:focus, &:active {
+        color: $color-text-inverse;
+      } // &:hover, &:focus, &:active
+
+    } // .widget-controls > li > a
+
+  } // .widget-heading
+
+  .widget-body {
+    bottom: 60px;
+  } // .widget-body
+
+  .widget-footer {
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 60px;
+
+    padding: 15px;
+
+  } // .widget-footer
+
+} // .chat
+
+
+.chat-toggle {
+
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+
+
+  width: 60px;
+  height: 60px;
+
+  cursor: pointer;
+
+  line-height: 62px;
+  text-align: center;
+
+  color: #fff;
+  background-color: $color-success;
+
+  @include border-radius(50%);
+  @include transition($transition);
+  //@include box-shadow(0 0 15px 10px rgba(0, 0, 0, .1));
+
+  .icon {
+
+    display: block;
+
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    //bottom: 0;
+
+    margin: auto;
+
+    width: 25px;
+    height: 25px;
+
+    line-height: 1;
+    font-size: 24px;
+    text-align: center;
+
+  } // .icon
+
+  &::before, &::after {
+
+    display: none;
+    //display: block;
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: $color-success;
+    @include border-radius(50%);
+
+  } // &::before, &::after
+
+  /*
+  &::before {
+    z-index: -1;
+    @include animation(animationChatToggle 10s ease-in-out .0s infinite);
+  } // &::before
+
+  &::after {
+    z-index: -2;
+    @include animation(animationChatToggleSecond 10s ease-in-out .2s infinite);
+  } // &::after
+  */
+
+  &:hover, &:focus {
+    background-color: lighten($color-success, $percents-lighten);
+  } // &:hover, &:focus
+
+  &:active {
+    background-color: darken($color-success, $percents-darken);
+  } // &:active
+
+} // .chat-toggle
+
+
+@include keyframes(animationChatToggle) {
+
+  85% {
+    opacity: .5;
+    @include transform(scale(0.5));
+  } // from
+
+  100% {
+    opacity: .0;
+    @include transform(scale(2.0));
+  } // to
+
+} // @include keyframes(animationChatToggle)
+
+@include keyframes(animationChatToggleSecond) {
+
+  80% {
+    opacity: .3;
+    @include transform(scale(0.5));
+  } // from
+
+  100% {
+    opacity: .0;
+    @include transform(scale(2.0));
+  } // to
+
+} // @include keyframes(animationChatToggleSecond)
+
+
+
+//
+// Chat elements
+// =============
+
+.chat .wg-messages {
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  .wg-datetime {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    text-align: center;
+    color: $color-text-muted;
+    font-size: $font-size-small-prc;
+
+  } // .wg-datetime
+
+
+  .wg-message-block {
+
+    position: relative;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    padding-right: 40px;
+
+    .wg-avatar {
+
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      width: 30px;
+      height: 30px;
+
+      background: $color-light;
+
+    } // .wg-avatar
+
+    .wg-message {
+
+      text-align: right;
+
+      .wg-message-text {
+
+        position: relative;
+        display: inline-block;
+
+        margin-bottom: 1px;
+        padding: 4px 7px;
+
+        background: $color-light;
+        @include border-radius($border-radius-md);
+
+        &::after {
+
+          display: none;
+          content: '';
+
+          position: absolute;
+          top: 10px;
+          right: -5px;
+
+          width: 10px;
+          height: 10px;
+
+          background: $color-light;
+
+          @include transform(rotate(45deg));
+
+        } // &::after
+
+      } // .wg-message-text
+
+      &:nth-child(2) {
+
+        .wg-message-text::after {
+          display: block;
+        } // .wg-message-text::after
+
+      } // &::first-child
+
+    } // .wg-message-row
+
+
+    &.wg-message-block-inbox {
+
+      padding-right: 0;
+      padding-left: 40px;
+
+      .wg-avatar {
+        left: 0;
+        right: auto;
+      } // .wg-avatar
+
+      .wg-message {
+
+        text-align: left;
+
+        .wg-message-text {
+
+          @extend .bg-success;
+
+          &::after {
+
+            right: 0;
+            left: -5px;
+
+            background: $color-success;
+
+          } // &::after
+
+        } // .wg-message-text
+
+      } // .wg-message
+
+    } // &.wg-message-block-inbox
+
+  } // .wg-message-block
+
+} // .chat .wg-messages
+
+
+.chat .wg-input-group {
+
+  position: relative;
+
+  .wg-message-input-wrapper {
+
+    margin-right: 40px;
+    @include transition($transition);
+
+    .wg-message-input {
+      @include border-radius(15px);
+    } // .wg-message-input
+
+  } // .wg-message-input-wrapper
+
+  .wg-btn-send {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+    @include transition($transition);
+
+  } // .wg-btn-send
+
+  &.focus {
+
+    .wg-message-input-wrapper {
+      margin-right: 0;
+    } // .wg-message-input-wrapper
+
+    .wg-btn-send {
+      right: 10px;
+    } // .wg-btn-send
+
+  } // &.focus
+
+} // .chat .wg-input-group

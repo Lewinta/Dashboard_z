@@ -1,0 +1,64 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Tasks]
+ *
+ *   + .widget-tasks
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+
+.task-item {
+
+  position: relative;
+
+  .wg-controls {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  } // .wg-controls
+
+  .wg-body .wg-body-content {
+    padding-top: $line-height-computed * .5;
+  } // .wg-body
+
+  .wg-text {
+
+    position: relative;
+    @include transition($transition);
+
+    &::before {
+
+      display: block;
+      content: '';
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+
+      margin: auto;
+
+      width: 0;
+      height: 1px;
+
+      background: $color-text;
+      @include transition($transition);
+
+    } // &::before
+
+  } // .wg-text
+
+  .checkbox-checked {
+
+    .wg-text {
+      opacity: .65;
+    } // .wg-text
+
+    .wg-text::before {
+      width: 100%;
+    } // .wg-text::before
+
+  } // .checkbox-checked
+
+} // .task-item

@@ -1,0 +1,351 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Widgets]
+ *
+ *   + .widget
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+// =================================================================================================================== /
+//
+// Usage: widget style="height=500px"                  <-- Sizer | don`t combine these approaches
+// (!) or widget > widget-layer.widget-layer-main      <-- Sizer |
+//
+// =================================================================================================================== /
+
+//
+// Main widget styles
+// ==================
+
+.widget {
+
+  position: relative;
+
+  overflow: hidden;
+  margin-bottom: $line-height-computed;
+
+  background-color: #fff;
+
+  //border: solid 1px lighten($color-border, 4%);
+  @include border-radius($border-radius-md);
+  @include box-shadow(0 2px 2px rgba(0, 0, 0, .07));
+
+} // .widget
+
+//
+// Widget Layers
+// =============
+
+.widget-layer {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  z-index: 0;
+
+  overflow: hidden;
+  background-color: #fff;
+
+  @include transform(scale(0));
+  @include border-radius(50%);
+  @include transition($transition);
+
+  .widget-layer-content {
+    opacity: .0;
+    height: 100%;
+    @include transition($transition $transition-duration);
+  } // .widget-layer-content
+
+  &.widget-layer-active {
+
+    z-index: 1;
+    opacity: 1.0;
+
+    @include transform(none);
+    @include border-radius(0);
+
+    .widget-layer-content {
+      opacity: 1.0;
+    } // .widget-layer-content
+
+  } // &.widget-layer-active
+
+} // .widget-layer
+
+
+//
+// Widget layer sizer
+// ==================
+
+.widget-layer.widget-layer-sizer {
+
+  position: static;
+  height: 100%;
+
+} // .widget-layer.widget-layer-sizer
+
+
+
+//
+// Always active layer (height sizer)
+// ==================================
+
+.widget-layer.widget-layer-main {
+
+  opacity: 1.0;
+  @include transform(none);
+  @include border-radius(0);
+
+  .widget-layer-content {
+    opacity: 1.0;
+  } // .widget-layer-content
+
+} // .widget-layer.widget-layer-main
+
+
+//
+// Layout markup
+// ==============
+
+.widget-heading {
+
+  position: relative;
+  z-index: 1;
+
+  .widget-title {
+
+    margin: 0;
+    padding: 15px;
+    height: 50px;
+    font-size: 15px;
+
+  } // .widget-title
+
+} // .widget-heading
+
+.widget-controls {
+
+  position: absolute;
+  top: 10px;
+  //right: 15px;
+  right: 5px;
+
+  z-index: 9;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+
+    display: inline-block;
+
+    > a {
+
+      display: block;
+      width: 30px;
+      height: 30px;
+
+      line-height: 30px;
+      text-align: center;
+
+      //color: fade-out($color-text, .2);
+
+      &:hover, &:focus {
+        //color: $color-text;
+      } // &:hover, &:focus
+
+    } // > a
+
+  } // li
+
+} // .widget-controls
+
+.widget-body {
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  z-index: 1;
+  width: 100%;
+
+  .widget-heading + & {
+    top: 50px;
+  } // .widget-heading + &
+
+  .widget-body-content {
+    height: 100%;
+    width: 100%;
+  }
+
+  padding: 15px;
+
+  &.widget-body-fill {
+    padding: 0;
+  } // &.widget-body-fill
+
+} // .widget-body
+
+.widget-layer-sizer .widget-body {
+  position: static;
+} // .widget-layer-main .widget-body
+
+
+//
+// Columns
+// =======
+
+.widget-body-column {
+
+  height: 100%;
+
+} // .widget-body-column
+
+
+
+//
+// Widget forms
+// ============
+
+.widget-form-row {
+
+  padding: 10px 15px;
+  border-bottom: solid 1px $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  } // &:last-child
+
+  label {
+
+    margin-bottom: 0;
+
+    color: $color-text-muted;
+    text-transform: uppercase;
+    font-size: $font-size-small-prc;
+
+    //font-weight: $font-weight-primary-bold;
+
+  } // label
+
+  .form-control {
+
+    padding-left: 0;
+    padding-right: 0;
+
+    border: none;
+
+    &:hover, &:focus {
+      background: $color-light;
+    } // &:hover, &:focus
+
+  } // .form-control
+
+} // .widget-form-row
+
+.widget-form-row-collapse-content {
+  padding-top: 10px;
+} // .widget-form-row-collapse-content
+
+
+//
+// Widget form row collapse
+// ========================
+
+.widget-form-row-collapse {
+
+  @extend .btn;
+
+  position: relative;
+
+  display: block;
+  width: 100%;
+
+  padding-left: 0;
+  padding-right: 0;
+
+  text-align: left;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  font-size: $font-size-small-prc;
+  font-weight: $font-weight-primary;
+
+  border: none;
+  background: #fff;
+
+  @include box-shadow(none);
+  @include border-radius(0);
+
+  &::after {
+
+    display: block;
+    content: '\f106';
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    z-index: 1;
+
+    width: 36px;
+    height: 36px;
+
+    font-size: 18px;
+    line-height: 36px;
+    text-align: right;
+    font-family: 'FontAwesome', sans-serif;
+
+  } // &::after
+
+  &.collapsed {
+
+    &::after { content: '\f107'; }
+
+  } // &.collapsed
+
+} // .widget-form-row-collapse
+
+
+
+//
+// Alternate colors
+// ================
+
+.widget-dark {
+
+  .widget-layer {
+    color: $color-text-inverse;
+    background: $color-dark;
+  } // .widget-layer
+
+  .widget-heading {
+
+    .widget-title {
+      color: $color-text-inverse;
+    } // .widget-title
+
+  } // .widget-heading
+
+  .widget-controls {
+
+    > li {
+
+      > a {
+
+        color: fade-out(#fff, .2);
+
+        &:hover, &:focus {
+          color: #fff;
+        } // &:hover, &:focus
+
+      } // > a
+
+    } // li
+
+  } // .widget-controls
+
+} // .widget-dark

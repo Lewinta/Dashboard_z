@@ -1,0 +1,42 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [State Dots]
+ *
+ *   + .state-dot
+ *   + .state-dot-online
+ *   + .state-dot-offline
+ *   + .state-dot-not-available
+ *   + .state-dot-busy
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.state-dot {
+
+  display: inline-block;
+
+  width: 12px;
+  height: 12px;
+
+  border: solid 2px #fff;
+  background: $color-light;
+
+  @include border-radius(50%);
+
+} // .state-dot
+
+.state-dot-online {
+  background-color: $color-success;
+} // .state-dot-online
+
+.state-dot-offline {
+  background-color: $color-light;
+} // .state-dot-offline
+
+.state-dot-not-available {
+  background-color: $color-warning;
+} // .state-dot-not-available
+
+.state-dot-busy {
+  background-color: $color-danger;
+} // .state-dot-busy
+

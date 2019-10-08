@@ -1,0 +1,21 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Main]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.main-container-side {
+
+  .content-container {
+
+    display: table-cell;
+    vertical-align: middle;
+
+    padding: 30px 60px;
+
+    width: 1%;
+    height: 100vh;
+
+    background: #fff;
+
+  } // .content-wrapper
+
+} // .main-container-side

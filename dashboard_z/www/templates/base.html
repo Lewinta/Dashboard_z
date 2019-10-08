@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page title -->
+    <title>ASICORP</title>
+    <!-- /Page title -->
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- /Meta -->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.png">
+    <!-- /Favicon -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="data_assets/components/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="data_assets/components/jquery-ui-1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="data_assets/components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="data_assets/components/elegant-font/style.css">
+    <link rel="stylesheet" href="data_assets/components/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="data_assets/components/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="data_assets/components/owl-carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="data_assets/components/magnific-popup-master/dist/magnific-popup.css">
+    <link rel="stylesheet" href="data_assets/components/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="data_assets/components/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="data_assets/css/theme.css">
+    <!-- /Styles -->
+
+</head>
+<body class="sidebar-expanded">
+
+
+<!-- Preloader -->
+<div class="preloader loader"></div>
+<!-- /Preloader -->
+
+
+<!-- Top line -->
+<div class="top-line top-line-white">
+
+    <!-- Brand -->
+    <div class="brand-wrapper">
+        <a href="#" id="brand" class="brand brand-purple"><span>ASICORP, S.R.L</span></a>
+    </div>
+    <!-- /Brand -->
+
+    <!-- Menu button -->
+    <div class="menu-button">
+        <a href="#" class="sidebar-toggle menu-toggle open">
+            <div class="menu-icon">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+        </a>
+    </div>
+    <!-- /Menu button -->
+
+    <!-- Navigation -->
+    <div class="navigation-top">
+
+        <!-- Navigation left -->
+        <ul class="navbar-top">
+           <!--  <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon icon-left ti-file"></i>
+                    <span class="navigation-top-title">Create</span> <i class="caret"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-custom">
+                    <li><a href="#">Publication</a></li>
+                    <li><a href="#">Project</a></li>
+                    <li><a href="#">Task item</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" data-fm-action="fm-show">
+                    <i class="icon icon-left icon_cloud_alt"></i>
+                    <span class="navigation-top-title">File Explorer</span>
+                </a>
+            </li> -->
+        </ul>
+        <!-- /Navigation left -->
+
+        <!-- Navigation right -->
+        <ul class="navbar-top navbar-top-right">
+
+            <!-- Notifications -->
+            <li class="dropdown">
+
+                <!-- Profile avatar -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {{usr_name}}
+                </a>
+                <!-- /Profile avatar -->
+
+                <!-- Dropdown menu -->
+                <div class="dropdown-menu dropdown-menu-custom dropdown-menu-right">
+                    <div class="list-group list-group-no-border list-group-hover no-mb">
+
+                        <!-- Notification Item -->
+                        <a href="#" class="list-group-item media notification-item">
+                            <div class="media-left">
+                                <div class="avatar">
+                                    <img src="images/avatar-m-01.jpg" alt="">
+                                    <span class="badge badge-bottom-right badge-xs badge-state badge-dot badge-success"></span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="kv-item">
+                                    <span class="strong">Phillip Sandoval</span>
+                                    <span class="text-muted notification-item-datetime">2 minutes ago</span>
+                                </div>
+                                <p class="notification-item-text">
+                                    Liked your post
+                                </p>
+                            </div>
+                        </a>
+                        <!-- /Notification Item -->
+
+                        <!-- Notification Item -->
+                        <a href="#" class="list-group-item media notification-item">
+                            <div class="media-left">
+                                <i class="icon-theme icon-circle icon-success fa fa-dollar"></i>
+                            </div>
+                            <div class="media-body">
+                                <div class="kv-item">
+                                    <span class="strong">New Transaction</span>
+                                    <span class="text-muted notification-item-datetime">7 minutes ago</span>
+                                </div>
+                                <p class="notification-item-text">
+                                    Received payment of <strong class="text-success">$2787</strong>
+                                </p>
+                            </div>
+                        </a>
+                        <!-- /Notification Item -->
+
+                        <!-- Notification Item -->
+                        <a href="#" class="list-group-item media notification-item">
+                            <div class="media-left">
+                                <div class="avatar">
+                                    <img src="images/placeholder-avatar.png" alt="">
+                                    <span class="badge badge-bottom-right badge-xs badge-state badge-dot badge-warning"></span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="kv-item">
+                                    <span class="strong">Nathan Nelson</span>
+                                    <span class="text-muted notification-item-datetime">4 hours ago</span>
+                                </div>
+                                <p class="notification-item-text">
+                                    Followed you
+                                </p>
+                            </div>
+                        </a>
+                        <!-- /Notification Item -->
+
+                        <!-- Footer -->
+                        <div class="list-group-item dropdown-menu-footer kv-item">
+                            <a href="#">See all notifications</a>
+                            <a href="#" data-toggle="tooltip" data-title="Settings">
+                                <i class="icon fa fa-gear"></i>
+                            </a>
+                        </div>
+                        <!-- /Footer -->
+
+                    </div>
+                </div>
+                <!-- /Dropdown menu -->
+
+            </li>
+            <!-- /Notifications -->
+
+            <!-- Language -->
+            <li class="dropdown">
+
+                <!-- Profile avatar -->
+               <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    EN <i class="caret"></i>
+                </a> -->
+                <!-- /Profile avatar -->
+
+                <!-- Profile dropdown menu -->
+               <!--  <ul class="dropdown-menu dropdown-menu-custom dropdown-menu-right">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Deutsch</a></li>
+                    <li><a href="#">France</a></li>
+                </ul> -->
+                <!-- /Profile dropdown menu -->
+
+            </li>
+            <!-- /Language -->
+
+            <!-- Profile -->
+            <li class="dropdown dropdown-profile">
+
+                <!-- Profile dropdown toggle link -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <div class="avatar">
+                        <img src="images/placeholder-avatar.png" alt="" title="">
+                    </div>
+                </a>
+                <!-- /Profile dropdown toggle link -->
+
+                <!-- Profile dropdown menu -->
+                <ul class="dropdown-menu dropdown-menu-custom dropdown-menu-right">
+                    <li><a href="#" class="sidebar-nav-link">Profile</a></li>
+                    <li><a href="#" class="sidebar-nav-link">Sign out</a></li>
+                </ul>
+                <!-- /Profile dropdown menu -->
+
+            </li>
+            <!-- /Profile -->
+
+        </ul>
+        <!-- /Navigation right -->
+
+    </div>
+    <!-- /Navigation -->
+
+</div>
+<!-- /Top line -->
+
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar custom-scrollbar sidebar-dark sidebar-menu-blue">
+
+    <!-- Sidebar Search -->
+<!--     <div class="sidebar-search">
+        <form method="get" class="sidebar-search-form">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search...">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-secondary">
+                        <i class="icon fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div> -->
+    <!-- /Sidebar Search -->
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+
+        <li class="sidebar-nav-item">
+            <a href="dashboard" class="sidebar-nav-link">
+                <i class="icon icon-left fa fa-line-chart"></i>
+                <span>Escritorio</span>
+            </a>
+<!--             <ul class="sidebar-menu collapse">
+                <li class="sidebar-nav-item">
+                    <a href="dashboard" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Main layout</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="index-shop" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Online shop</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="index-blog" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Blog dashboard</span>
+                    </a>
+                </li>
+            </ul> -->
+        </li>
+<!-- 
+        <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link sidebar-nav-dropdown-toggle">
+                <i class="icon icon-left fa fa-leaf"></i>
+                <span>UI Elements</span>
+            </a>
+            <ul class="sidebar-menu collapse">
+                <li class="sidebar-nav-item">
+                    <a href="badges" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Badges</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="labels" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Labels</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="list-groups" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>List groups</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="pagination" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Pagination</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="panels" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Panels</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="progress-bars" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Progress bars</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link sidebar-nav-dropdown-toggle">
+                <i class="icon icon-left fa fa-code"></i>
+                <span>Components</span>
+            </a>
+            <ul class="sidebar-menu collapse">
+                <li class="sidebar-nav-item">
+                    <a href="alerts" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Alerts</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="tooltips" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Tooltips</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="popovers" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Popovers</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a href="modals" class="sidebar-nav-link">
+                        <i class="icon icon-left fa fa-circle-o"></i>
+                        <span>Modals</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+ -->
+<!--         <li class="sidebar-nav-item">
+            <a href="login" class="sidebar-nav-link">
+                <i class="icon fa fa-sign-in"></i>
+                <span>Login</span>
+                <span class="badge badge-danger">new</span>
+            </a>
+        </li>
+ -->
+       <!--  <li class="sidebar-nav-item">
+            <a href="page-order" class="sidebar-nav-link">
+                <i class="icon fa fa-shopping-cart"></i>
+                <span>Order</span>
+                <span class="badge badge-danger">new</span>
+            </a>
+        </li>
+
+        <li class="sidebar-nav-item">
+            <a href="buttons" class="sidebar-nav-link">
+                <i class="icon fa fa-square"></i>
+                <span>Buttons</span>
+            </a>
+        </li>
+
+        <li class="sidebar-nav-item">
+            <a href="forms" class="sidebar-nav-link">
+                <i class="icon fa fa-list-alt"></i>
+                <span>Forms</span>
+            </a>
+        </li>
+    -->
+
+        <li class="sidebar-nav-item">
+            <a href="reclamaciones" class="sidebar-nav-link">
+                <i class="icon fa fa-table"></i>
+                <span>Reclamaciones</span>
+            </a>
+        </li>
+
+        <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link">
+                <i class="icon fa fa-user"></i>
+                <span>Mi Perfil</span>
+            </a>
+        </li> 
+
+        <li class="sidebar-nav-item">
+            <a href="desk" class="sidebar-nav-link">
+                <i class="icon fa fa-home"></i>
+                <span>Administraci&oacuten</span>
+            </a>
+        </li>
+
+
+
+    </ul>
+    <!-- /Sidebar Menu -->
+
+    <!-- Sidebar Title -->
+    <div class="sidebar-title">Statistics</div>
+    <!-- /Sidebar Title -->
+
+    <!-- Summary Information -->
+    <div class="sidebar-summary-progress">
+
+        <!-- Progress bar -->
+        <div class="progress-titled mb-0p5">
+            <div class="progress-title">Pendientes <span class="value">0%</span></div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-primary" role="progressbar"
+                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                </div>
+            </div>
+        </div>
+        <!-- /Progress bar -->
+
+        <!-- Progress bar -->
+        <div class="progress-titled mb-0p5">
+            <div class="progress-title">Cobradas <span class="value">0%</span></div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar"
+                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                </div>
+            </div>
+        </div>
+        <!-- /Progress bar -->
+
+        <!-- Progress bar -->
+        <div class="progress-titled mb-0p5">
+            <div class="progress-title">Rechazadas <span class="value">0%</span></div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger" role="progressbar"
+                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                </div>
+            </div>
+        </div>
+        <!-- /Progress bar -->
+
+    </div>
+    <!-- /Summary Information -->
+
+</div>
+<!-- /Sidebar -->
+
+
+<!-- Main container -->
+<div class="main-container">
+
+
+    <!-- Page heading -->
+    <header class="page-heading">
+
+        <!-- Page header -->
+        <div class="page-header">
+
+            <!-- Page title -->
+            <div class="page-title">{% block title %} {% endblock %}</div>
+            <!-- /Page title -->
+
+            <!-- Breadcrumb -->
+            <!-- <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li class="active"><span>Main page</span></li>
+            </ol> -->
+            <!-- /Breadcrumb -->
+
+        </div>
+        <!-- /Page header -->
+
+    </header>
+    <!-- /Page heading -->
+
+<!-- Page content -->
+    {% block content %}
+    {% endblock %}
+
+<!-- /Page content -->
+
+    <!-- Page footer -->
+    <footer class="page-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="footer-copyright">
+                        Copyright &copy;
+                        <a href="https://app.tzcode.tech" class="strong" target="_blank">tzcode.tech</a>
+                        2019.
+                        All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /Page footer -->
+
+
+</div>
+<!-- /Main container -->
+
+
+<!-- Scripts -->
+<script src="data_assets/js/jquery-3.3.1.min.js"></script>
+<script src="data_assets/components/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script >
+    window._version_number = "{{ build_version }}";
+    // browser support
+    window.app = true;
+    window.dev_server = {{ dev_server }};
+
+    if(!window.frappe) window.frappe = {};
+
+    frappe.boot = {};
+
+    frappe.csrf_token = "{{ csrf_token }}";
+</script>
+<script src="/assets/js/libs.min.js"></script>
+<script src="/assets/js/desk.min.js"></script>
+<script src="data_assets/components/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="data_assets/components/owl-carousel/owl.carousel.min.js"></script>
+<script src="data_assets/components/magnific-popup-master/dist/jquery.magnific-popup.min.js"></script>
+<script src="data_assets/components/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="data_assets/components/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="data_assets/components/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="data_assets/js/jquery.validate.min.js"></script>
+<script src="data_assets/js/Chart.min.js"></script>
+<script src="data_assets/js/circle-progress.min.js"></script>
+<script src="data_assets/js/calendar.js"></script>
+<script src="data_assets/js/general.js"></script>
+<!-- /Scripts -->
+
+
+</body>
+</html>

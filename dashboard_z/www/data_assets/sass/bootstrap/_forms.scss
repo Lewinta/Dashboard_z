@@ -1,0 +1,93 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Form Components]
+ *
+ *   + .form-control
+ *   + .vertical-resize
+ *   + .custom-select
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.form-control {
+
+  height: auto;
+  padding: $padding-md-v $padding-md-h;
+
+  font-size: $font-size;
+  font-weight: inherit;
+  line-height: $line-height;
+
+  background-color: transparent;
+  border: solid 1px $color-border-input;
+
+  @include border-radius(0);
+  @include transition($transition);
+
+  &, &:hover, &:focus {
+    @include box-shadow(none);
+  } // &, &:hover, &:focus
+
+  &:not([class*="input-"]) {
+    font-size: inherit;
+  } // &:not([class*="input-"])
+
+  &:hover {
+    border-color: lighten($color-primary, $percents-lighten);
+  } // &:focus, &.focus
+
+  &:focus {
+    border-color: darken($color-primary, $percents-darken);
+    @include box-shadow(0 0 0 2px fade-out($color-primary, .85));
+  } // &:focus, &.focus
+
+  &[disabled], &[readonly] {
+    opacity: $muted-opacity;
+    background-color: $color-light;
+  } // &[disabled], &[readonly]
+
+} // .form-control
+
+.vertical-resize {
+  resize: vertical;
+} // .vertical-resize
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Custom Select
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.custom-select {
+
+  position: relative;
+
+  display: block;
+  margin-bottom: 0;
+
+  &::after {
+
+    display: block;
+    content: '\f107';
+
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    bottom: 1px;
+
+    z-index: 1;
+
+    width: 30px;
+
+    font-size: 14px;
+    line-height: 34px;
+    color: $color-text;
+    text-align: center;
+    font-family: 'FontAwesome', sans-serif;
+
+    background: #fff;
+    pointer-events: none;
+
+    @include border-right-radius($border-radius-md - 1px);
+
+  } // &::after
+
+} // .custom-select

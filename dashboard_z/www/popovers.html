@@ -1,0 +1,147 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block content %}
+
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Page section: preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements bg-custom-primary">
+                        <div class="panel panel-white demo-panel pt-2x pb-2x">
+                            <div class="panel-body text-center pb-2x">
+
+                                <button type="button" class="btn btn-waves btn-primary mb" data-placement="bottom"
+                                        data-toggle="popover" title="Popover title"
+                                        data-content="And here's some amazing content. It's very engaging. Right?">
+                                    Click to toggle popover
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: preview -->
+
+        <!-- Page section: placement -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Placement</div>
+                    <p>
+                        You can specify four directions for the popover.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements">
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <div class="mb">
+                                    <button style="width: 150px;" type="button" class="btn btn-waves btn-primary"
+                                            data-container="body" data-toggle="popover" data-placement="top"
+                                            title="Top popover title"
+                                            data-content="And here's some amazing content. It's very engaging. Right?">
+                                        Top
+                                    </button>
+                                </div>
+                                <div>
+                                    <button style="width: 150px;" type="button" class="btn btn-waves btn-primary"
+                                            data-container="body" data-toggle="popover" data-placement="left"
+                                            title="Left popover title"
+                                            data-content="And here's some amazing content. It's very engaging. Right?">
+                                        Left
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                <div class="mb">
+                                    <button style="width: 150px;" type="button" class="btn btn-waves btn-primary"
+                                            data-container="body" data-toggle="popover" data-placement="right"
+                                            title="Right popover title"
+                                            data-content="And here's some amazing content. It's very engaging. Right?">
+                                        Right
+                                    </button>
+                                </div>
+                                <div>
+                                    <button style="width: 150px;" type="button" class="btn btn-waves btn-primary"
+                                            data-container="body" data-toggle="popover" data-placement="bottom"
+                                            title="Bottom popover title"
+                                            data-content="And here's some amazing content. It's very engaging. Right?">
+                                        Bottom
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: placement -->
+
+        <!-- Page section: dismissable -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Dismissable</div>
+                    <p>
+                        By default, the popover is not hidden until the user unhides it.
+                        You can use a dismissable to cover it.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements text-center">
+
+                        <div class="mb-2x">
+                            <button style="width: 200px;" type="button" class="btn btn-waves btn-primary"
+                                    data-toggle="popover" data-placement="bottom" title="Popover title"
+                                    data-content="And here's some amazing content. It's very engaging. Right?">
+                                Default popover
+                            </button>
+                            <a style="width: 200px;" tabindex="0" class="btn btn-waves btn-info" role="button"
+                               data-toggle="popover" data-placement="bottom"
+                               data-trigger="focus" title="Dismissible popover"
+                               data-content="And here's some amazing content. It's very engaging. Right?">
+                                Dismissible popover
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: dismissable -->
+
+
+    </div>
+    <!-- /Page content -->
+
+{%endblock%}

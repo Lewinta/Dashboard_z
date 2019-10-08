@@ -1,0 +1,65 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [List Tree]
+ *
+ *   + .list-tree
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.list-tree {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .list-tree-heading {
+
+    padding-bottom: 5px;
+    font-weight: $font-weight-primary-bold;
+
+  } // .list-tree-heading
+
+  li {
+    position: relative;
+  } // li
+
+  li:not(:first-child) {
+
+    padding-left: 30px;
+
+    &::before, &::after {
+      display: block;
+      content: '';
+      background: lighten($color-text, 50%);
+      //@include box-shadow(1px 1px 1px rgba(0, 0, 0, .1));
+    } // &::before, &::after
+
+    &::before {
+
+      position: absolute;
+      top: 0;
+      left: 10px;
+
+      width: 1px;
+      height: 100%;
+
+    } // &::before
+
+    &::after {
+
+      position: absolute;
+      top: $line-height-computed * .5;
+      left: 10px;
+
+      width: 11px;
+      height: 1px;
+
+    } // &::after
+
+    &:last-child::before {
+      height: 50%;
+    } // &:last-child::before
+
+  } // li
+
+} // .list-tree

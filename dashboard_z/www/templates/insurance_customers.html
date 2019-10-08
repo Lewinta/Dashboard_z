@@ -1,0 +1,95 @@
+<!-- Widget: Total Progress -->
+<div class="widget" style="height: 415px;">
+{% if not cant_fact_seg%}
+    {%set cant_fact_seg = 0%}
+{%endif%}
+
+{% if not amt_clai_seg%}
+    {%set amt_clai_seg = 0%}
+{%endif%}
+
+{% if not amt_auth_seg%}
+    {%set amt_auth_seg = 0%}
+{%endif%}
+
+{% if not amt_diff_seg%}
+    {%set amt_diff_seg = 0%}
+{%endif%}
+
+
+    <!-- Widget Layer: List -->
+    <div class="widget-layer widget-layer-active">
+        <div class="widget-layer-content">
+
+            <!-- Widget Layer Heading -->
+            <div class="widget-heading">
+             
+                <!-- Widget Title -->
+                <!-- <div class="widget-title">Consultas Privadas</div> -->
+                <!-- /Widget Title -->
+                 <div class="cb-title text-center">Consultas Seguro</div>
+                    <h3 class="cb-value text-center"><b>${{'{:20,.2f}'.format(amt_clai_seg | int) or '-'}}</b></h3>
+            </div>
+            <!-- /Widget Layer Heading -->
+
+            <!-- Widget Layer Body -->
+            <div class="widget-body">
+                <div class="widget-body-content-wrapper custom-scrollbar">
+                    <div class="widget-body-content">
+
+                        <!-- Progress circle -->
+                        <div class="progress-circle mt mb" data-value="
+                        {%if cant_fact_ttl and cant_fact_ttl > 0%}
+                            {{cant_fact_seg | flt * 100.0  / cant_fact_ttl | flt}}
+                        {%else%}
+                            {{0.00}}
+                        {%endif%}
+                        " 
+
+                        data-color="danger"></div>
+                        <!-- /Progress circle -->
+
+                        <!-- Text -->
+                        <!-- <p class="text-center text-muted" style="min-height: 62px; ">
+Esta es la sumatoria de los pacientes con seguros atendiodos el día de hoy.
+                        </p> -->
+                        <!-- /Text -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Widget Layer Body -->
+
+            <!-- Widget Layer Footer -->
+            <div class="widget-footer">
+
+                <!-- Value Column -->
+                <div class="col-xs-4 col-sm-4 text-center">
+                    <span class="text-muted text-small text-uppercase">Reclamado</span>
+                        <div class="h5 no-margin">${{'{:20,.2f}'.format(amt_clai_seg | float)}}</div>
+                </div>
+                <!-- /Value Column -->
+
+                <!-- Value Column -->
+                <div class="col-xs-4 col-sm-4 text-center">
+                    <span class="text-muted text-small text-uppercase">Autorizado</span>
+                        <div class="h5 no-margin">${{'{:20,.2f}'.format(amt_auth_seg | float)}}</div>
+                </div>
+                <!-- /Value Column -->
+
+                <!-- Value Column -->
+                <div class="col-xs-4 col-sm-4 text-center">
+                    <span class="text-muted text-small text-uppercase"> Diferencia</span>
+                        <div class="h5 no-margin">${{'{:20,.2f}'.format(amt_diff_seg | float)}}</div>
+                </div>
+                <!-- /Value Column -->
+
+            </div>
+            <!-- /Widget Layer Footer -->
+
+        </div>
+    </div>
+    <!-- /Widget Layer: List -->
+
+</div>
+<!-- /Widget: Total Progress -->

@@ -1,0 +1,90 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [MD Radio Colored Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+@mixin md-radio-colored($class, $color) {
+
+  .#{$class} {
+
+    input[type="radio"] + label {
+      &::after {
+        border-color: lighten($color, $percents-lighten);
+        background-color: lighten($color, $percents-lighten);
+      } // &::after
+    } // input[type="checkbox"]:checked + label
+
+
+    input[type="radio"]:checked + label {
+
+      &::before {
+      } // &::before
+
+      &::after {
+        //background-color: $color;
+      } // &::after
+
+      &:hover, &:focus {
+        &::after {
+          //border-color: lighten($color, $percents-lighten);
+          //background-color: lighten($color, $percents-lighten);
+        } // &::after
+      } // &:hover, &:focus
+
+      &:active {
+        &::after {
+          border-color: darken($color, $percents-darken);
+          background-color: darken($color, $percents-darken);
+        } // &::after
+      } // &:active
+
+    } // input[type="checkbox"]:checked + label
+
+  } // .#{$class}
+
+} // @mixin md-radio-colored($class, $color)
+
+@mixin md-radio-color-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, #fff);
+
+  .#{$class} {
+
+    input[type="radio"] + label {
+      &::before {
+        border-color: $color;
+        background-color: $color;
+      } // &::before
+      &::after {
+        background-color: $_color-text;
+      } // &::after
+    } // input[type="checkbox"]:checked + label
+
+
+    input[type="radio"]:checked + label {
+
+      &::before {
+      } // &::before
+
+      &::after {
+      } // &::after
+
+      &:hover, &:focus {
+        &::before {
+          border-color: lighten($color, $percents-lighten);
+          background-color: lighten($color, $percents-lighten);
+        } // &::before
+      } // &:hover, &:focus
+
+      &:active {
+        &::before {
+          border-color: darken($color, $percents-darken);
+          background-color: darken($color, $percents-darken);
+        } // &::before
+      } // &:active
+
+    } // input[type="checkbox"]:checked + label
+
+  } // .#{$class}
+
+} // @mixin md-radio-colored($class, $color)

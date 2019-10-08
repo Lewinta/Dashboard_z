@@ -1,0 +1,85 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Fixed Sidebar]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.sidebar-fixed {
+
+  display: none;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  z-index: 10000;
+
+} // .sidebar-fixed
+
+.sidebar-fixed-backdrop {
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  cursor: pointer;
+  background: transparent;
+
+  &.animation {
+
+    opacity: .0;
+    @include transition($transition);
+
+    &.animation-in {
+      opacity: 1.0;
+    } // &.animation-in
+
+  } // &.animation
+
+} // .sidebar-fixed-backdrop
+
+
+.sidebar-fixed-content {
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+  width: 340px;
+
+  background: #fff;
+  @include box-shadow(5px 0 13px 3px rgba(0, 0, 0, .1));
+
+  &.animation {
+
+    right: -350px;
+    @include transition($transition);
+
+    &.animation-in {
+      right: 0;
+    } // &.animation-in
+
+  } // &.animation
+
+  .sidebar-fixed-heading {
+    height: $navbar-height;
+    border-bottom: solid 1px $color-border;
+  } // .sidebar-fixed-heading
+
+  .sidebar-fixed-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: $navbar-height;
+  } // .sidebar-fixed-body
+
+} // .sidebar-fixed
+
+
+.sidebar-fixed-active {
+  display: block;
+} // .sidebar-fixed-active

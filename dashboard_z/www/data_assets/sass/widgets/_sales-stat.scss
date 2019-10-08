@@ -1,0 +1,44 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Sales Stat]
+ *
+ *   + .widget-sales-stat
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.widget-sales-stat {
+
+  .canvas-holder {
+
+    width: auto;
+    margin: 0 -15px -20px;
+    //margin-bottom: -20px;
+
+  } // .canvas-holder
+
+  .wg-footer {
+
+    padding: 15px;
+    margin: 0 -15px -15px;
+
+  } // .wg-footer
+
+} // .widget-sales-stat
+
+
+
+.widget-sales-stat {
+
+  .wg-list-months {
+
+    @extend .list-inline;
+
+    .list-colored-item {
+      width: 32%;
+      margin: 0;
+    } // .list-colored-item
+
+  } // .wg-list-months
+
+} // .widget-sales-stat

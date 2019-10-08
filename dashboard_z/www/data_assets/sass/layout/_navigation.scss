@@ -1,0 +1,299 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Navigation]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Main styles
+// ===========
+
+.navigation-top {
+
+  @include clearfix();
+  @extend .nowrap;
+
+  margin-bottom: 0;
+  height: $navbar-height;
+
+  text-align-last: justify;
+
+  border: none;
+
+  @include border-radius(0);
+  @include box-shadow(4px 0 5px rgba(0, 0, 0, .08));
+
+} // .navigation-top
+
+.navigation-top .navbar-top {
+
+  @include clearfix();
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  text-align-last: auto;
+  display: inline-block;
+
+  &.navbar-top-right {
+  } // &.navbar-top-right
+
+  > li {
+    position: relative;
+    display: block;
+    float: left;
+  } // > li
+
+  > li > a {
+
+    display: block;
+    padding: 20px 15px;
+
+    text-shadow: none;
+
+    .icon {
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, .01);
+    } // .icon
+
+    .badge {
+
+      position: absolute;
+      top: 20px;
+      right: 11px;
+
+      margin-top: 0;
+
+    } // .badge
+
+  } // > li > a
+
+} // .navigation-top .navbar-top
+
+@include media_sm() {
+
+  .navigation-top-title {
+    display: none;
+  } // .navigation-top-title
+
+} // @include media_sm()
+
+@include media_max_width($screen-xs-min) {
+
+  .navigation-top .navbar-top {
+    display: none;
+  } // .navigation-top .navbar-top
+
+} // @include media_sm()
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Profile
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.navigation-top .navbar-top > li.dropdown-profile {
+
+  > a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  } // > a
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  } // .avatar
+
+} // .dropdown-profile
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Notifications
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.notification-item {
+
+  display: block;
+  margin-top: -1px;
+
+  width: 350px;
+  max-width: 100%;
+
+  .avatar,
+  .icon-theme {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  } // .avatar, .icon-theme
+
+  .notification-item-datetime {
+    color: $color-text-muted;
+  } // .notification-item-datetime
+
+  .notification-item-text {
+    margin-bottom: 0;
+    color: $color-text;
+  } // .notification-item-datetime
+
+} // .notification-item
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Sidebar Toggle
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.menu-button {
+
+  display: block;
+  float: left;
+
+  width: 60px;
+  height: 60px;
+
+} // .menu-button
+
+.menu-toggle {
+
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  float: left;
+
+  width: 60px;
+  height: 60px;
+
+  padding: 21px 17px 12px;
+
+  .menu-icon {
+
+    position: relative;
+
+    width: 25px;
+    height: 19px;
+
+    color: inherit;
+    cursor: pointer;
+
+    @include transform(rotate(0deg));
+    @include transition(.2s ease-in-out);
+
+    span {
+
+      display: block;
+      position: absolute;
+
+      width: 50%;
+      height: 2px;
+
+      opacity: 1;
+      background-color: $color-text-muted;
+
+      @include transform(rotate(0deg));
+      @include transition(.2s ease-in-out);
+
+      &:nth-child(even) { left: 50%; }
+      &:nth-child(odd)  { left:  0;  }
+
+      &:nth-child(1), &:nth-child(2) { top:  0;   }
+      &:nth-child(3), &:nth-child(4) { top:  8px; }
+      &:nth-child(5), &:nth-child(6) { top: 16px; }
+
+      &:nth-child(1), &:nth-child(3), &:nth-child(5) { @include border-left-radius(2px);  }
+      &:nth-child(2), &:nth-child(4), &:nth-child(6) { @include border-right-radius(2px); }
+
+    } // span
+
+  } // .menu-icon
+
+  &.open .menu-icon span {
+
+    &:nth-child(1), &:nth-child(6) { @include transform(rotate( 45deg)); }
+    &:nth-child(2), &:nth-child(5) { @include transform(rotate(-45deg)); }
+
+    &:nth-child(1) { top: 3px;    left: 3px;             }
+    &:nth-child(2) { top: 3px;    left: calc(50% - 3px); }
+    &:nth-child(3) { left: -50%;  opacity: 0;            }
+    &:nth-child(4) { left: 100%;  opacity: 0;            }
+    &:nth-child(5) { top: 10px;   left: 3px;             }
+    &:nth-child(6) { top: 10px;   left: calc(50% - 3px); }
+
+  } // &.open .menu-icon span
+
+} // .menu-toggle
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Custom Dropdown Menu
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.dropdown-menu.dropdown-menu-custom {
+
+  margin-top: $line-height-computed * .5;
+  max-width: 350px;
+
+  background: #fff;
+  border: solid 1px $color-border;
+
+  @include box-shadow(none);
+  @include border-radius($border-radius-md);
+
+  &::before,
+  &::after {
+
+    display: block;
+    content: '';
+
+    position: absolute;
+    left: 15px;
+    right: auto;
+
+    width: 0;
+    height: 0;
+
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 9px solid transparent;
+
+  } // &::before, &::after
+
+  &::before {
+    top: -9px;
+    border-bottom-color: $color-border;
+  } // &::before
+
+  &::after {
+    top: -7px;
+    border-bottom-color: #fff;
+  } // &::after
+
+  .dropdown-menu-footer {
+    background: $color-light;
+    border-top: solid 1px $color-border;
+  } // .dropdown-menu-footer
+
+  &.dropdown-menu-right {
+
+    &::before,
+    &::after {
+      left: auto;
+      right: 15px;
+    } // &::before, &::after
+
+  } // &.dropdown-menu-right
+
+} // .dropdown-menu.dropdown-menu-custom
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Alternate colors
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@include top-line-variant(top-line-red,        $color-red       );
+@include top-line-variant(top-line-orange,     $color-orange    );
+@include top-line-variant(top-line-green,      $color-green     );
+@include top-line-variant(top-line-light-blue, $color-light-blue);
+@include top-line-variant(top-line-blue,       $color-blue      );
+@include top-line-variant(top-line-purple,     $color-purple    );
+@include top-line-variant(top-line-dark,       $color-dark      );
+@include top-line-variant(top-line-light,      $color-light     );
+@include top-line-variant(top-line-white,      $color-white     );
+@include top-line-variant(top-line-black,      $color-black     );

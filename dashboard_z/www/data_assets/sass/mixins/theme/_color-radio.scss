@@ -1,0 +1,55 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Color Radio Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin color-radio-colored($class, $color) {
+
+  .#{$class} {
+
+    input[type="radio"] {
+
+      & + label {
+
+        &::before {
+          background-color: $color;
+        } // &::before
+
+        &::after  { }
+
+        &:hover {
+
+          &::before {
+            background-color: lighten($color, $percents-lighten);
+          } // &::before
+
+          &::after  { }
+
+        } // &:hover
+
+        &:active {
+
+          &::before {
+            background-color: darken($color, $percents-darken);
+          } // &::before
+
+          &::after  { }
+
+        } // &:active
+
+      } // & + label
+
+      &:checked + label {
+
+        &::before {
+          @include box-shadow(0 0 0 4px fade-out($color, .75) );
+        } // &::before
+
+        &::after  { }
+
+      } // &:checked + label
+
+    } // input[type="radio"]
+
+  } // .#{$class}
+
+} // @mixin color-radio-colored($class, $color)

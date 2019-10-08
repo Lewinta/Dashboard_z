@@ -1,0 +1,117 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Tables]
+ *
+ *   + .table
+ *   + .table-bordered
+ *   + .table-hover
+ *   + .table-condensed
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Base tables styles
+// ==================
+
+.table {
+
+  > tbody,
+  > thead,
+  > tfoot {
+
+    > tr > td,
+    > tr > th {
+
+      padding: 12px 10px;
+
+      border-top: 0;
+      vertical-align: middle;
+
+      @include transition($transition);
+
+    } // > tr > td, > tr > th
+
+  } // > tbody, > thead, > tfoot
+
+  > thead {
+
+    > tr > td,
+    > tr > th {
+
+      padding: 15px 10px;
+      vertical-align: bottom;
+
+      color: $color-text-muted;
+      font-weight: $font-weight-primary-bold;
+
+    } // > tr > td, > tr > th
+
+  } // > thead
+
+  > thead > tr > th {
+    border-bottom: none;
+  } // > thead > tr > th
+
+} // .table
+
+
+//
+// Bordered table
+// ==============
+
+.table-bordered {
+
+  border: none;
+
+  > tbody,
+  > thead,
+  > tfoot {
+
+    > tr > td,
+    > tr > th {
+
+      border: none;
+      border-bottom: 1px solid $color-border;
+
+    } // > tr > td, > tr > th
+
+  } // > tbody, > thead, > tfoot
+
+} // .table-bordered
+
+
+//
+// Hover table
+// ===========
+
+.table-hover {
+
+  > tbody > tr:hover {
+
+    > td, > th {
+      background: $color-light;
+    } // > td, > th
+
+  } // > tbody > tr
+
+} // .table-hover
+
+
+//
+// Condensed table
+// ===============
+
+.table-condensed {
+
+  > tbody,
+  > thead,
+  > tfoot {
+
+    > tr > td,
+    > tr > th {
+      padding: 6px 8px;
+    } // > tr > td, > tr > th
+
+  } // > tbody, > thead, > tfoot
+
+} // .table-condensed

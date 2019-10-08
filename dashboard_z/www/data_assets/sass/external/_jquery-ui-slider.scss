@@ -1,0 +1,70 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [jQuery UI Slider]
+ *
+ *   + .range-value
+ *   + .ui-slider-horizontal
+ *   + .ui-widget-header
+ *   + .ui-state-default
+ *   + .ui-slider-horizontal .ui-slider-handle
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.range-value {
+
+  display: inline-block;
+  width: 50px;
+
+  font-size: 11px;
+  text-align: center;
+
+  background: $color-default;
+  border: none;
+
+
+} // .range-value
+
+.ui-slider-horizontal {
+  margin-top: 5px;
+  height: 5px !important;
+} // .ui-slider-horizontal
+
+.ui-widget-header {
+  background: $color-default;
+} // .ui-widget-header
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  //background: $color-primary;
+  //border-color: $color-primary;
+  //@include border-radius(50%);
+  background: $color-default;
+  border-color: transparent;
+
+}
+
+.ui-widget.ui-widget-content {
+  border-color: transparent;
+  background: $color-default;
+  @include border-radius(0);
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+  top: -7px;
+}
+
+.ui-slider .ui-slider-handle {
+
+  width: 16px;
+  height: 16px;
+
+
+  cursor: pointer;
+
+  background: $color-default;
+  border-color: transparent;
+  @include border-radius(50%);
+
+}

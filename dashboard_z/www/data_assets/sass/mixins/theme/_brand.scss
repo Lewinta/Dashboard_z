@@ -1,0 +1,26 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Brand Colored Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin brand-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, #fff);
+
+  .#{$class} {
+
+    color: $_color-text;
+    background-color: $color;
+
+    &:hover, &:focus {
+      color: $_color-text;
+      background-color: lighten($color, $percents-lighten);
+    } // &:hover, &:focus
+
+    &:active {
+      color: $_color-text;
+      background-color: darken($color, $percents-darken);
+    } // &:active
+
+  } // .#{$class}
+
+} // @mixin brand-colored($class, $color)

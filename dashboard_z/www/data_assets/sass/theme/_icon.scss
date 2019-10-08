@@ -1,0 +1,78 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Theme Icons]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Brand names & colors
+// ====================
+
+$brand-colors: (
+  facebook                                  : #3b5998,
+  twitter                                   : #00aced,
+  linkedin                                  : #007bb6,
+  skype                                     : #00aff0,
+  googleplus                                : #dd4b39,
+  pinterest                                 : #cb2027,
+  youtube                                   : #bb0000,
+  vine                                      : #00b488,
+  dribble                                   : #ea4c89,
+  flickr                                    : #ff0084,
+  behance                                   : #1769ff,
+  vimeo                                     : #1ab7ea,
+  tumblr                                    : #32506d,
+  instagram                                 : #bc2a8d,
+  vk                                        : #45668e,
+  wordpress                                 : #21759b,
+  yahoo                                     : #7B0099,
+  blogger                                   : #fb8f3d,
+  soundcloud                                : #ff3a00
+);
+
+.icon-theme {
+
+  display: inline-block;
+
+  width: 32px;
+  height: 32px;
+
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+
+  @include transition($transition);
+  @include border-radius($border-radius-md);
+
+  &:hover  {}
+  &:focus  {}
+  &:active {}
+
+  &.icon-theme-lg {}
+  &.icon-theme-sm {}
+  &.icon-theme-xs {}
+
+  &.icon-circle {
+    @include border-radius(50%);
+  } // &.icon-circle
+
+} // .icon-theme
+
+
+
+//
+// Alternate colors
+// ================
+
+@include icon-colored(icon-primary,   $color-primary  );
+@include icon-colored(icon-secondary, $color-secondary);
+@include icon-colored(icon-default,   $color-default  );
+@include icon-colored(icon-success,   $color-success  );
+@include icon-colored(icon-info,      $color-info     );
+@include icon-colored(icon-warning,   $color-warning  );
+@include icon-colored(icon-danger,    $color-danger   );
+@include icon-colored(icon-light,     $color-light    );
+
+
+
+//
+// Brand colors
+// ============

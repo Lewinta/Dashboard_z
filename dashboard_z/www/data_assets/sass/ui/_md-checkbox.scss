@@ -1,0 +1,232 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [MD Checkbox]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+$cb-size: 18px;
+
+$cb-slide-width: 40px;
+$cb-slide-height: 20px;
+$cb-slide-inner-height: 10px;
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Additional classes
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.md-checkbox-inline {
+  display: inline-block;
+} // .md-checkbox-inline
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Default style
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.md-checkbox {
+
+  label {
+
+    cursor: pointer;
+    position: relative;
+
+    margin-bottom: 0;
+    padding-left: $cb-size + 7px;
+    height: $cb-size * $line-height;
+
+    line-height: $cb-size * $line-height;
+    font-weight: $font-weight-primary-bold;
+
+    &::before, &::after {
+      display: block;
+      content: '';
+      @include transition($transition);
+    } // &::before, &::after
+
+    // Square
+    &::before {
+
+      position: absolute;
+      top: ($cb-size * $line-height - $cb-size) / 2;
+      left: 0;
+
+      width: $cb-size;
+      height: $cb-size;
+
+      background: #fff;
+      border: solid 1px $color-border;
+      @include border-radius(1px);
+
+    } // &::before
+
+    // Check
+    &::after {
+
+      position: absolute;
+
+      top: ($cb-size * $line-height - $cb-size) / 2;
+      left: 0;
+
+      width: $cb-size;
+      height: $cb-size;
+      text-align: center;
+
+      opacity: .0;
+
+      @include svg-check-12();
+
+    } // &::after
+
+    &:hover, &:focus {
+      &::after {
+        opacity: .5;
+      } // &::after
+    } // &:hover, &:focus
+
+  } // label
+
+  input[type="checkbox"] {
+
+    position: absolute;
+    opacity: .0;
+
+    & + label {
+
+    } // & + label
+
+    &:checked + label {
+
+      &::after {
+        opacity: 1.0;
+      } // &::after
+
+    } // &:checked + label
+
+  } // input[type="checkbox"]
+
+} // .md-checkbox
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Slide style
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.md-checkbox-slide {
+
+  label {
+
+    cursor: pointer;
+    position: relative;
+
+    margin-bottom: 0;
+    padding-left: $cb-slide-width + 7px;
+    height: $cb-slide-height * $line-height;
+
+    line-height: $cb-slide-height * $line-height;
+    font-weight: $font-weight-primary-bold;
+
+    &::before, &::after {
+      display: block;
+      content: '';
+      @include transition($transition);
+    } // &::before, &::after
+
+    // Square
+    &::before {
+
+      position: absolute;
+      top: ($cb-slide-height * $line-height - $cb-slide-inner-height) / 2;
+      left: 0;
+
+      width: $cb-slide-width;
+      height: $cb-slide-inner-height;
+
+      background: $color-light;
+      @include border-radius(15px);
+
+    } // &::before
+
+    // Check
+    &::after {
+
+      position: absolute;
+
+      top: ($cb-slide-height * $line-height - $cb-slide-height) / 2;
+      left: 0;
+
+      width: $cb-slide-height;
+      height: $cb-slide-height;
+
+      text-align: center;
+
+      background: #fff;
+
+      @include border-radius(50%);
+      @include box-shadow(0 0 3px rgba(0, 0, 0, .3));
+
+    } // &::after
+
+    &:hover, &:focus {
+      &::after {
+      } // &::after
+    } // &:hover, &:focus
+
+  } // label
+
+  input[type="checkbox"] {
+
+    position: absolute;
+    opacity: .0;
+
+    & + label {
+
+    } // & + label
+
+    &:checked + label {
+
+      &::after {
+        left: $cb-slide-width - $cb-slide-height;
+        @include box-shadow(none);
+      } // &::after
+
+    } // &:checked + label
+
+  } // input[type="checkbox"]
+
+} // .md-checkbox
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Alternate colors
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@include md-checkbox-colored(md-checkbox-primary,    $color-primary   );
+@include md-checkbox-colored(md-checkbox-secondary,  $color-secondary );
+@include md-checkbox-colored(md-checkbox-default,    $color-default   );
+@include md-checkbox-colored(md-checkbox-success,    $color-success   );
+@include md-checkbox-colored(md-checkbox-info,       $color-info      );
+@include md-checkbox-colored(md-checkbox-warning,    $color-warning   );
+@include md-checkbox-colored(md-checkbox-danger,     $color-danger    );
+
+@include md-checkbox-slide-colored(md-checkbox-slide-primary,    $color-primary   );
+@include md-checkbox-slide-colored(md-checkbox-slide-secondary,  $color-secondary );
+@include md-checkbox-slide-colored(md-checkbox-slide-default,    $color-default   );
+@include md-checkbox-slide-colored(md-checkbox-slide-success,    $color-success   );
+@include md-checkbox-slide-colored(md-checkbox-slide-info,       $color-info      );
+@include md-checkbox-slide-colored(md-checkbox-slide-warning,    $color-warning   );
+@include md-checkbox-slide-colored(md-checkbox-slide-danger,     $color-danger    );
+
+
+
+
+// Custom colors for warning
+.md-checkbox-warning {
+  input[type="checkbox"] + label {
+    &::after {
+    } // &::after
+  } // input[type="checkbox"]:checked + label
+  input[type="checkbox"]:checked + label {
+    &::after {
+      background-color: #fff;
+    } // &::after
+  } // input[type="checkbox"]:checked + label
+} // .md-radio-color-warning

@@ -1,0 +1,99 @@
+{%extends "dashboard_z/www/templates/base.html"%}
+{% block title %} Reclamaciones {% endblock %} 
+{% block content %}
+
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Page section: Preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo elements -->
+                    <div>
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+                                <table class="table .table-condensed table-bordered table-hover">
+
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Paciente</th>
+                                        <th>Fecha</th>
+                                        <th>Tipo</th>
+                                        <th>ARS</th>
+                                        <th>Autorizacion</th>
+                                        <th>NCF</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Mcneil, Burke Q.</td>
+                                        <td>25-03-2019</td>
+                                        <td>Consulta Seguro</td>
+                                        <td>ARS SENASA</td>
+                                        <td>4567890224</td>
+                                        <td>B1500000015</td>
+                                        <td><span class="label label-primary">Pendiente</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Burris, Lesley T.</td>
+                                        <td>25-03-2019</td>
+                                        <td>Consulta Seguro</td>
+                                        <td>ARS SENASA</td>
+                                        <td>9087654322</td>
+                                        <td>B1500000016</td>
+                                        <td><span class="label label-primary">Pendiente</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sears, Drew G.</td>
+                                        <td>26-03-2019</td>
+                                        <td>Consulta Seguro</td>
+                                        <td>ARS PALIC</td>
+                                        <td>9087654322</td>
+                                        <td>B0200000234</td>
+                                        <td><span class="label label-danger">Glosa</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Oconnor, Jocelyn A.</td>
+                                        <td>26-03-2019</td>
+                                        <td>Consulta Seguro</td>
+                                        <td>ARS PALIC</td>
+                                        <td>5302567892</td>
+                                        <td>B0200000235</td>
+                                        <td><span class="label label-danger">Glosa</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Stewart, Anika M.</td>
+                                        <td>26-03-2019</td>
+                                        <td>Consulta Seguro</td>
+                                        <td>ARS HUMANO</td>
+                                        <td>2485874034</td>
+                                        <td>B0200000234</td>
+                                        <td><span class="label label-secondary">Cobrado</span></td>
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: Preview -->
+    </div>
+    <!-- /Page content -->
+{% endblock %}

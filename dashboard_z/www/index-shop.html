@@ -1,0 +1,315 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+{% block title %} Shop {% endblock %} 
+{% block content %}
+
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Widgets row -->
+        <div class="row">
+
+            <!-- Widget column -->
+            <div class="col-xs-12">
+
+                <!-- Widget: sales-regions -->
+                <div id="widget-sales-regions" class="widget widget-sales-regions" style="height: 400px;">
+
+                    <!-- Widget layer: main -->
+                    <div class="widget-layer widget-layer-main">
+                        <div class="widget-layer-content">
+
+                            <!-- Widget body -->
+                            <div class="widget-body widget-body-fill">
+
+                                <!-- Region information -->
+                                <div class="wg-left wg-information">
+
+                                    <div class="wg-region-name">United States of America</div>
+
+                                    <div class="wg-summary">
+                                        <span class="icon ti-arrow-up text-success"></span>
+                                        <span class="wg-value text-success">32%</span>
+                                        <span class="wg-period">from last month</span>
+                                    </div>
+
+                                    <ul class="wg-stat">
+                                        <li>
+                                            <span class="wg-title">Orders</span>
+                                            <span class="wg-value wg-orders-value">498</span>
+                                        </li>
+                                        <li>
+                                            <span class="wg-title">Sales</span>
+                                            <span class="wg-value wg-sales-value">388</span>
+                                        </li>
+                                        <li>
+                                            <span class="wg-title">Customers</span>
+                                            <span class="wg-value wg-customers-value">388</span>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <!-- /Region information -->
+
+                                <!-- Map -->
+                                <div class="wg-right">
+                                    <div class="wg-map" id="demo-jqvmap" style="height: 400px;"></div>
+                                </div>
+                                <!-- /Map -->
+
+                            </div>
+                            <!-- /Widget body -->
+
+                        </div>
+                    </div>
+                    <!-- /Widget layer: main -->
+
+                </div>
+                <!-- /Widget: sales-regions -->
+
+
+            </div>
+            <!-- /Widget column -->
+
+        </div>
+        <!-- /Widgets row -->
+
+        <!-- Widgets row -->
+        <div class="row">
+
+            <!-- Widget column -->
+            <div class="col-xs-12 col-sm-6">
+
+                <!-- Widget: Recent Comments -->
+                <div class="widget" style="height: 415px;">
+
+                    <!-- Widget Layer: List -->
+                    <div class="widget-layer widget-layer-active">
+                        <div class="widget-layer-content">
+
+                            <!-- Widget Layer Heading -->
+                            <div class="widget-heading">
+
+                                <!-- Widget Title -->
+                                <div class="widget-title">Recent Comments</div>
+                                <!-- /Widget Title -->
+
+                            </div>
+                            <!-- /Widget Layer Heading -->
+
+                            <!-- Widget Layer Body -->
+                            <div class="widget-body">
+                                <div class="widget-body-content-wrapper custom-scrollbar">
+                                    <div class="widget-body-content">
+
+                                        <!-- Comments -->
+                                        <ul class="wg-comments">
+
+                                            <!-- Comment -->
+                                            <li class="comment">
+
+                                                <!-- Avatar -->
+                                                <div class="image avatar">
+                                                    <img src="images/avatar-f-06.jpg" alt="">
+                                                </div>
+                                                <!-- /Avatar -->
+
+                                                <!-- Author -->
+                                                <div class="comment-heading">
+                                                    <div class="name">Nancy Guerrero</div>
+                                                    <div class="meta">
+                                                        2 days ago at 11:27 PM
+                                                        <span class="label label-primary">Pending</span>
+                                                    </div>
+                                                </div>
+                                                <!-- /Author -->
+
+                                                <!-- Comment text -->
+                                                <div class="comment-text">
+                                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock.
+                                                </div>
+                                                <!-- /Comment text -->
+
+                                                <!-- Buttons block -->
+                                                <div class="comment-buttons mt">
+                                                    <button class="btn btn-sm btn-link btn-link-light btn-success">
+                                                        <span class="icon icon-left ti-check"></span> Approve
+                                                    </button>
+                                                    <button class="btn btn-sm btn-link btn-link-light btn-danger">
+                                                        <span class="icon icon-left ti-close"></span> Reject
+                                                    </button>
+                                                </div>
+                                                <!-- /Buttons block -->
+
+                                            </li>
+                                            <!-- /Comment -->
+
+                                            <!-- Comment -->
+                                            <li class="comment">
+
+                                                <!-- Avatar -->
+                                                <div class="image avatar">
+                                                    <img src="images/avatar-f-07.jpg" alt="">
+                                                </div>
+                                                <!-- /Avatar -->
+
+                                                <!-- Author -->
+                                                <div class="comment-heading">
+                                                    <div class="name">Melissa Fuller</div>
+                                                    <div class="meta">
+                                                        2 days ago at 11:27 PM
+                                                        <span class="label label-success">Approved</span>
+                                                    </div>
+                                                </div>
+                                                <!-- /Author -->
+
+                                                <!-- Comment text -->
+                                                <div class="comment-text">
+                                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock.
+                                                </div>
+                                                <!-- /Comment text -->
+
+                                            </li>
+                                            <!-- /Comment -->
+
+                                        </ul>
+                                        <!-- /Comments -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Widget Layer Body -->
+
+                        </div>
+                    </div>
+                    <!-- /Widget Layer: List -->
+
+                </div>
+                <!-- /Widget: Recent Comments -->
+
+            </div>
+            <!-- /Widget column -->
+
+            <!-- Widget column -->
+            <div class="col-xs-12 col-sm-6">
+
+                <!-- Widget: Recent Sales -->
+                <div class="widget" style="height: 415px;">
+
+                    <!-- Widget Layer: List -->
+                    <div class="widget-layer widget-layer-active">
+                        <div class="widget-layer-content">
+
+                            <!-- Widget Layer Heading -->
+                            <div class="widget-heading">
+
+                                <!-- Widget Title -->
+                                <div class="widget-title">Recent Sales</div>
+                                <!-- /Widget Title -->
+
+                            </div>
+                            <!-- /Widget Layer Heading -->
+
+                            <!-- Widget Layer Body -->
+                            <div class="widget-body">
+                                <div class="widget-body-content-wrapper custom-scrollbar">
+                                    <div class="widget-body-content">
+
+                                        <div class="widget-wide">
+                                            <!-- Table -->
+                                            <table class="table table-bordered table-hover table--ids">
+
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Mcneil, Burke Q.</td>
+                                                    <td><span class="label label-primary">Pending</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Burris, Lesley T.</td>
+                                                    <td><span class="label label-info">Ready</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Sears, Drew G.</td>
+                                                    <td><span class="label label-danger">Returned</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Oconnor, Jocelyn A.</td>
+                                                    <td><span class="label label-primary">Pending</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Stewart, Anika M.</td>
+                                                    <td><span class="label label-info">Ready</span></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>Santos, Nevada A.</td>
+                                                    <td><span class="label label-success">Success</span></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>Riggs, Tatum P.</td>
+                                                    <td><span class="label label-info">Ready</span></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>Knight, Lucian D.</td>
+                                                    <td><span class="label label-success">Success</span></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td>Hoover, Igor R. Anika M.</td>
+                                                    <td><span class="label label-info">Ready</span></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td>Berger, Savannah L.</td>
+                                                    <td><span class="label label-info">Ready</span></td>
+                                                </tr>
+
+                                                </tbody>
+
+                                            </table>
+                                            <!-- /Table -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Widget Layer Body -->
+
+                        </div>
+                    </div>
+                    <!-- /Widget Layer: List -->
+
+                </div>
+                <!-- /Widget: Recent Sales -->
+
+            </div>
+            <!-- /Widget column -->
+
+        </div>
+        <!-- /Widgets row -->
+
+
+    </div>
+    <!-- /Page content -->
+
+{% endblock %}

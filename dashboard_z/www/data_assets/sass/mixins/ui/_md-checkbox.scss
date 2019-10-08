@@ -1,0 +1,140 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [MD Checkbox Colored Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Base checkbox
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@mixin md-checkbox-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, #fff);
+
+  .#{$class} {
+
+    input[type="checkbox"] + label {
+      // Check
+      &::after {
+        background-color: $color-text;
+      } // &::after
+    } // input[type="checkbox"]:checked + label
+
+    input[type="checkbox"]:checked + label {
+
+      // Square
+      &::before {
+        border-color: $color;
+        background-color: $color;
+      } // &::before
+
+      // Check
+      &::after {
+        background-color: $_color-text;
+      } // &::after
+
+      &:hover, &:focus {
+        // Square
+        &::before {
+          border-color: lighten($color, $percents-lighten);
+          background-color: lighten($color, $percents-lighten);
+        } // &::before
+      } // &:hover, &:focus
+
+      &:active {
+        // Square
+        &::before {
+          border-color: darken($color, $percents-darken);
+          background-color: darken($color, $percents-darken);
+        } // &::before
+      } // &:active
+
+    } // input[type="checkbox"]:checked + label
+
+  } // .#{$class}
+
+
+
+  .#{$class}.md-checkbox-alt {
+
+    input[type="checkbox"] + label {
+      // Check
+      &::after {
+        background-color: $color;
+      } // &::after
+    } // input[type="checkbox"]:checked + label
+
+    input[type="checkbox"]:checked + label {
+
+      // Square
+      &::before {
+        background-color: #fff;
+        border-color: $color-border;
+      } // &::before
+
+      // Check
+      &::after {
+        background-color: $color;
+      } // &::after
+
+      &:hover, &:focus {
+        // Square
+        &::before {
+          background-color: darken($color-light, $percents-darken * .5);
+        } // &::before
+      } // &:hover, &:focus
+
+      &:active {
+        // Square
+        &::before {
+          background-color: darken($color-light, $percents-darken);
+        } // &::before
+      } // &:active
+
+    } // input[type="checkbox"]:checked + label
+
+  } // .#{$class}.md-checkbox-alt
+
+} // @mixin md-checkbox-colored($class, $color)
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Slide checkbox
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@mixin md-checkbox-slide-colored($class, $color) {
+
+  .#{$class} {
+
+    input[type="checkbox"] + label {
+      &::after {
+      } // &::after
+    } // input[type="checkbox"]:checked + label
+
+
+    input[type="checkbox"]:checked + label {
+
+      &::before {
+        background-color: fade-out($color, .8);
+      } // &::before
+
+      &::after {
+        background-color: $color;
+      } // &::after
+
+      &:hover, &:focus {
+        &::before {
+          background-color: fade-out($color, .7);
+        } // &::before
+      } // &:hover, &:focus
+
+      &:active {
+        &::before {
+          background-color: fade-out($color, .6);
+        } // &::before
+      } // &:active
+
+    } // input[type="checkbox"]:checked + label
+
+  } // .#{$class}
+
+} // @mixin md-checkbox-slide-colored($class, $color)

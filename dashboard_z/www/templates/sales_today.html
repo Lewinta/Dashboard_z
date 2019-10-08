@@ -1,0 +1,84 @@
+{% if not cant_fact_pri %}
+    {%set cant_fact_pri = 0 | int%}
+{%endif%}
+
+{% if not cant_fact_seg %}
+    {%set cant_fact_seg = 0 | int%}
+{%endif%}
+
+                <!-- Widget: Sales Today -->
+                <div class="widget" style="height: 415px;">
+
+                    <!-- Widget Layer: List -->
+                    <div class="widget-layer widget-layer-active">
+                        <div class="widget-layer-content">
+
+                            <!-- Widget Layer Heading -->
+                            <div class="widget-heading">
+
+                                <!-- Widget Title -->
+                                <div class="widget-title text-center">Actividad Diaria</div>
+                                <!-- /Widget Title -->
+
+                            </div>
+                            <!-- /Widget Layer Heading -->
+
+                            <!-- Widget Layer Body -->
+                            <div class="widget-body">
+                                <div class="widget-body-content-wrapper custom-scrollbar">
+                                    <div class="widget-body-content">
+
+                                        <!-- Chart -->
+                                        <div class="canvas-holder mt mb">
+                                            <canvas class="chart" data-type="doughnut"
+                                                    data-data="info:{{cant_fact_pri}};danger:{{cant_fact_seg}}"></canvas>
+                                        </div>
+                                        <!-- /Chart -->
+
+                                        <!-- Text -->
+<!--                                         <p class="text-muted text-center">
+                                            There are many variations of passages of Lorem Ipsum available,
+                                            but the majority have.
+                                        </p> -->
+                                        <!-- /Text -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Widget Layer Body -->
+
+                            <!-- Widget Layer Footer -->
+                            <div class="widget-footer">
+
+                                <!-- List -->
+                                <ul class="list-kv">
+                                    <li>
+                                        <div>
+                                            <span class="icon-left badge badge-dot badge-info"></span> Pacientes Privados
+                                        </div>
+                                        <div class="strong"><b>{{cant_fact_pri}}</b> </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <span class="icon-left badge badge-dot badge-danger"></span> Pacientes Seguro
+                                        </div>
+                                        <div class="strong"><b>{{cant_fact_seg}}</b></div>
+                                    </li>
+                                    <!-- <li>
+                                        <div>
+                                            <span class="icon-left badge badge-dot badge-dot-outline badge-danger"></span> Instagram
+                                        </div>
+                                        <div class="strong">394</div>
+                                    </li> -->
+                                </ul>
+                                <!-- /List -->
+
+                            </div>
+                            <!-- /Widget Layer Footer -->
+
+                        </div>
+                    </div>
+                    <!-- /Widget Layer: List -->
+
+                </div>
+                <!-- /Widget: Sales Today -->

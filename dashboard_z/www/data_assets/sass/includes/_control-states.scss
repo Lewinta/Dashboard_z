@@ -1,0 +1,16 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Control States Color Functions]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@function state-color-hover($color) {
+  @return lighten($color, $percents-lighten);
+} // @function state-color-hover($color)
+
+@function state-color-focus($color) {
+  @return lighten($color, $percents-lighten);
+} // @function state-color-focus($color)
+
+@function state-color-active($color) {
+  @return darken($color, $percents-darken);
+} // @function state-color-active($color)
+

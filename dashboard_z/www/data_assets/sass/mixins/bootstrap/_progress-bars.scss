@@ -1,0 +1,11 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Progress Bar Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin progress-bar-colored($class, $color) {
+
+  .progress-bar.#{$class} {
+    background-color: $color;
+  } // .progress-bar.#{$class}
+
+} // @mixin progress-bar-colored($class, $color)

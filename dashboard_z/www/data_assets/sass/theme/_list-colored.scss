@@ -1,0 +1,68 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [List Colored]
+ *
+ *   + .list-colored
+ *   + .list-colored.list-colored-square
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.list-colored {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .list-colored-item {
+
+    display: block;
+    position: relative;
+    padding: 5px 0 5px 15px;
+
+    &::before {
+
+      display: block;
+      content: '';
+
+      width: 7px;
+      height: 7px;
+
+      position: absolute;
+      top: 13px;
+      left: 0;
+
+      border: solid 1px $color-default;
+
+      @include border-radius(50%);
+
+    } // &::before
+
+  } // .list-colored-item
+
+} // .list-colored
+
+
+.list-colored.list-colored-square {
+
+  .list-colored-item::before {
+    background-color: $color-default;
+    @include border-radius(0);
+  } // .list-colored-item::before
+
+} // .list-colored.list-colored-square
+
+
+//
+// Alternate colors
+// ================
+
+@include list-colored(list-colored-item-primary,   $color-primary  );
+@include list-colored(list-colored-item-secondary, $color-secondary);
+@include list-colored(list-colored-item-default,   $color-default  );
+@include list-colored(list-colored-item-success,   $color-success  );
+@include list-colored(list-colored-item-info,      $color-info     );
+@include list-colored(list-colored-item-warning,   $color-warning  );
+@include list-colored(list-colored-item-danger,    $color-danger   );
+@include list-colored(list-colored-item-light,     $color-light    );
+@include list-colored(list-colored-item-dark,      $color-dark     );
+

@@ -1,0 +1,474 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block content %}
+    <div class="container-fluid">
+
+
+        <!-- Page Section: Preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo Content -->
+                    <div class="demo-elements">
+
+                        <!-- Panel -->
+                        <div class="panel panel-white demo-panel">
+
+                            <!-- Panel Heading -->
+                            <div class="panel-heading">
+                                <div class="panel-title">Basic example</div>
+                            </div>
+                            <!-- /Panel Heading -->
+
+                            <!-- Panel Body -->
+                            <div class="panel-body">
+
+                                <!-- Form -->
+                                <form method="get" action="">
+
+                                    <!-- Form Group -->
+                                    <div class="form-group">
+                                        <div class="md-input">
+                                            <label for="frm01--email" class="md-label">Email address</label>
+                                            <input type="email" id="frm01--email" class="md-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <!-- /Form Group -->
+
+                                    <!-- Form Group -->
+                                    <div class="form-group">
+                                        <div class="md-input">
+                                            <label for="frm01--password" class="md-label">Password</label>
+                                            <input type="password" id="frm01--password" class="md-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <!-- /Form Group -->
+
+                                    <!-- Form Group -->
+                                    <div class="form-group">
+                                        <div class="md-checkbox md-checkbox-alt md-checkbox-success">
+                                            <input type="checkbox" id="frm01--check-me" checked>
+                                            <label for="frm01--check-me">Check me out</label>
+                                        </div>
+                                    </div>
+                                    <!-- /Form Group -->
+
+                                </form>
+                                <!-- /Form -->
+
+                            </div>
+                            <!-- /Panel Body -->
+
+                            <!-- Panel Footer -->
+                            <div class="panel-footer text-right bg-white border-none">
+                                <button type="reset"  class="btn btn-link btn-link-text btn-danger">Reset Form</button>
+                                <button type="button" class="btn btn-link btn-link-text btn-success">Submit Form</button>
+                            </div>
+                            <!-- /Panel Footer -->
+
+                        </div>
+                        <!-- /Panel -->
+
+                    </div>
+                    <!-- /Demo Content -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page Section: Preview -->
+
+        <!-- Page Section: Horizontal Form -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6">
+                    <div class="h4 text-dark">Horizontal Form</div>
+                    <p>You can arrange labels hints horizontally.</p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6">
+
+                    <!-- Demo Content -->
+                    <div class="demo-elements">
+
+                        <!-- Panel -->
+                        <div class="panel panel-white demo-panel">
+                            <!-- Panel Body -->
+                            <div class="panel-body pt-2x pb">
+                                <!-- Form -->
+                                <form method="post" action="" class="form-horizontal">
+
+                                    <!-- Form Group -->
+                                    <div class="form-group">
+                                        <label for="frm02--email" class="col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" id="frm02--email" class="form-control" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <!-- /Form Group -->
+
+                                    <!-- Form Group -->
+                                    <div class="form-group">
+                                        <label for="frm02--password" class="col-sm-2 control-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" id="frm02--password" class="form-control" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <!-- /Form Group -->
+
+                                    <!-- Form Group -->
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-6">
+                                            <div class="form-control-static">
+                                                <div class="md-checkbox md-checkbox-primary md-checkbox-alt">
+                                                    <input type="checkbox" id="frm02--remember-me">
+                                                    <label for="frm02--remember-me">Remember Me</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 text-right">
+                                            <button type="button" class="btn btn-success btn-outline">Sign in</button>
+                                        </div>
+                                    </div>
+                                    <!-- /Form Group -->
+
+                                </form>
+                                <!-- /Form -->
+                            </div>
+                            <!-- /Panel Body -->
+                        </div>
+                        <!-- /Panel -->
+
+                    </div>
+                    <!-- /Demo Content -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page Section: Horizontal Form -->
+
+        <!-- Page Section: Custom Checkbox -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-custom-4">
+
+                    <div class="h4 text-dark">Custom Checkbox and Radio</div>
+                    <p>Use customized checkboxes and radio buttons.</p>
+
+                    <div class="h5">Supported color classes</div>
+                    <ul>
+                        <li>
+                            <code>.md-checkbox-primary</code>
+                            <br>
+                            <code>.md-radio-primary</code>
+                        </li>
+                        <li>
+                            <code>.md-checkbox-secondary</code>
+                            <br>
+                            <code>.md-radio-secondary</code>
+                        </li>
+                        <li>
+                            <code>.md-checkbox-default</code>
+                            <br>
+                            <code>.md-radio-default</code>
+                        </li>
+                        <li>
+                            <code>.md-checkbox-success</code>
+                            <br>
+                            <code>.md-radio-success</code>
+                        </li>
+                        <li>
+                            <code>.md-checkbox-info</code>
+                            <br>
+                            <code>.md-radio-info</code>
+                        </li>
+                        <li>
+                            <code>.md-checkbox-warning</code>
+                            <br>
+                            <code>.md-radio-warning</code>
+                        </li>
+                        <li>
+                            <code>.md-checkbox-danger</code>
+                            <br>
+                            <code>.md-radio-danger</code>
+                        </li>
+                    </ul>
+
+                    <p>User <code>.md-checkbox-alt</code> for outline style.</p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-custom-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+
+                        <!-- Panel -->
+                        <div class="panel panel-white demo-panel mb">
+                            <!-- Panel Body -->
+                            <div class="panel-body pt-2x pb">
+                                <div class="row">
+
+                                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-default">
+                                                <input type="checkbox" id="demo-custom-checkbox-default" checked>
+                                                <label for="demo-custom-checkbox-default">Default</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-primary">
+                                                <input type="checkbox" id="demo-custom-checkbox-primary">
+                                                <label for="demo-custom-checkbox-primary">Primary</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-secondary">
+                                                <input type="checkbox" id="demo-custom-checkbox-secondary">
+                                                <label for="demo-custom-checkbox-secondary">Secondary</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-info">
+                                                <input type="checkbox" id="demo-custom-checkbox-info" checked>
+                                                <label for="demo-custom-checkbox-info">Info</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-success">
+                                                <input type="checkbox" id="demo-custom-checkbox-success">
+                                                <label for="demo-custom-checkbox-success">Success</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-warning">
+                                                <input type="checkbox" id="demo-custom-checkbox-warning" checked>
+                                                <label for="demo-custom-checkbox-warning">Warning</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-danger">
+                                                <input type="checkbox" id="demo-custom-checkbox-danger">
+                                                <label for="demo-custom-checkbox-danger">Danger</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-alt md-checkbox-default">
+                                                <input type="checkbox" id="demo-custom-checkbox-alt-default" checked>
+                                                <label for="demo-custom-checkbox-alt-default">Default</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-alt md-checkbox-primary">
+                                                <input type="checkbox" id="demo-custom-checkbox-alt-primary">
+                                                <label for="demo-custom-checkbox-alt-primary">Primary</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-alt md-checkbox-secondary">
+                                                <input type="checkbox" id="demo-custom-checkbox-alt-secondary">
+                                                <label for="demo-custom-checkbox-alt-secondary">Secondary</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-alt md-checkbox-info">
+                                                <input type="checkbox" id="demo-custom-checkbox-alt-info" checked>
+                                                <label for="demo-custom-checkbox-alt-info">Info</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-alt md-checkbox-success">
+                                                <input type="checkbox" id="demo-custom-checkbox-alt-success">
+                                                <label for="demo-custom-checkbox-alt-success">Success</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-alt md-checkbox-warning">
+                                                <input type="checkbox" id="demo-custom-checkbox-alt-warning" checked>
+                                                <label for="demo-custom-checkbox-alt-warning">Warning</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-checkbox md-checkbox-alt md-checkbox-danger">
+                                                <input type="checkbox" id="demo-custom-checkbox-alt-danger">
+                                                <label for="demo-custom-checkbox-alt-danger">Danger</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-radio md-radio-default">
+                                                <input type="radio" id="demo-custom-radio-default" name="demo-custom-radio" value="default">
+                                                <label for="demo-custom-radio-default">Default</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-radio md-radio-primary">
+                                                <input type="radio" id="demo-custom-radio-primary" name="demo-custom-radio" value="primary">
+                                                <label for="demo-custom-radio-primary">Primary</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-radio md-radio-secondary">
+                                                <input type="radio" id="demo-custom-radio-secondary" name="demo-custom-radio" value="primary">
+                                                <label for="demo-custom-radio-secondary">Secondary</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-radio md-radio-info">
+                                                <input type="radio" id="demo-custom-radio-info" name="demo-custom-radio" value="info">
+                                                <label for="demo-custom-radio-info">Info</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-radio md-radio-success">
+                                                <input type="radio" id="demo-custom-radio-success" name="demo-custom-radio" value="success" checked>
+                                                <label for="demo-custom-radio-success">Success</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-radio md-radio-warning">
+                                                <input type="radio" id="demo-custom-radio-warning" name="demo-custom-radio" value="warning">
+                                                <label for="demo-custom-radio-warning">Warning</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <div class="md-radio md-radio-danger">
+                                                <input type="radio" id="demo-custom-radio-danger" name="demo-custom-radio" value="danger">
+                                                <label for="demo-custom-radio-danger">Danger</label>
+                                            </div>
+                                        </div>
+                                        <!-- /Form Group -->
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /Panel Body -->
+                        </div>
+                        <!-- /Panel -->
+
+                        <!-- Panel -->
+                        <div class="panel panel-white demo-panel">
+                            <!-- Panel Body -->
+                            <div class="panel-body pt-2x pb">
+                                <div class="md-checkbox md-checkbox-inline md-checkbox-default mb">
+                                    <input type="checkbox" id="demo-custom-checkbox-inline-default">
+                                    <label for="demo-custom-checkbox-inline-default">Default</label>
+                                </div>
+                                <div class="md-checkbox md-checkbox-inline mb md-checkbox-primary">
+                                    <input type="checkbox" id="demo-custom-checkbox-inline-primary" checked>
+                                    <label for="demo-custom-checkbox-inline-primary">Primary</label>
+                                </div>
+                                <div class="md-checkbox md-checkbox-inline mb md-checkbox-info">
+                                    <input type="checkbox" id="demo-custom-checkbox-inline-info">
+                                    <label for="demo-custom-checkbox-inline-info">Info</label>
+                                </div>
+                                <div class="md-radio md-radio-inline md-radio-default mb">
+                                    <input type="radio" id="demo-custom-radio-inline-default" name="demo-custom-inline-radio" value="default">
+                                    <label for="demo-custom-radio-inline-default">Default</label>
+                                </div>
+                                <div class="md-radio md-radio-inline mb md-radio-primary">
+                                    <input type="radio" id="demo-custom-radio-inline-primary" name="demo-custom-inline-radio" value="primary" >
+                                    <label for="demo-custom-radio-inline-primary">Primary</label>
+                                </div>
+                                <div class="md-radio md-radio-inline mb md-radio-info">
+                                    <input type="radio" id="demo-custom-radio-inline-info" name="demo-custom-inline-radio" value="info" checked>
+                                    <label for="demo-custom-radio-inline-info">Info</label>
+                                </div>
+                            </div>
+                            <!-- /Panel Body -->
+                        </div>
+                        <!-- /Panel -->
+
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page Section: Custom Checkbox -->
+
+    </div>
+    <!-- /Page content -->
+{% endblock %}

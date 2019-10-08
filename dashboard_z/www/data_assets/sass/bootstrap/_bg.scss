@@ -1,0 +1,19 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Backgrounds]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Alternate colors
+// ================
+
+@include bg-colored(bg-primary,   $color-primary  );
+@include bg-colored(bg-secondary, $color-secondary);
+@include bg-colored(bg-default,   $color-default  );
+@include bg-colored(bg-success,   $color-success  );
+@include bg-colored(bg-info,      $color-info     );
+@include bg-colored(bg-warning,   $color-warning  );
+@include bg-colored(bg-danger,    $color-danger   );
+@include bg-colored(bg-light,     $color-light    );
+@include bg-colored(bg-dark,      $color-dark     );
+@include bg-colored(bg-very-light,      $color-very-light     );
+@include bg-colored(bg-white,      $color-white);

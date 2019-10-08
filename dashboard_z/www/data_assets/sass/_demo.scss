@@ -1,0 +1,120 @@
+// =================================================================================================================== /
+//
+// Template WgBoard
+// Version  1.0
+// Author   Valery Timofeev
+//
+// =================================================================================================================== /
+
+
+//
+// Elements wrapper
+// ================
+
+.demo-elements {
+
+  position: relative;
+
+  padding: 100px 30px;
+  margin-bottom: $line-height-computed;
+
+  background-color: darken($color-bg, 3.5%);
+
+  @include border-radius(2px);
+
+  &:after {
+
+    display: block;
+    content: 'EXAMPLE';
+
+    position: absolute;
+    top: 10px;
+    right: 15px;
+
+    padding: .3em .5em;
+
+    opacity: $muted-opacity;
+
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: .5px;
+    font-weight: $font-weight-primary;
+
+    background: rgba(0, 0, 0, .7);
+
+    @include border-radius($border-radius-md);
+
+  } // &:after
+
+  &:hover::after {
+    opacity: 1.0;
+  } // &:hover::after
+
+} // .demo-elements
+
+
+
+//
+// List group
+// ==========
+
+.demo-list-group {
+
+  width: 500px;
+  max-width: 100%;
+
+  margin: 0 auto;
+
+} // .demo-list-group
+
+
+//
+// Table
+// =====
+
+.demo-table {
+  margin-bottom: 0;
+} // .demo-table
+
+
+
+//
+// Panel
+// =====
+
+.demo-panel {
+
+  width: 500px;
+  max-width: 100%;
+
+  margin: 0 auto;
+
+} // ..demo-panel
+
+
+//
+// Buttons
+// =======
+
+.demo-btn {
+
+  margin: 0 5px $line-height-computed;
+
+  &:not(.btn-circle) {
+    width: 170px;
+  } // &:not(.btn-circle)
+
+  &.demo-btn-no-resize {
+    width: auto;
+  } // &.demo-btn-no-resize
+
+} // .demo-btn
+
+
+//
+// Toolbar
+// =======
+
+.demo-btn-toolbar {
+  display: inline-block;
+} // .demo-btn-toolbar

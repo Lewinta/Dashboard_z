@@ -1,0 +1,108 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Buttons Colored Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin _btn-c($color-text,   $color-text-hover,   $color-text-active,
+              $color-bg,     $color-bg-hover,     $color-bg-active,
+              $color-border, $color-border-hover, $color-border-active) {
+
+  &, &.disabled, &[disabled], fieldset[disabled] & {
+    color: $color-text;
+    border-color: $color-border;
+    background-color: $color-bg;
+  } // &, &.disabled, &[disabled], fieldset[disabled] &
+
+  &:hover, &.hover, &:focus, &.focus {
+    color: $color-text-hover;
+    border-color: $color-border-hover;
+    background-color: $color-bg-hover;
+  } // &:hover, &.hover, &:focus, &.focus
+
+
+  &:active, &.active,
+  .open > &.dropdown-toggle {
+    &, &:hover, &.hover, &:focus, &.focus {
+      color: $color-text-active;
+      border-color: $color-border-active;
+      background: none $color-bg-active;
+    } // &, &:hover, &.hover, &:focus, &.focus
+  } // &:active, &.active, .open > &.dropdown-toggle
+
+} // btn-c
+
+@mixin btn-colored($class, $color,
+                   $_color-text  : '', $_color-text-hover  : '', $_color-text-active  : '',
+                   $_color-bg    : '', $_color-bg-hover    : '', $_color-bg-active    : '',
+                   $_color-border: '', $_color-border-hover: '', $_color-border-active: '') {
+
+  .#{$class} {
+
+    $__color-text         : $_color-text;
+    $__color-text-hover   : $_color-text-hover;
+    $__color-text-active  : $_color-text-active;
+    $__color-bg           : $_color-bg;
+    $__color-bg-hover     : $_color-bg-hover;
+    $__color-bg-active    : $_color-bg-active;
+    $__color-border       : $_color-border;
+    $__color-border-hover : $_color-border-hover;
+    $__color-border-active: $_color-border-active;
+
+    @if ($_color-bg            == '') { $__color-bg           : $color;                             }
+    @if ($_color-bg-hover      == '') { $__color-bg-hover     : lighten($color, $percents-lighten); }
+    @if ($_color-bg-active     == '') { $__color-bg-active    :  darken($color, $percents-darken ); }
+
+    @if ($_color-border        == '') { $__color-border       : $color;                             }
+    @if ($_color-border-hover  == '') { $__color-border-hover : lighten($color, $percents-lighten); }
+    @if ($_color-border-active == '') { $__color-border-active:  darken($color, $percents-darken ); }
+
+    @if ($_color-text          == '') { $__color-text         : pf-foreground-color($__color-bg,        $color-text, #fff); }
+    @if ($_color-text-hover    == '') { $__color-text-hover   : pf-foreground-color($__color-bg-hover,  $color-text, #fff); }
+    @if ($_color-text-active   == '') { $__color-text-active  : pf-foreground-color($__color-bg-active, $color-text, #fff); }
+
+    @include _btn-c($__color-text,   $__color-text-hover,   $__color-text-active,
+                    $__color-bg,     $__color-bg-hover,     $__color-bg-active,
+                    $__color-border, $__color-border-hover, $__color-border-active);
+
+  } // .#{$class}
+
+  .#{$class}.btn-link.btn-link-light {
+
+    $__color-text: $color;
+
+    $__color-text-hover   : $_color-text-hover;
+    $__color-text-active  : $_color-text-active;
+    $__color-bg           : $_color-bg;
+    $__color-bg-hover     : $_color-bg-hover;
+    $__color-bg-active    : $_color-bg-active;
+    $__color-border       : $_color-border;
+    $__color-border-hover : $_color-border-hover;
+    $__color-border-active: $_color-border-active;
+
+    @if ($_color-bg-hover      == '') { $__color-bg-hover     : lighten($color, $percents-lighten); }
+    @if ($_color-bg-active     == '') { $__color-bg-active    :  darken($color, $percents-darken ); }
+
+    @if ($_color-border-hover  == '') { $__color-border-hover : lighten($color, $percents-lighten); }
+    @if ($_color-border-active == '') { $__color-border-active:  darken($color, $percents-darken ); }
+
+    @if ($_color-text-hover    == '') { $__color-text-hover   : pf-foreground-color($__color-bg-hover,  $color-text, #fff); }
+    @if ($_color-text-active   == '') { $__color-text-active  : pf-foreground-color($__color-bg-active, $color-text, #fff); }
+
+    @include _btn-c($__color-text,   $__color-text-hover,   $__color-text-active,
+                    transparent,     $__color-bg-hover,     $__color-bg-active,
+                    transparent,     $__color-border-hover, $__color-border-active);
+
+  } // .#{$class}.btn-link.btn-link-light
+
+  .#{$class}.btn-link.btn-link-text {
+
+    $__color-text         : $color;
+    $__color-text-hover   : lighten($color, $percents-lighten);
+    $__color-text-active  :  darken($color, $percents-darken );
+
+    @include _btn-c($__color-text, $__color-text-hover, $__color-text-active,
+                    transparent, transparent, transparent,
+                    transparent, transparent, transparent);
+
+  } // .#{$class}.btn-link.btn-link-text
+
+} // @mixin btn-colored($class, $color) {

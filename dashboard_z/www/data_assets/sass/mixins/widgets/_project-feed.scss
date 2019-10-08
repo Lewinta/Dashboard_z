@@ -1,0 +1,11 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Project Feed Item Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin widget-project-feed-colored($class, $color) {
+
+  .widget-project-feed .wg-project.#{$class} {
+    border-left-color: $color;
+  } // .widget-project-feed .wg-project.#{$class}
+
+} // @mixin badge-colored($class, $color)

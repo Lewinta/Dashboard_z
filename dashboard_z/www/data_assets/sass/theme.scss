@@ -1,0 +1,423 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Master Stylesheet]
+ *
+ * Project        WgBoard
+ * Version        1.0
+ *
+ * ------------------------------------------------------------------------------------------------------------------ *
+ * TABLE OF CONTENTS:
+ * ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * General
+ *   - External Imports                         includes/_imports.scss
+ *       + Fonts Import
+ *   - Template Variables                       includes/_variables.scss
+ *       + Font Variables
+ *       + Padding Variables
+ *       + Border Variables
+ *       + Media Breakpoints
+ *       + Template Variables
+ *   - Cross Browser Mixins                     includes/_xbrowser.scss
+ *       + mixin border-radius
+ *       + mixin box-shadow
+ *       + mixin filter
+ *       + mixin transition
+ *       + mixin transition-transform
+ *       + mixin transition-delay
+ *       + mixin transform
+ *       + mixin transform-style
+ *       + mixin transform-origin
+ *       + mixin animation
+ *       + mixin animation-name
+ *       + mixin animation-fill-mode
+ *       + mixin animation-duration
+ *       + mixin user-select
+ *       + mixin backface-visibility
+ *       + mixin placeholder
+ *       + mixin keyframes
+ *   - Media Queries Mixins                     includes/_media.scss
+ *       + mixin media_xs
+ *       + mixin media_sm
+ *       + mixin media_md
+ *       + mixin media_min_width
+ *       + mixin media_max_width
+ *       + mixin media_between_width
+ *   - Functions                                includes/_functions.scss
+ *       + function pf-brightness
+ *       + function pf-foreground-color
+ *
+ * Color scheme
+ *   - Base Color Scheme                        schemes/_base.scss
+ *
+ *
+ * Mixins
+ *   - Global mixins
+ *       - Clearfix Mixin                       mixins/_clearfix.scss
+ *   - Bootstrap
+ *       - Alert Colored Mixin                  mixins/bootstrap/_alerts.scss
+ *       - Badge Colored Mixin                  mixins/bootstrap/_badges.scss
+ *       - Background Colored Mixin             mixins/bootstrap/_bg.scss
+ *       - Button Colored Mixin                 mixins/bootstrap/_buttons.scss
+ *       - Label Colored Mixin                  mixins/bootstrap/_labels.scss
+ *       - List Group Item Colored Mixin        mixins/bootstrap/_list-group-item.scss
+ *       - Panel Colored Mixin                  mixins/bootstrap/_panels.scss
+ *       - Progress Bar Colored Mixin           mixins/bootstrap/_progress-bars.scss
+ *
+ *   - Theme
+ *       - Color Radio Colored Mixin            mixins/theme/_color-radio.scss
+ *       - Custom Checkbox Colored Mixin        mixins/theme/_list-colored.scss
+ *       - Custom Radio Colored Mixin           mixins/theme/_custom-checkbox.scss
+ *       - List Colored Mixin                   mixins/theme/_timeline.scss
+ *       - Timeline Colored Mixin               mixins/theme/_custom-radio.scss
+ *   - Widgets
+ *       - Card Box Colored Mixin               mixins/widgets/_card-box.scss
+ *       - Project Feed Item Colored Mixin      mixins/widgets/_project-feed.scss
+ *       - Task Item Colored Mixin              mixins/widgets/_tasks.scss
+ *
+ * Bootstrap elements
+ *   - Alerts                                   bootstrap/_alerts.scss
+ *       + .alert
+ *   - Badges                                   bootstrap/_badges.scss
+ *       + .badge
+ *       + .badge-square
+ *   - Backgrounds                              bootstrap/_bg.scss
+ *   - Breadcrumbs                              bootstrap/_breadcrumb.scss
+ *       + .breadcrumb
+ *   - Buttons                                  bootstrap/_buttons.scss
+ *       + .btn
+ *       + .btn-icon
+ *       + .btn .icon
+ *       + .btn-tc-link
+ *   - Dropdowns                                bootstrap/_dropdowns.scss
+ *       + .dropdown-menu
+ *   - Form Components                          bootstrap/_forms.scss
+ *       + .form-control
+ *       + .vertical-resize
+ *   - Labels                                   bootstrap/_labels.scss
+ *       + .label
+ *   - List Groups                              bootstrap/_list-groups.scss
+ *       + .list-group
+ *       + .list-group-item
+ *       + a.list-group-item
+ *       + button.list-group-item
+ *       + .list-group-item-text
+ *       + .list-group.panel-block-cover
+ *   - Pagination                               bootstrap/_pagination.scss
+ *       + .pagination
+ *       + .pagination-rounded
+ *       + .pagination li a
+ *       + keyframes animationPaginationFocus
+ *   - Panels                                   bootstrap/_panels.scss
+ *       + .panel
+ *       + .panel-heading
+ *       + .panel-body
+ *       + .panel-footer
+ *       + .panel-group
+ *       + .panel-no-border
+ *   - Progress Bars                            bootstrap/_progress-bars.scss
+ *       + .progress
+ *       + .progress-titled .progress
+ *       + .progress-title
+ *       + .progress-animated
+ *       + .progress-animated.progress-colored
+ *       + keyframes animationProgressBar
+ *       + keyframes animationProgressBarColored
+ *   - Tables                                   bootstrap/_tables.scss
+ *       + .table
+ *       + .table-bordered
+ *       + .table-hover
+ *       + .table-condensed
+ *   - Tabs                                     bootstrap/_tabs.scss
+ *       + .nav-tabs
+ *       + .nav-tabs-justified
+ *       + .tab-content
+ *   - Tooltips                                 bootstrap/_tooltips.scss
+ *       + .tooltip
+ *
+ * Template
+ *   - general
+ *   - helper
+ *   - typography
+ *
+ * Theme elements
+ *   - Card                                     theme/_card-box.scss
+ *       + .card-box-alt
+ *   - Color                                    theme/_color-radio.scss
+ *       + .color-radio
+ *   - Custom                                   theme/_custom-checkbox.scss
+ *       + .custom-checkbox
+ *   - Custom Radio                             theme/_custom-radio.scss
+ *       + .custom-radio
+ *   - General Styles                           theme/_general.scss
+ *       + *
+ *       + selection
+ *       + html
+ *       + body
+ *   - Helper Classes                           theme/_helper.scss
+ *       + .mt[-{offset}]
+ *       + .mb[-{offset}]
+ *       + .pt[-{offset}]
+ *       + .pb[-{offset}]
+ *       + .no-margin
+ *       + .no-padding
+ *       + .p-15
+ *       + .vertical-middle
+ *       + .nowrap
+ *       + icon-left
+ *       + icon-right
+ *       + icon-{mul}
+ *       + .bg-center-cover
+ *       + .bg-fixed
+ *       + .bg-mask
+ *       + .bg-mask-after
+ *       + .image
+ *       + .avatar
+ *       + .list-inline
+ *       + .no-list
+ *       + .canvas-holder
+ *       + button.close, .close
+ *   - List Colored                             theme/_list-colored.scss
+ *       + .list-colored
+ *       + .list-colored.list-colored-square
+ *   - List                                     theme/_list-icons.scss
+ *       + .list-icons
+ *   - List Tree                                theme/_list-tree.scss
+ *       + .list-tree
+ *   - Preloader                                theme/_preloader.scss
+ *       + .preloader.loader
+ *   - Circle Progress                          theme/_progress-circle.scss
+ *       + .progress-circle
+ *   - State Dots                               theme/_state-dots.scss
+ *       + .state-dot
+ *       + .state-dot-online
+ *       + .state-dot-offline
+ *       + .state-dot-not-available
+ *       + .state-dot-busy
+ *   - Tables                                   theme/_tables.scss
+ *       + .table--actions
+ *       + .table--ids
+ *   - Timeline                                 theme/_timeline.scss
+ *       + .timeline
+ *   - Typography                               theme/_typography.scss
+ *       + .h{N}, h{N}
+ *       + a
+ *       + p
+ *       + .label, label
+ *       + .strong, strong
+ *       + .text-muted
+ *       + .nowrap
+ *       + .text-white
+ *       + .xs-text-left
+ *       + .xs-text-right
+ *       + .xs-text-center
+ *       + .sm-text-left
+ *       + .sm-text-right
+ *       + .sm-text-center
+ *       + .md-text-left
+ *       + .md-text-right
+ *       + .md-text-center
+ *       + .blockquote, blockquote
+ *   - Widgets                                  theme/_widget.scss
+ *       + .widget
+ *
+ * Widgets
+ *   - Calendar                                 widgets/_calendar.scss
+ *       + .widget-calendar
+ *   - Card Box                                 widgets/_card-box.scss
+ *       + .widget-card-box-stat
+ *   - Chat                                     widgets/_chat.scss
+ *       + .chat
+ *       + .chat-toggle
+ *   - Comments                                 widgets/_comments.scss
+ *       + .wg-comments
+ *   - Project Feed                             widgets/_project-feed.scss
+ *       + .widget-project-feed
+ *       + .widget-project-feed .wg-project
+ *   - Sale Regions                             widgets/_sale-regions.scss
+ *       + .widget-sales-regions
+ *   - Sales Stat                               widgets/_sales-stat.scss
+ *       + .widget-sales-stat
+ *   - Tasks                                    widgets/_tasks.scss
+ *       + .widget-tasks
+ *   - Total Progress                           widgets/_total-progress.scss
+ *       + .widget-total-progress
+ *   - User List                                widgets/_users-list.scss
+ *       + .widget-users-list
+ *
+ * Layout
+ *   - Footer                                      layout/_footer.scss
+ *   - Header                                      layout/_header.scss
+ *       + .page-heading
+ *       + .page-header
+ *   - Layout                                      layout/_layout.scss
+ *       + .header
+ *       + .header .top-line
+ *       + .header .sidebar
+ *       + .main-container
+ *   - Loader                                      layout/_loader.scss
+ *       + .loader
+ *   - Main                                        layout/_main.scss
+ *   - Navigation                                  layout/_navigation.scss
+ *       + .navigation-top
+ *       + .navigation-top .navbar-top
+ *       + .navigation-top .nav-profile
+ *       + .navigation-top .dropdown-menu-custom
+ *       + .open .dropdown-menu-custom::before
+ *       + .dropdown-menu-notifications
+ *   - Sidebar                                     layout/_sidebar.scss
+ *       + .header .top-line
+ *       + .sidebar-expanded
+ *       + .sidebar-title
+ *       + .sidebar-content
+ *       + .sidebar-navigation
+ *       + .sb-nav
+ *       + .sidebar-search-form
+ *       + .sidebar-summary-progress
+ *
+ * External components
+ *   - Custom Scrollbar                            external/_custom-scrollbar.scss
+ *       + .mCustomScrollbar
+ *       +
+ *   - jQuery UI Slider                            external/_jquery-ui-slider.scss
+ *       + .range-value
+ *       + .ui-slider-horizontal
+ *       + .ui-widget-header
+ *       + .ui-state-default
+ *       + .ui-slider-horizontal .ui-slider-handle
+ *   - jQVMap                                      external/_jqvmap.scss
+ *       + .jqvmap-label
+ *       + .jqvmap-pin
+ *       + .jqvmap-zoomin, .jqvmap-zoomout
+ *       + .jqvmap-region
+ *       + .jqvmap-ajax_response
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+// General
+//@import 'includes/imports';
+@import 'includes/variables';
+@import 'includes/functions';
+@import 'includes/control-states';
+@import 'includes/xbrowser';
+@import 'includes/media';
+@import 'includes/svg';
+
+// Color scheme
+//@import 'schemes/base';
+
+// Template
+@import 'theme/general';
+@import 'theme/helper';
+@import 'theme/typography';
+
+// Global mixins
+@import 'mixins/clearfix';
+
+// Bootstrap mixins
+@import 'mixins/bootstrap/badges';
+@import 'mixins/bootstrap/labels';
+@import 'mixins/bootstrap/buttons';
+@import 'mixins/bootstrap/progress-bars';
+@import 'mixins/bootstrap/bg';
+@import 'mixins/bootstrap/alerts';
+@import 'mixins/bootstrap/list-group-item';
+@import 'mixins/bootstrap/panels';
+//@import 'mixins/bootstrap/navbar';
+
+// Bootstrap elements
+@import 'bootstrap/badges';
+@import 'bootstrap/forms';
+@import 'bootstrap/dropdowns';
+@import 'bootstrap/buttons';
+@import 'bootstrap/tooltips';
+@import 'bootstrap/tables';
+@import 'bootstrap/panels';
+@import 'bootstrap/labels';
+@import 'bootstrap/progress-bars';
+@import 'bootstrap/tabs';
+@import 'bootstrap/bg';
+@import 'bootstrap/alerts';
+@import 'bootstrap/list-groups';
+@import 'bootstrap/pagination';
+@import 'bootstrap/breadcrumb';
+@import 'bootstrap/input-groups';
+
+// Theme mixins
+@import 'mixins/theme/color-radio';
+@import 'mixins/theme/list-colored';
+@import 'mixins/theme/timeline';
+@import 'mixins/theme/icon';
+
+// Layout
+@import 'mixins/theme/sidebar';
+@import 'mixins/theme/top-line';
+@import 'mixins/theme/brand';
+//@import 'mixins/theme/custom-checkbox';
+//@import 'mixins/theme/custom-radio';
+
+@import 'mixins/ui/md-checkbox';
+@import 'mixins/ui/md-radio';
+
+//@import 'mixins/widgets/project-feed';
+//@import 'mixins/widgets/tasks';
+@import 'mixins/widgets/card-box';
+
+
+// Theme elements
+@import 'theme/preloader';
+@import 'theme/tables';
+@import 'theme/widget';
+@import 'theme/color-radio';
+@import 'theme/list-colored';
+@import 'theme/list-icons';
+@import 'theme/list-tree';
+@import 'theme/timeline';
+@import 'theme/progress-circle';
+//@import 'theme/custom-checkbox';
+//@import 'theme/custom-radio';
+@import 'theme/state-dots';
+@import 'theme/card-box';
+@import 'theme/icon';
+
+@import 'ui/md-checkbox';
+@import 'ui/md-radio';
+@import 'ui/md-input';
+@import 'ui/md-select';
+@import 'ui/toolbar';
+
+// Widgets
+@import 'widgets/user-list-item';
+
+@import 'widgets/card-box';
+@import 'widgets/project-feed';
+@import 'widgets/calendar';
+@import 'widgets/comments';
+@import 'widgets/sales-stat';
+@import 'widgets/total-progress';
+@import 'widgets/tasks';
+@import 'widgets/chat';
+@import 'widgets/sale-regions';
+@import 'widgets/users-list';
+@import 'widgets/products';
+
+// Layout
+@import 'layout/layout';
+@import 'layout/main';
+@import 'layout/main-side';
+@import 'layout/sidebar';
+@import 'layout/navigation';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/loader';
+@import 'layout/brand';
+//@import 'layout/sidebar-fixed';
+
+// External
+@import 'external/jquery-ui-slider';
+@import 'external/custom-scrollbar';
+@import 'external/jqvmap';
+
+// DEMO only
+@import 'demo';

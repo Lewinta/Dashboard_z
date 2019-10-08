@@ -1,0 +1,26 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Timeline Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin timeline-item-colored($class, $color) {
+
+  .timeline-item.#{$class} {
+
+    /*
+    &::before, &::after {
+      background-color: $color;
+    } // &::before, &::after
+    */
+
+    &::before {
+      background-color: $color;
+    } // &::before
+
+    &::after {
+      //background-color: $color;
+      border-color: $color;
+    } // &::after
+
+  } // .timeline-item.#{$class}
+
+} // @mixin timeline-item-colored($class, $color)

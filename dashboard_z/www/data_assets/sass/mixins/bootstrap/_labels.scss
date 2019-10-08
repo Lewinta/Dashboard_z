@@ -1,0 +1,22 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Label Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin label-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, #fff);
+
+  .#{$class} {
+
+    color: $_color-text;
+    background-color: $color;
+
+    &[href] {
+      &:hover, &:focus {
+        background-color: lighten($color, $percents-lighten);
+      } // &:hover, &:focus
+    } // &[href]
+
+  } // .#{$class}
+
+} // @mixin label-colored($class, $color)

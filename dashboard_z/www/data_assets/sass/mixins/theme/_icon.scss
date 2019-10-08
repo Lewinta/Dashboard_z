@@ -1,0 +1,27 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Icon Colored Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+@mixin icon-colored($class, $color) {
+
+  .#{$class} {
+    color: #fff;
+    background: $color;
+  } // .#{$class}
+
+  a .#{$class},
+  button .#{$class},
+  .btn .#{$class} {
+
+    &:hover, &:focus {
+      background: lighten($color, 10%);
+    } // &:hover, &:focus
+
+    &:active {
+      background: darken($color, 10%);
+    } // &:active
+
+  } // a .#{$class}, button .#{$class}, .btn .#{$class}
+
+} // @mixin icon-colored($class, $color)

@@ -1,0 +1,34 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Custom Radio Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin custom-radio-colored($class, $color) {
+
+  .#{$class} {
+
+    input[type="radio"] {
+
+      & + label {
+
+        &::before { }
+        &::after  { background: $color; }
+
+        &:hover {
+          &::before { border-color: $color; }
+          &::after  { }
+        } // &:hover
+
+      } // & + label
+
+      &:checked + label {
+
+        &::before { border-color: $color; }
+        &::after  { }
+
+      } // &:checked + label
+
+    } // input[type="radio"]
+
+  } // .#{$class}
+
+} // @mixin custom-radio-colored($class, $color)

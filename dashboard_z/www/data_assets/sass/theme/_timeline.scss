@@ -1,0 +1,110 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Timeline]
+ *
+ *   + .timeline
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Timeline markup
+// ===============
+
+.timeline {
+
+  position: relative;
+
+  margin: 0;
+  padding: 15px;
+
+  list-style: none;
+
+  .timeline-item {
+
+    position: relative;
+    display: block;
+
+    padding-left: 31px;
+    padding-bottom: 10px;
+
+    &:last-child {
+      padding-bottom: 0;
+    } // &:last-child
+
+    &::before, &::after {
+
+      display: block;
+      content: '';
+
+      position: absolute;
+
+      //background-color: $color-default;
+
+    } // &::before, &::after
+
+
+    &::before {
+
+      top: 0;
+      left: 10px;
+
+      width: 1px;
+      height: 100%;
+
+      background-color: $color-default;
+
+    } // &::before
+
+
+    &::after {
+
+      top: 5px;
+      left: 5px;
+
+      width: 11px;
+      height: 11px;
+
+      background: #fff;
+      border: solid 1px $color-default;
+
+      @include border-radius(50%);
+
+    } // &::after
+
+
+  } // .timeline-item
+
+} // .timeline
+
+
+//
+// Inner content
+// =============
+
+.timeline {
+
+  .timeline-datetime {
+    position: relative;
+    color: $color-text-muted;
+  } // .timeline-datetime
+
+  .timeline-content {
+    font-weight: $font-weight-primary;
+  } // .timeline-content
+
+} // .timeline
+
+
+//
+// Alternate colors
+// ================
+
+@include timeline-item-colored(timeline-item-primary,   $color-primary  );
+@include timeline-item-colored(timeline-item-secondary, $color-secondary);
+@include timeline-item-colored(timeline-item-default,   $color-default  );
+@include timeline-item-colored(timeline-item-success,   $color-success  );
+@include timeline-item-colored(timeline-item-info,      $color-info     );
+@include timeline-item-colored(timeline-item-warning,   $color-warning  );
+@include timeline-item-colored(timeline-item-danger,    $color-danger   );
+@include timeline-item-colored(timeline-item-light,     $color-light    );
+@include timeline-item-colored(timeline-item-dark,      $color-dark     );

@@ -1,0 +1,61 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [User List]
+ *
+ *   + .widget-users-list
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+//
+// Widget markup
+// =============
+
+
+//
+// Search form
+// ===========
+
+
+.widget-users-list .wg-input-group {
+
+  position: relative;
+
+  .wg-input-wrapper {
+
+    margin-right: 40px;
+    @include transition($transition);
+
+    .wg-input {
+      @include border-radius(15px);
+    } // .wg-input
+
+  } // .wg-input-wrapper
+
+  .wg-btn-search {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+    @include transition($transition);
+
+  } // .wg-btn-search
+
+  &.focus {
+
+    .wg-input-wrapper {
+      margin-right: 0;
+    } // .wg-input-wrapper
+
+    .wg-btn-search {
+      right: 10px;
+    } // .wg-btn-search
+
+  } // &.focus
+
+} // .widget-users-list .wg-input-group

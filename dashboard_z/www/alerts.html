@@ -1,0 +1,139 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block content %}
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Page section: preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white  pt-2x pb">
+                            <div class="panel-body">
+
+                                <div class="alert alert-secondary mb" role="alert">
+                                    <div class="alert-body">
+                                        <strong>Heads up!</strong>
+                                        This <a href="#" class="alert-link link-underline">alert needs your attention</a>, but it's not super important.
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: preview -->
+
+        <!-- Page section: dismissable -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Dismissable</div>
+                    <p>
+                        You can add the option to close alert.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+
+                        <div class="alert alert-success alert-dismissible fade in" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                            <div class="h4 alert-title">Success!</div>
+                            <div class="alert-body">
+                                <p>
+                                    Change this and that and try again. Duis mollis, est non commodo luctus, nisi
+                                    erat porttitor ligula, eget lacinia odio sem nec elit. Cras
+                                    <a href="#" class="alert-link link-underline">mattis consectetur purus</a>
+                                    sit amet fermentum.
+                                </p>
+                            </div>
+                            <div class="alert-footer">
+                                <button type="button" class="btn btn-waves text-uppercase">Ok</button>
+                                <button type="button" class="btn btn-waves text-uppercase">Cancel</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: dismissable -->
+
+        <!-- Page section: colors -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Colors</div>
+                    <p>
+                        There are two types of coloring alert - full and light.
+                        To specify a light coloring, use the class <code>.alert-alt</code>.
+                    </p>
+                    <div class="h5">Supported classes</div>
+                    <ul>
+                        <li><code>.alert-primary</code></li>
+                        <li><code>.alert-secondary</code></li>
+                        <li><code>.alert-default</code></li>
+                        <li><code>.alert-success</code></li>
+                        <li><code>.alert-info</code></li>
+                        <li><code>.alert-warning</code></li>
+                        <li><code>.alert-danger</code></li>
+                        <li><code>.alert-light</code></li>
+                        <li><code>.alert-dark</code></li>
+                    </ul>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements">
+
+                        <div class="alert alert-secondary mb" role="alert">
+                            <div class="alert-body">
+                                <strong>Heads up!</strong>
+                                This <a href="#" class="alert-link link-underline">alert needs your attention</a>, but it's not super important.
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info fade in" role="alert">
+                            <div class="alert-body">
+                                <strong>Heads up!</strong>
+                                This <a href="#" class="alert-link link-underline">alert needs your attention</a>, but it's not super important.
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: colors -->
+
+
+    </div>
+    <!-- /Page content -->
+{%endblock%}

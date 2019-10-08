@@ -1,0 +1,382 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Escritorio {% endblock %} 
+{% block content %}
+    <div class="container-fluid">
+
+
+        <!-- Widgets row -->   
+        <div class="row">
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <!-- Widget: Card Box -->
+                <div class="widget widget-card-box-stat wg-warning">
+                    <!-- Widget Layer: List -->
+                    <div class="widget-layer widget-layer-static widget-layer-active">
+                        <div class="widget-layer-content">
+
+                            <!-- Widget Layer Body -->
+                            <div class="widget-body">
+                                <div class="widget-body-content-wrapper">
+                                    <div class="widget-body-content">
+
+                                        <!-- Left Column -->
+                                        <div class="wg-left">
+                                            <span class="icon ti-pencil"></span>
+                                        </div>
+                                        <!-- /Left Column -->
+
+                                        <!-- Right Column -->
+                                        <div class="wg-right">
+                                            <div class="wg-value">0/0</div>
+                                            <div class="wg-title">Enviadas</div>
+                                        </div>
+                                        <!-- /Right Column -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Widget Layer Body -->
+
+                        </div>
+                    </div>
+                    <!-- /Widget Layer: List -->
+                </div>
+                <!-- /Widget: Card Box -->
+            </div>
+            <!-- /Widget Column -->
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <!-- Widget: Card Box -->
+                <div class="widget widget-card-box-stat wg-secondary">
+                    <!-- Widget Layer: List -->
+                    <div class="widget-layer widget-layer-static widget-layer-active">
+                        <div class="widget-layer-content">
+
+                            <!-- Widget Layer Body -->
+                            <div class="widget-body">
+                                <div class="widget-body-content-wrapper">
+                                    <div class="widget-body-content">
+
+                                        <!-- Left Column -->
+                                        <div class="wg-left">
+                                            <span class="icon ti-comments"></span>
+                                        </div>
+                                        <!-- /Left Column -->
+
+                                        <!-- Right Column -->
+                                        <div class="wg-right">
+                                            <div class="wg-value">0/0</div>
+                                            <div class="wg-title">Glosas</div>
+                                        </div>
+                                        <!-- /Right Column -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Widget Layer Body -->
+
+                        </div>
+                    </div>
+                    <!-- /Widget Layer: List -->
+                </div>
+                <!-- /Widget: Card Box -->
+            </div>
+            <!-- /Widget Column -->
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <!-- Widget: Card Box -->
+                <div class="widget widget-card-box-stat wg-primary">
+                    <!-- Widget Layer: List -->
+                    <div class="widget-layer widget-layer-static widget-layer-active">
+                        <div class="widget-layer-content">
+
+                            <!-- Widget Layer Body -->
+                            <div class="widget-body">
+                                <div class="widget-body-content-wrapper">
+                                    <div class="widget-body-content">
+
+                                        <!-- Left Column -->
+                                        <div class="wg-left">
+                                            <span class="icon ti-money"></span>
+                                        </div>
+                                        <!-- /Left Column -->
+
+                                        <!-- Right Column -->
+                                        <div class="wg-right">
+                                            <div class="wg-value">$ 0.00</div>
+                                            <div class="wg-title">Ingresos</div>
+                                        </div>
+                                        <!-- /Right Column -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Widget Layer Body -->
+
+                        </div>
+                    </div>
+                    <!-- /Widget Layer: List -->
+                </div>
+                <!-- /Widget: Card Box -->
+            </div>
+            <!-- /Widget Column -->
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <!-- Widget: Card Box -->
+                <div class="widget widget-card-box-stat wg-success">
+                    <!-- Widget Layer: List -->
+                    <div class="widget-layer widget-layer-static widget-layer-active">
+                        <div class="widget-layer-content">
+
+                            <!-- Widget Layer Body -->
+                            <div class="widget-body">
+                                <div class="widget-body-content-wrapper">
+                                    <div class="widget-body-content">
+
+                                        <!-- Left Column -->
+                                        <div class="wg-left">
+                                            <span class="icon ti-flag"></span>
+                                        </div>
+                                        <!-- /Left Column -->
+
+                                        <!-- Right Column -->
+                                        <div class="wg-right">
+                                            <div class="wg-value">0/0</div>
+                                            <div class="wg-title">Cobradas</div>
+                                        </div>
+                                        <!-- /Right Column -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Widget Layer Body -->
+
+                        </div>
+                    </div>
+                    <!-- /Widget Layer: List -->
+                </div>
+                <!-- /Widget: Card Box -->
+            </div>
+            <!-- /Widget Column -->
+
+        </div>
+        <!-- /Widgets row -->
+
+
+        <!-- Widgets row -->
+        <div class="row">
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+
+                <!-- Widget: Calendar -->
+                <div class="widget widget-calendar" style="height: 415px;">
+
+                    <!-- Left Column -->
+                    <div class="col-xs-12 col-sm-4 h-100">
+                        <!-- Widget Layer -->
+                        <div class="widget-layer widget-layer-active">
+                            <div class="widget-layer-content">
+
+                                <!-- Widget Layer Body -->
+                                <div class="widget-body">
+                                    <div class="widget-body-content-wrapper custom-scrollbar">
+                                        <div class="widget-body-content wg-column-left">
+
+                                            <!-- Today information -->
+                                            <div class="wg-today mt-1p5">
+
+                                                <!-- Line -->
+                                                <div>
+                                                    <div class="wg-today-number"></div>
+                                                    <div class="wg-today-week-day"></div>
+                                                </div>
+                                                <!-- /Line -->
+
+                                                <!-- Line -->
+                                                <div>
+                                                    <div class="wg-today-month"></div>
+                                                    <div class="wg-today-year"></div>
+                                                </div>
+                                                <!-- /Line -->
+
+                                            </div>
+                                            <!-- /Today information -->
+
+                                            <!-- Tasks list -->
+                                            <ul class="list-unstyled list-1p5 mt">
+                                                <li><span class="icon-left badge badge-dot badge-dot-outline badge-secondary"></span> Enviar Reclamaciones Asicorp</li>
+                                                <li><span class="icon-left badge badge-dot badge-dot-outline badge-success"></span> Cobro de Facturas de Marzo</li>
+                                                <li><span class="icon-left badge badge-dot badge-dot-outline badge-danger"></span> Solicitud de Nuevos Comprobantes DGII</li>
+                                                <li><span class="icon-left badge badge-dot badge-dot-outline badge-warning"></span> Reparacion de aire acondicionado</li>
+                                            </ul>
+                                            <!-- /Tasks list -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Widget Layer Body -->
+
+                                <!-- Widget Layer Footer -->
+                                <div class="widget-footer">
+                                    <a href="#" class="btn btn-xs btn-link btn-strong btn-primary text-uppercase">See all tasks</a>
+                                </div>
+                                <!-- /Widget Layer Footer -->
+
+                            </div>
+                        </div>
+                        <!-- /Widget Layer -->
+                    </div>
+                    <!-- /Left Column -->
+
+                    <!-- Right Column -->
+                    <div class="col-xs-12 col-sm-8 h-100">
+                        <!-- Widget Layer -->
+                        <div class="widget-layer widget-layer-active">
+                            <div class="widget-layer-content">
+
+                                <!-- Widget Layer Body -->
+                                <div class="widget-body">
+                                    <div class="widget-body-content-wrapper custom-scrollbar">
+                                        <div class="widget-body-content">
+
+                                            <!-- Calendar toolbar -->
+                                            <div class="wg-calendar-toolbar mt-1p5">
+
+                                                <!-- Previous month -->
+                                                <button class="btn btn-link btn-link-text btn-primary wg-prev" data-toggle="calendar"
+                                                        data-target="#widget-calendar-calendar" data-month="prev">
+                                                    <i class="ti-angle-left"></i>
+                                                </button>
+                                                <!-- /Previous month -->
+
+                                                <!-- Month name -->
+                                                <div id="widget-calendar-month-year" class="wg-month-year"></div>
+                                                <!-- /Month name -->
+
+                                                <!-- Next month -->
+                                                <button class="btn btn-link btn-link-text btn-primary wg-next" data-toggle="calendar"
+                                                        data-target="#widget-calendar-calendar" data-month="next">
+                                                    <i class="ti-angle-right"></i>
+                                                </button>
+                                                <!-- /Next month -->
+
+                                            </div>
+                                            <!-- /Calendar toolbar -->
+
+                                            <!-- Calendar wrapper -->
+                                            <div id="widget-calendar-calendar" class="wg-calendar-wrapper"></div>
+                                            <!-- /Calendar wrapper -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Widget Layer Body -->
+
+                            </div>
+                        </div>
+                        <!-- /Widget Layer -->
+                    </div>
+                    <!-- /Right Column -->
+
+                </div>
+                <!-- /Widget: Calendar -->
+
+            </div>
+            <!-- /Widget Column -->
+                       
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+
+                <!-- Widget: Project Feed -->
+                {% include "dashboard_z/www/templates/project_feed.html" %}
+                <!-- /Widget: Project Feed -->
+
+            </div>
+            <!-- /Widget Column -->
+
+        </div>
+        <!-- /Widgets row -->
+            {% include "dashboard_z/www/templates/sales_age.html" %}
+        <!-- Widgets row -->
+        <div class="row">
+
+            <!-- Widget column -->
+           
+            <!-- /Widget column -->
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+
+                {% include "dashboard_z/www/templates/total_progress.html" %}
+
+            </div>
+             <!-- /Widget Column -->
+
+        </div>
+        <!-- /Widgets row -->
+
+        <!-- Widgets row -->
+        <div class="row">
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+
+                {% include "dashboard_z/www/templates/sales_today.html" %}
+
+            </div>
+            <!-- /Widget Column -->
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+
+                {% include "dashboard_z/www/templates/insurance_customers.html" %}
+
+            </div>
+            <!-- /Widget Column -->
+
+             <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+
+                {% include "dashboard_z/www/templates/private_customers.html" %}
+
+            </div>
+            <!-- /Widget Column -->
+
+        </div>
+        <!-- /Widgets row -->
+
+        <!-- Widgets row -->
+        <div class="row">
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+
+                <!-- Widget: Recent Comments -->
+                <div class="widget" style="height: 415px;">
+
+                {% include "dashboard_z/www/templates/recent_comments.html" %}
+
+            </div>
+            <!-- /Widget Column -->
+
+            <!-- Widget Column -->
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                
+                {% include "dashboard_z/www/templates/recent_activity.html" %}
+
+            </div>
+            <!-- /Widget Column -->
+
+        </div>
+        <!-- /Widgets row -->
+
+
+    </div>
+    <!-- /Page content -->
+{% endblock %}
+

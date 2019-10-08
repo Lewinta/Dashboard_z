@@ -1,0 +1,100 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Panels]
+ *
+ *   + .panel
+ *   + .panel-heading
+ *   + .panel-body
+ *   + .panel-footer
+ *   + .panel-group
+ *   + .panel-no-border
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.panel {
+
+  border: solid 0 transparent;
+  @include border-radius($border-radius-md);
+  @include box-shadow(0 2px 2px rgba(0, 0, 0, .07));
+
+} // .panel
+
+
+.panel-heading {
+
+  position: relative;
+  padding: 0;
+  border: none;
+
+  @include clearfix();
+  //@include border-radius(0);
+
+  .panel-title {
+
+    margin: 0;
+    padding: 15px;
+
+    font-size: $font-size;
+    font-weight: $font-weight-primary-bold;
+
+  } // .panel-title
+
+} // .panel-heading
+
+.panel-body {
+  padding: 15px;
+} // .panel-body
+
+.panel-footer {
+  padding: 15px;
+  background: $color-light-blue;
+  border-top-color: $color-border-light;
+} // .panel-footer
+
+
+
+//
+// Panel groups
+// ============
+
+.panel-group {
+
+  margin-bottom: $line-height-computed;
+
+  .panel-heading {
+
+    + .panel-collapse > .panel-body,
+    + .panel-collapse > .list-group {
+      border: none;
+    } //
+
+  } // .panel-heading
+
+} // .panel-group
+
+
+
+//
+// Panel without borders
+// =====================
+
+.panel-no-border {
+  border: none;
+} // .panel-no-border
+
+
+
+//
+// Alternate colors
+// ================
+
+@include panel-colored(panel-primary,   $color-primary  );
+@include panel-colored(panel-secondary, $color-secondary);
+@include panel-colored(panel-default,   $color-default  );
+@include panel-colored(panel-success,   $color-success  );
+@include panel-colored(panel-info,      $color-info     );
+@include panel-colored(panel-warning,   $color-warning  );
+@include panel-colored(panel-danger,    $color-danger   );
+@include panel-colored(panel-light,     $color-light    );
+@include panel-colored(panel-dark,      $color-dark     );
+@include panel-colored(panel-white,     #fff            );

@@ -1,0 +1,191 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Sale Regions]
+ *
+ *   + .widget-sales-regions
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+//
+// Widget markup
+// =============
+
+.widget-sales-regions {
+
+  .widget-body {
+    @include clearfix();
+  } // .widget-body
+
+  .wg-left {
+
+    position: relative;
+
+    float: left;
+    width: 30%;
+    height: 100%;
+
+    padding: 15px;
+
+  } // .wg-left
+
+  .wg-right {
+
+    position: relative;
+
+    width: 70%;
+    float: left;
+
+  } // .wg-right
+
+} // .widget-sales-regions
+
+
+//
+// Widget map styles
+// =================
+
+.widget-sales-regions .wg-map {
+
+  .jqvmap-zoomin, .jqvmap-zoomout {
+    left: auto;
+    right: 15px;
+  } // .jqvmap-zoomin, .jqvmap-zoomout
+
+  .jqvmap-zoomin {
+    top: 15px;
+  } // .jqvmap-zoomin
+
+  .jqvmap-zoomout {
+    top: 55px;
+  } // .jqvmap-zoomout
+
+} // .widget-sales-regions .wg-map
+
+
+//
+// Information column
+// ==================
+
+.widget-sales-regions .wg-information {
+
+  .wg-region-name {
+    font-size: $font-size-h2;
+    margin-bottom: $line-height-computed;
+  } // .wg-region-name
+
+  .wg-summary {
+
+    font-size: 32px;
+
+    .icon {
+      font-size: 17px;
+    } // .icon
+
+    .wg-value {
+    } // .wg-value
+
+    .wg-period {
+      font-size: $font-size;
+      color: $color-text-muted;
+    } // .wg-period
+
+  } // .wg-summary
+
+  .wg-stat {
+
+    @include clearfix();
+
+    list-style: none;
+
+    display: block;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 0 15px;
+    margin: 0 0 $line-height-computed;
+
+    li {
+
+      position: relative;
+
+      display: block;
+      float: left;
+
+      width: 33.3%;
+      text-align: left;
+
+      .wg-title {
+        display: block;
+        color: $color-text-muted;
+        //text-transform: uppercase;
+        font-size: $font-size-small;
+      } // .wg-title
+
+      .wg-value {
+        font-size: 24px;
+        color: $color-secondary;
+        font-weight: $font-weight-primary-bold;
+      } // .wg-value
+
+    } // li
+
+  } // .wg-stat
+
+} // .widget-sales-regions .wg-information
+
+
+
+//
+// Responsive
+// ==========
+
+@include media_sm() {
+
+  .widget-sales-regions {
+
+    .widget-layer {
+      position: static;
+    } // .widget-layer
+
+    .widget-body {
+      position: static;
+    } // .widget-body
+
+    .wg-left {
+      float: none;
+      width: 100%;
+      height: auto;
+    } // .wg-left
+
+    .wg-right {
+      float: none;
+      width: 100%;
+      height: auto;
+    } // .wg-right
+
+    .wg-information {
+
+      .wg-region-name {
+        margin-bottom: $line-height-computed * .5;
+      } // .wg-region-name
+
+      .wg-summary {
+        margin-bottom: $line-height-computed * .5;
+      } // .wg-summary
+
+      .wg-stat {
+        position: static;
+        padding: 0;
+      } // .wg-stat
+
+    } // .wg-information
+
+
+  } // .widget-sales-regions
+
+} // @include media_sm()

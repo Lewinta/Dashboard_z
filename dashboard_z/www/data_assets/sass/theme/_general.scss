@@ -1,0 +1,66 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [General Styles]
+ *
+ *   + *
+ *   + selection
+ *   + html
+ *   + body
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+* { outline: none !important; }
+
+::-moz-selection {}
+::selection      {}
+
+:root {
+
+  --primary: $color-primary;
+  --secondary: $color-secondary;
+  --success: $color-success;
+  --info: $color-info;
+  --warning: $color-warning;
+  --danger: $color-danger;
+
+} // :root
+
+
+html {
+
+  height: 100%;
+
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  -webkit-font-variant-ligatures: none;
+          font-variant-ligatures: none;
+
+  //text-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+
+  font-smooth: always;
+
+  -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+           font-smoothing: antialiased;
+
+  text-shadow: 0 0 1px rgba(0, 0, 0, .01);
+
+
+} // html
+
+body {
+
+  height: 100%;
+  min-height: 100%;
+
+  color: $color-text;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-primary-thin;
+
+  background: $color-bg;
+
+} // body

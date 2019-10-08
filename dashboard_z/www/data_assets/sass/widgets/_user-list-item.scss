@@ -1,0 +1,38 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [User List Item]
+ *
+ *   + .user-list-item
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.user-list-item {
+
+  position: relative;
+
+  min-height: 78px;
+  padding-left: 78px;
+
+  .user-avatar {
+
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    width: 48px;
+    height: 48px;
+
+  } // .user-avatar
+
+  .user-name {
+    font-weight: $font-weight-primary-bold;
+  } // .user-name
+
+  .user-text {
+    margin-top: 2px;
+    font-size: 12px;
+    color: $color-text-muted;
+  } // .user-text
+
+} // .user-list-item

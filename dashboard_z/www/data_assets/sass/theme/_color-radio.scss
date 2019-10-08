@@ -1,0 +1,113 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Color Radio]
+ *
+ *   + .color-radio
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Main styles
+// ===========
+
+.color-radio {
+
+  display: block;
+  position: relative;
+
+  & + .color-radio {
+    margin-top: $line-height-computed / -4;
+  } // & + .color-radio
+
+  &.color-radio-inline {
+
+    position: relative;
+    display: inline-block;
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    cursor: pointer;
+    font-weight: $font-weight-primary;
+
+    & + .color-radio-inline,
+    & + .color-checkbox-inline {
+      margin-left: 10px;
+    } // & + .color-radio-inline
+
+  } // &.color-radio-inline
+
+  input[type="radio"] {
+
+    position: absolute;
+    opacity: 0;
+
+    & + label {
+
+      margin: 0 auto;
+      padding: 0;
+
+      width: 40px;
+      height: 40px;
+
+      color: rgba(0, 0, 0, 0);
+
+      cursor: pointer;
+      font-weight: $font-weight-primary;
+
+      &::before {
+
+        position: absolute;
+        top: 4px;
+        left: 4px;
+
+        display: inline-block;
+        content: '';
+
+        width: 32px;
+        height: 32px;
+
+        //margin-right: 5px;
+
+        background-color: transparent;
+
+        @include border-radius(50%);
+        @include transition($transition);
+
+      } // &::before
+
+      &::after { }
+
+      &:hover {
+        &::before { }
+        &::after  { }
+      } // &:hover
+
+    } // & + label
+
+    &:checked {
+      & + label {
+        &::before { }
+        &::after  { }
+      } // & + label
+    } // &:checked
+
+  } // input[type="radio"]
+
+} // .color-radio
+
+
+
+//
+// Alternate colors
+// ================
+
+@include color-radio-colored(color-radio-primary,   $color-primary  );
+@include color-radio-colored(color-radio-secondary, $color-secondary);
+@include color-radio-colored(color-radio-default,   $color-default  );
+@include color-radio-colored(color-radio-success,   $color-success  );
+@include color-radio-colored(color-radio-info,      $color-info     );
+@include color-radio-colored(color-radio-warning,   $color-warning  );
+@include color-radio-colored(color-radio-danger,    $color-danger   );
+@include color-radio-colored(color-radio-light,     $color-light    );
+@include color-radio-colored(color-radio-dark,      $color-dark     );

@@ -1,0 +1,91 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [MD Input]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.md-input {
+
+  display: block;
+  position: relative;
+
+  padding-top: $font-size * $line-height;
+  border-bottom: solid 1px $color-border-input;
+
+  &::after {
+
+    display: block;
+    content: '';
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
+    margin: 0 auto;
+
+    width: 0;
+    height: 2px;
+
+    background: $color-primary;
+    @include transition($transition);
+
+  } // &::after
+
+  .md-label {
+
+    position: absolute;
+    top: $font-size * $line-height + $padding-md-v;
+    left: 0;
+
+    color: $color-text-muted;
+    font-weight: $font-weight-primary;
+
+    @include transition($transition);
+
+  } // .md-label
+
+  .md-control {
+
+    display: block;
+    width: 100%;
+
+    padding: $padding-md-v 0;
+
+    font-size: $font-size;
+    color: $color-text-muted;
+    line-height: $line-height;
+    font-weight: $font-weight-primary;
+
+    background: transparent;
+    border: solid 1px transparent;
+
+    @include box-shadow(none);
+    @include border-radius(0);
+
+    &, &:hover, &:focus, &:active {
+    } // &, &:hover, &:focus, &:active
+
+  } // .md-control
+
+  &.focus {
+
+    .md-control {
+      color: $color-text;
+    } // .md-control
+
+    &::after {
+      width: 100%;
+    } // &::after
+
+  } // &.focus
+
+  &.focus, &.md-completed {
+
+    .md-label {
+      top: 5px;
+      font-size: $font-size-small;
+    } // .md-label
+
+  } // &.focus
+
+} // .md-input

@@ -1,0 +1,20 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Panel Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin panel-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, #fff);
+
+  .#{$class} {
+
+    border-color: $color;
+
+    > .panel-heading {
+      color: $_color-text;
+      background: $color;
+    } // > .panel-heading
+
+  } // .#{$class}
+
+} // @mixin panel-colored($class, $color)

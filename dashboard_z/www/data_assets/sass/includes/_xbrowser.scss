@@ -1,0 +1,153 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [CrossBrowser Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+  -webkit-border-top-left-radius: $radius;
+          border-top-left-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+          border-bottom-left-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+          border-top-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+}
+
+@mixin border-top-radius($radius) {
+  -webkit-border-top-left-radius: $radius;
+          border-top-left-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+          border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+          border-bottom-left-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+}
+
+@mixin box-shadow($style...) {
+  -webkit-box-shadow: $style;
+     -moz-box-shadow: $style;
+          box-shadow: $style;
+}
+
+@mixin filter($style) {
+  -ms-filter: $style;
+      filter: $style;
+}
+
+@mixin transition($style...) {
+  -webkit-transition: $style;
+     -moz-transition: $style;
+      -ms-transition: $style;
+       -o-transition: $style;
+          transition: $style;
+}
+
+@mixin transition-transform($style...) {
+  -webkit-transition: $style;
+     -moz-transition: $style;
+      //-ms-transition: $style; // Not exists in docs
+       -o-transition: $style;
+          transition: $style;
+}
+
+@mixin transition-delay($style) {
+  -webkit-transition-delay: $style;
+     -moz-transition-delay: $style;
+      -ms-transition-delay: $style;
+       -o-transition-delay: $style;
+          transition-delay: $style;
+}
+
+@mixin transform($style...) {
+  -webkit-transform: $style;
+     -moz-transform: $style;
+      -ms-transform: $style;
+       -o-transform: $style;
+          transform: $style;
+}
+
+@mixin transform-style($style) {
+  -webkit-transform-style: $style;
+     -moz-transform-style: $style;
+      -ms-transform-style: $style;
+          transform-style: $style;
+}
+
+@mixin transform-origin($style) {
+  -webkit-transform-origin: $style;
+     -moz-transform-origin: $style;
+      -ms-transform-origin: $style;
+       -o-transform-origin: $style;
+          transform-origin: $style;
+}
+
+@mixin animation($style...) {
+  -webkit-animation: $style;
+       -o-animation: $style;
+          animation: $style;
+}
+
+@mixin animation-name($style) {
+  -webkit-animation-name: $style;
+     -moz-animation-name: $style;
+       -o-animation-name: $style;
+          animation-name: $style;
+}
+
+@mixin animation-fill-mode($style) {
+  -webkit-animation-fill-mode: $style;
+     -moz-animation-fill-mode: $style;
+       -o-animation-fill-mode: $style;
+          animation-fill-mode: $style;
+}
+
+@mixin animation-duration($style) {
+  -webkit-animation-duration: $style;
+     -moz-animation-duration: $style;
+       -o-animation-duration: $style;
+          animation-duration: $style;
+}
+
+@mixin user-select($style) {
+  -webkit-user-select: $style;
+     -moz-user-select: $style;
+      -ms-user-select: $style;
+          user-select: $style;
+}
+
+@mixin backface-visibility($style) {
+  -webkit-backface-visibility: $style;
+     -moz-backface-visibility: $style;
+      -ms-backface-visibility: $style;
+          backface-visibility: $style;
+}
+
+@mixin placeholder() {
+  &::-webkit-input-placeholder { @content; }
+  &:-ms-input-placeholder      { @content; }
+  &::-moz-placeholder          { @content; }
+  &:-moz-placeholder           { @content; }
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} { @content; }
+   @-khtml-keyframes #{$name} { @content; }
+     @-moz-keyframes #{$name} { @content; }
+      @-ms-keyframes #{$name} { @content; }
+       @-o-keyframes #{$name} { @content; }
+          @keyframes #{$name} { @content; }
+}

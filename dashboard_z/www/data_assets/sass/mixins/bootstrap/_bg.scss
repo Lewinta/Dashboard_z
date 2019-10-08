@@ -1,0 +1,39 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Background Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin bg-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, $color-text-inverse);
+  $_color-text-heading: pf-foreground-color($color, $color-text-heading, $color-text-inverse-heading);
+
+  .#{$class} {
+
+    color: $_color-text;
+    background: $color;
+
+    a {
+
+      color: $_color-text;
+
+      &:hover, &:focus {
+        color: $_color-text-heading;
+      } // &:hover, &:focus
+
+    } // a
+
+    .h1, h1,
+    .h2, h2,
+    .h3, h3,
+    .h4, h4,
+    .h5, h5,
+    .h6, h6,
+    .text-heading {
+
+      color: $_color-text-heading;
+
+    } // [.]h{n}, .text-heading
+
+  } // .#{$class}
+
+} // @mixin bg-colored($color)

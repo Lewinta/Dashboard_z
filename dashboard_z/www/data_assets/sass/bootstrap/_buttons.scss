@@ -1,0 +1,254 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Buttons]
+ *
+ *   + .btn
+ *   + .btn.btn-outline
+ *   + .btn.btn-outline-inverse
+ *   + .btn.btn-link
+ *   + .btn.btn-link.btn-link-light
+ *   + .btn.btn-link.btn-link-text
+ *   + .btn.btn-strong
+ *   + .btn.btn-link:not(.btn-link-underline)
+ *   + .btn.btn-lg
+ *   + .btn.btn-sm
+ *   + .btn.btn-xs
+ *   + .btn.btn-rounded
+ *   + .btn.btn-square
+ *   + .btn.btn-circle
+ *   + .btn.btn-* .icon
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Main styles
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.btn {
+
+  padding: $padding-md-v $padding-md-h;
+
+  color: $color-text;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight-primary-bold;
+
+  background: transparent;
+  border: solid 1px $color-border;
+
+  @include transition($transition);
+  @include border-radius($border-radius-md);
+
+  &, &:hover, &:focus, &:active {
+    text-shadow: none;
+    @include box-shadow(none);
+  } // &, &:hover, &:focus, &:active
+
+  &:disabled, &.disabled {
+    opacity: .65;
+  } // &:disabled, &.disabled
+
+} // .btn
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Outline
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.btn.btn-outline {
+
+  color: $color-text;
+  background-color: transparent;
+  border-color: $color-border-input;
+
+} // .btn.btn-outline
+
+.btn.btn-outline-inverse  {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+} // .btn.btn-outline-inverse
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Link
+// ------------------------------------------------------------------------------------------------------------------- /
+
+// Base button
+.btn.btn-link {
+
+  color: $color-text;
+  border-color: $color-light;
+  background-color: $color-light;
+
+  &:not(.btn-circle) {
+    &, &.btn-lg, &.btn-sm, &.btn-xs {
+      @include border-radius(0);
+    } // &, &.btn-lg, &.btn-sm, &.btn-xs
+  } // &:not(.btn-circle)
+
+} // .btn.btn-link
+
+// States light background
+.btn.btn-link.btn-link-light {
+} // .btn.btn-link.btn-link-light
+
+// States text color
+.btn.btn-link.btn-link-text {
+} // .btn.btn-link.btn-link-text
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Strong
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.btn.btn-strong {
+  font-weight: $font-weight-primary-very-bold;
+} // .btn.btn-strong
+
+.btn.btn-link:not(.btn-link-underline) {
+  &, &:hover, &:focus, &:active {
+    text-decoration: none;
+  } // &, &:hover, &:focus, &:active
+} // .btn.btn-link:not(.btn-underline)
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Sizes
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.btn.btn-lg {
+  font-size: $font-size-lg;
+  padding: $padding-lg-v $padding-lg-h;
+} // .btn.btn-lg
+
+.btn.btn-sm {
+  font-size: $font-size-sm;
+  padding: $padding-sm-v $padding-sm-h;
+} // .btn.btn-sm
+
+.btn.btn-xs {
+  font-size: $font-size-xs;
+  padding: $padding-xs-v $padding-xs-h;
+} // .btn.btn-xs
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Shapes
+// ------------------------------------------------------------------------------------------------------------------- /
+
+// Rounded buttons
+.btn.btn-rounded {
+
+  &.btn-lg {
+    @include border-radius($border-radius-lg);
+  } // &.btn-lg
+
+  &.btn-sm {
+    @include border-radius($border-radius-sm);
+  } // &.btn-sm
+
+  &.btn-xs {
+    @include border-radius($border-radius-xs);
+  } // &.btn-xs
+
+} // .btn.btn-rounded
+
+// Circle buttons
+.btn.btn-circle {
+  @include border-radius(50%);
+} // .btn.btn-circle
+
+// Fixed w/h buttons + sizes
+.btn.btn-square,
+.btn.btn-circle {
+
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+
+  $_wh: pf-control-height($font-size, $line-height, $padding-md-v);
+  width: $_wh;
+  height: $_wh;
+
+  &.btn-lg {
+    $_wh: pf-control-height($font-size, $line-height, $padding-lg-v);
+    width: $_wh;
+    height: $_wh;
+  } // &.btn-lg
+
+  &.btn-sm {
+    $_wh: pf-control-height($font-size, $line-height, $padding-sm-v);
+    width: $_wh;
+    height: $_wh;
+  } // &.btn-sm
+
+  &.btn-xs {
+    $_wh: pf-control-height($font-size, $line-height, $padding-xs-v);
+    width: $_wh;
+    height: $_wh;
+  } // &.btn-xs
+
+} // .btn.btn-square,.btn.btn-circle
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Child elements
+// ------------------------------------------------------------------------------------------------------------------- /
+
+// Icons
+.btn {
+
+  .icon {
+    font-size: $font-size;
+  } // .icon
+
+  &.btn-lg .icon {
+    font-size: $font-size-lg;
+  } // &.btn-lg .icon
+
+  &.btn-sm .icon {
+    font-size: $font-size-sm;
+  } // &.btn-sm .icon
+
+  &.btn-xs .icon {
+    font-size: $font-size-xs;
+  } // &.btn-xs .icon
+
+} // .btn .icon
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Alternate colors
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@include btn-colored(btn-primary,    $color-primary   );
+@include btn-colored(btn-secondary,  $color-secondary );
+@include btn-colored(btn-success,    $color-success   );
+@include btn-colored(btn-info,       $color-info      );
+@include btn-colored(btn-danger,     $color-danger    );
+@include btn-colored(btn-light,      $color-light     );
+@include btn-colored(btn-dark,       $color-dark      );
+@include btn-colored(btn-red,        $color-red       );
+@include btn-colored(btn-orange,     $color-orange    );
+@include btn-colored(btn-green,      $color-green     );
+@include btn-colored(btn-light,      $color-light-blue);
+@include btn-colored(btn-blue,       $color-blue      );
+@include btn-colored(btn-purple,     $color-purple    );
+@include btn-colored(btn-dark,       $color-dark      );
+@include btn-colored(btn-light,      $color-light     );
+@include btn-colored(btn-white,      $color-white     );
+@include btn-colored(btn-black,      $color-black     );
+
+// Custom text color for warning button
+@include btn-colored(btn-warning, $color-warning, #fff, #fff, #fff);
+
+// Custom colors for default button
+@include btn-colored(btn-default,         $color-text,
+                     $color-text,         $color-text,         $color-text,
+                     transparent,         $color-light,        darken($color-light, $percents-darken),
+                     $color-border-input, $color-border-input, $color-border-input);
+
+// Custom colors for white button
+@include btn-colored(btn-white,   $color-text,
+                     $color-text, $color-text,  $color-text,
+                     #fff,        $color-light, darken($color-light, $percents-darken),
+                     #fff,        $color-light, darken($color-light, $percents-darken));

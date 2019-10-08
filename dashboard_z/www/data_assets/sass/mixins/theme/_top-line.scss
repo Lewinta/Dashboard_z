@@ -1,0 +1,40 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Top Line Colored Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+@mixin top-line-variant($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text-muted, #fff);
+
+  .#{$class} {
+
+    background-color: $color;
+
+    .navbar-top {
+
+      > li > a {
+
+        color: $_color-text;
+
+        &:hover, &:focus {
+          color: $_color-text;
+          background-color: transparent;
+        } // &:hover, &:focus
+
+        > .active > a {
+
+          &, &:hover, &:focus {
+            color: $_color-text;
+            background-color: transparent;
+          } // &, &:hover, &:focus
+
+        } // > .active > a
+
+      } // > li > a
+
+    } // .navbar-top
+
+  } // .#{$class}
+
+} // @mixin navbar-colored($class, $color)

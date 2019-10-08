@@ -1,0 +1,114 @@
+{% extends "dashboard_z/www/templates/base.html"%}
+{% block content %}
+
+
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Page section: preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements bg-custom-primary">
+                        <div class="panel panel-white demo-panel pt-2x pb-2x">
+                            <div class="panel-body">
+
+                                <p class="mb strong">
+                                    To see a tooltip, move the cursor to any item below.
+                                </p>
+
+                                <!-- Custom Input Element -->
+                                <div class="md-input mb">
+                                    <label for="demo-form-input-tip" class="md-input-placeholder">Input tooltip</label>
+                                    <input type="text" id="demo-form-input-tip" class="md-input-control"
+                                           data-toggle="tooltip"
+                                           data-placement="top" title="Input top tooltip">
+                                </div>
+                                <!-- /Custom Input Element -->
+
+                                <!-- Custom Checkbox -->
+                                <div class="md-checkbox md-checkbox-primary md-checkbox-inline mb" data-toggle="tooltip"
+                                     data-placement="bottom" title="Checkbox bottom tooltip">
+                                    <input type="checkbox" id="demo-form-checkbox-tip">
+                                    <label for="demo-form-checkbox-tip">Checkbox tooltip</label>
+                                </div>
+                                <!-- /Custom Checkbox -->
+
+                                <div>
+                                    <button type="button" class="btn btn-waves btn-success" data-toggle="tooltip"
+                                            data-placement="right" title="Button right tooltip">Button tooltip</button>
+                                </div>
+
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: preview -->
+
+        <!-- Page section: placement -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Placement</div>
+                    <p>
+                        You can specify four directions for the tooltip.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements">
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <div class="mb">
+                                    <button style="width: 150px;" type="button" class="btn btn-waves btn-primary" data-toggle="tooltip"
+                                            data-placement="top" title="Top">Top
+                                    </button>
+                                </div>
+                                <div>
+                                    <button style="width: 150px;" type="button" class="btn btn-waves btn-primary" data-toggle="tooltip"
+                                            data-placement="left" title="Left">Left
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                <div class="mb">
+                                    <button style="width: 150px;" type="button" class="btn btn-waves btn-primary" data-toggle="tooltip"
+                                            data-placement="right" title="Right">Right
+                                    </button>
+                                </div>
+                                <div>
+                                    <button style="width: 150px;" type="button" class="btn btn-waves btn-primary" data-toggle="tooltip"
+                                            data-placement="bottom" title="Bottom">Bottom
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: placement -->
+
+
+    </div>
+    <!-- /Page content -->
+{% endblock %}

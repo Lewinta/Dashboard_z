@@ -1,0 +1,259 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Pagination]
+ *
+ *   + .pagination
+ *   + .pagination-rounded
+ *   + .pagination li a
+ *   + keyframes animationPaginationFocus
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.pagination {
+
+  > li:first-child {
+    > a, > span {
+      @include border-left-radius($border-radius-md);
+    } // > a, > span
+  } // > li:first-child
+
+  > li:last-child {
+    > a, > span {
+      @include border-right-radius($border-radius-md);
+    } // > a, > span
+  } // > li:first-child
+
+  li {
+
+    a {
+
+      display: block;
+      position: relative;
+
+      margin: 0 5px;
+      padding: 0;
+
+      width: 32px;
+      height: 32px;
+
+      line-height: 32px;
+      color: $color-text;
+      text-align: center;
+
+      border: none;
+      background: transparent;
+
+      @include border-radius($border-radius-md);
+
+      &:hover, &.hover,
+      &:focus, &.focus {
+        color: #fff;
+        border-color: $color-primary;
+        background-color: $color-primary;
+        @include box-shadow(0 3px 5px rgba(0, 0, 0, .05));
+      } // &:hover, &.hover, &:focus, &.focus
+
+      &.pagination-prev, &.pagination-next {
+        &::before {
+
+          display: block;
+          content: '';
+
+          font-size: $font-size-icon;
+          font-family: 'themify', sans-serif;
+
+        } // &::before
+      } // &.pagination-prev, &.pagination-next
+
+      &.pagination-prev::before { content: '\e64a'; }
+      &.pagination-next::before { content: '\e649'; }
+
+    } // a
+
+    &.active {
+
+      a {
+        &, &:hover, &:focus {
+
+          color: #fff;
+          background-color: $color-primary;
+          @include box-shadow(0 3px 5px rgba(0, 0, 0, .05));
+
+        } // &, &:hover, &:focus
+      } // a
+
+    } // &.active
+
+  } // li
+} // .pagination
+
+
+
+//
+// Pagination rounded
+// ==================
+
+.pagination-rounded {
+
+  > li:first-child {
+    > a, > span {
+      @include border-radius(50%);
+    } // > a, > span
+  } // > li:first-child
+
+  > li:last-child {
+    > a, > span {
+      @include border-radius(50%);
+    } // > a, > span
+  } // > li:first-child
+
+  li a {
+    @include border-radius(50% !important);
+  } // li a
+
+} // .pagination-rounded
+
+
+
+//
+// Pagination pager
+// ================
+
+.pager {
+
+  display: block;
+  width: 100%;
+  position: relative;
+
+  li {
+
+    width: 50%;
+
+    > a, > span {
+
+      display: block;
+      width: 100%;
+
+      float: none;
+      padding: 20px 15px;
+
+      color: $color-text-inverse;
+
+      border: none;
+
+      @include border-radius(0);
+
+    } // > a, > span
+
+    > a:hover, > a:focus {
+    } // > a:hover, > a:focus
+
+  } // li
+
+  .next {
+
+    float: right;
+    text-align: right;
+
+    > a, > span {
+      background: $color-primary;
+    } // > a, > span
+
+    > a:hover, > a:focus {
+      background: fade-out($color-primary, .06);
+    } // > a:hover, > a:focus
+
+  } // .next
+
+  .previous {
+
+    float: left;
+    text-align: left;
+
+    > a, > span {
+      background: fade-out($color-primary, .04);
+    } // > a, > span
+
+    > a:hover, > a:focus {
+      background: fade-out($color-primary, .1);
+    } // > a:hover, > a:focus
+
+  } // .previous
+
+  .disabled {
+
+    > a,
+    > a:hover,
+    > a:focus,
+    span {
+
+    } // > a, > a:hover, > a:focus, span
+
+  } // .disabled
+
+  .title {
+
+    @extend .h4;
+
+    color: $color-text-inverse-heading;
+    margin-bottom: 10px;
+
+  } // .title
+
+} // .pager
+
+
+
+//
+// Focus animation effect
+// ======================
+
+.pagination li a {
+
+  z-index: 1;
+
+  &::after {
+
+    display: block;
+    content: '';
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    z-index: -1;
+    opacity: .0;
+
+    background: fade-out($color-dark, .5);
+
+    @include border-radius(50%);
+
+  } // &::after
+
+  &:focus::after {
+    @include animation(.7s animationPaginationFocus);
+  } // &:focus::before
+
+} // .pagination li a
+
+
+
+//
+// Focus animation keyframes
+// =========================
+
+@include keyframes(animationPaginationFocus) {
+
+  from {
+    opacity: 1.0;
+  } // from
+
+  to {
+    opacity: .0;
+    @include transform(scale(2));
+  } // to
+
+} // @include keyframes(animationPaginationFocus)

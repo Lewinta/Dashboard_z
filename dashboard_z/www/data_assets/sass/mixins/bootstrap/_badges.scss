@@ -1,0 +1,23 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Badge Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin badge-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, #fff);
+
+  .#{$class} {
+
+    color: $_color-text;
+    border-color: $color;
+    background-color: $color;
+
+    &[href] {
+      &:hover, &:focus {
+        background-color: lighten($color, $percents-lighten);
+      } // &:hover, &:focus
+    } // &[href]
+
+  } // .#{$class}
+
+} // @mixin badge-colored($class, $color)

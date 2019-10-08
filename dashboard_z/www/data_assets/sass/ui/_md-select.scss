@@ -1,0 +1,108 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [MD Select]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.md-select {
+
+  display: block;
+  position: relative;
+
+  border-bottom: solid 1px $color-border-input;
+
+  &::before {
+
+    display: block;
+    content: '\f107';
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 1;
+
+    width: 30px;
+
+    font-size: 14px;
+    line-height: 34px;
+    color: $color-text;
+    text-align: center;
+    font-family: 'FontAwesome', sans-serif;
+
+    background: #fff;
+    pointer-events: none;
+
+    @include border-right-radius($border-radius-md - 1px);
+
+  } // &::before
+
+  &::after {
+
+    display: block;
+    content: '';
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
+    margin: 0 auto;
+
+    width: 0;
+    height: 2px;
+
+    background: $color-primary;
+    @include transition($transition);
+
+  } // &::after
+
+  .md-control {
+
+    display: block;
+    width: 100%;
+
+    padding: $padding-md-v 0;
+
+    font-size: $font-size;
+    color: $color-text-muted;
+    line-height: $line-height;
+    font-weight: $font-weight-primary;
+
+    background: transparent;
+    border: solid 1px transparent;
+
+    @include box-shadow(none);
+    @include border-radius(0);
+
+    &, &:hover, &:focus, &:active {
+    } // &, &:hover, &:focus, &:active
+
+  } // .md-control
+
+  &.focus {
+
+    .md-control {
+      color: $color-text;
+    } // .md-control
+
+    &::after {
+      width: 100%;
+    } // &::after
+
+  } // &.focus
+
+  select.form-control {
+
+    position: relative;
+
+    padding-left: 0;
+    padding-right: 25px;
+
+    z-index: 0;
+
+    border: none;
+
+  } // select.form-control
+
+} // .md-select

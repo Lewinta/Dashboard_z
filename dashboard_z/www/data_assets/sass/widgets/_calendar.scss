@@ -1,0 +1,182 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Calendar]
+ *
+ *   + .widget-calendar
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Left Side
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.widget-calendar {
+
+  .wg-column-left {
+    padding-left: 25px;
+  } // .wg-column-left
+
+  .wg-today-number {
+
+    display: inline-block;
+    position: relative;
+
+    margin-top: -20px;
+    margin-bottom: -10px;
+
+    font-size: 54px;
+    line-height: $line-height;
+    font-weight: $font-weight-primary;
+
+  } // .wg-today-number
+
+  .wg-today-week-day {
+    display: inline-block;
+    color: $color-primary;
+  } // .wg-today-week-day
+
+  .wg-today-month {
+    display: inline-block;
+    //color: $color-text-muted;
+  } // .wg-today-month
+
+  .wg-today-year {
+    display: inline-block;
+    font-weight: $font-weight-primary-bold;
+  } // .wg-today-year
+
+} // .widget-calendar
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Toolbar
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.widget-calendar .wg-calendar-toolbar {
+
+  @include clearfix();
+  position: relative;
+  margin-bottom: $line-height-computed;
+
+  .wg-prev, .wg-next {
+    position: absolute;
+    top: 0;
+    font-size: 18px;
+  } // .wg-prev, .wg-next
+
+  .wg-prev { left:  0; }
+  .wg-next { right: 0; }
+
+  .wg-month-year {
+    padding-top: 0;
+    font-size: 24px;
+    text-align: center;
+  } // .wg-month-year
+
+} // .widget-calendar .wg-calendar-toolbar
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Main
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.widget-calendar {
+
+  .wg-calendar {
+    width: 100%;
+  } // .wg-calendar
+
+  .wg-calendar-col {
+
+    text-align: center;
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    width: percentage(1 / 7);
+
+    @include transition(
+      color      $transition-duration $transition-function,
+      background $transition-duration $transition-function,
+      box-shadow $transition-duration $transition-function .05s
+    );
+
+    .wg-calendar-col-day {
+
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+
+      line-height: 30px;
+      font-weight: $font-weight-primary;
+
+      @include border-radius(50%);
+
+    } // .wg-calendar-col-day
+
+  } // .wg-calendar-col
+
+} // .widget-calendar
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Table Header
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.widget-calendar .wg-calendar .wg-calendar-header {
+
+  opacity: .65;
+
+  .wg-calendar-col {
+    color: $color-text-muted;
+    text-transform: uppercase;
+    font-size: $font-size-small-prc;
+    font-weight: $font-weight-primary-bold;
+  } // .wg-calendar-col
+
+  .wg-calendar-col.wg-calendar-col-holiday {
+    color: fade-out($color-warning, .35);
+  } // .wg-calendar-col.wg-calendar-col-holiday
+
+} // .widget-calendar .wg-calendar .wg-calendar-header
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Table Body
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.widget-calendar .wg-calendar .wg-calendar-body {
+
+  .wg-calendar-col {
+
+    cursor: pointer;
+
+    &:hover, &:focus {
+      color: #fff;
+      background: $color-secondary;
+    } // &:hover, &:focus
+
+  } // .wg-calendar-col
+
+  .wg-calendar-col.wg-calendar-col-today {
+
+    .wg-calendar-col-day {
+      color: #fff;
+      background: $color-secondary;
+      @include box-shadow(1px 2px 4px 4px rgba(0, 0, 0, .04));
+    } // .wg-calendar-col-day
+
+  } // .wg-calendar-col.wg-calendar-col-today
+
+  .wg-calendar-col.wg-calendar-col-holiday {
+
+    color: fade-out($color-warning, .15);
+
+    &:hover, &:focus {
+      color: #fff;
+    } // &:hover, &:focus
+
+  } // .wg-calendar-col.wg-calendar-col-holiday
+
+} // .widget-calendar .wg-calendar .wg-calendar-body

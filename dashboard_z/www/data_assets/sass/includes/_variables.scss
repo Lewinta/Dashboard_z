@@ -1,0 +1,184 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Template Variables]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Google Fonts Import
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700);
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Colors
+// ------------------------------------------------------------------------------------------------------------------- /
+
+// Modifications
+$percents-darken                            : 6.5%;
+$percents-lighten                           : 6.5%;
+
+// Color system
+$color-red                                  : #e9272a;
+$color-pink                                 : #e31e62;
+$color-orange                               : #ec531f;
+$color-green                                : #13b42b;
+$color-light-blue                           : #00bdd5;
+$color-blue                                 : #209ca9;
+$color-purple                               : #7863a0;
+$color-dark                                 : #43505f;
+$color-light                                : #f3f5f7;
+$color-white                                : #fff;
+$color-black                                : #000;
+$color-very-light                           : #fcfdfe;
+
+// Bootstrap
+$color-primary                              : $color-purple;
+$color-default                              : $color-light;
+$color-success                              : $color-green;
+$color-info                                 : $color-blue;
+$color-warning                              : $color-orange;
+$color-danger                               : $color-pink;
+$color-secondary                            : $color-light-blue;
+
+// Default
+$color-bg                                   : #f8f8f8;
+$color-border                               : #e7e7e7;      /// TODO: REFactor
+$color-border-input                         : #e7e7e7;      /// TODO: REFactor
+$color-border-light                         : fade-out(#616a78, .93);
+
+// Text
+$color-text                                 : #616a78;
+$color-text-heading                         : #37404d;
+$color-text-muted                           : #888;
+$color-text-inverse                         : #fff;
+$color-text-inverse-heading                 : #fff;
+$color-text-inverse-muted                   : #fff;
+
+// Links
+$color-link                                 : darken($color-secondary, 10%);
+$color-link-hover                           : state-color-hover($color-link);
+$color-link-active                          : state-color-active($color-link);
+
+// Input groups
+$input-group-addon-bg-color                 : $color-very-light;
+$input-group-addon-border-color             : $color-border-input;
+
+// List Group
+$list-group-bg-color                        : #fff;
+$list-group-link-color                      : $color-link;
+$list-group-link-hover-color                : $color-link-hover;
+$list-group-link-active-color               : $color-link-active;
+$list-group-link-heading-color              : $color-text-heading;
+$list-group-link-hover-bg                   : lighten($color-light, 2%);
+$list-group-link-active-bg                  : lighten($color-light, 2%);
+
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Fonts
+// ------------------------------------------------------------------------------------------------------------------- /
+
+// Font
+$font-family-primary                        : 'Roboto', sans-serif;
+$font-weight-primary                        : 300;
+$font-weight-primary-thin                   : 300;
+$font-weight-primary-bold                   : 400;
+$font-weight-primary-very-bold              : 500;
+
+// Line height
+$line-height                                : 1.6;
+$line-height-computed                       : 20px;
+
+// Base font sizes
+$font-size                                  : 13px;
+$font-size-small                            : 11px;
+$font-size-small-prc                        : 85%;
+
+// Headings
+$font-size-h1                               : 28px;
+$font-size-h2                               : 24px;
+$font-size-h3                               : 22px;
+$font-size-h4                               : 18px;
+$font-size-h5                               : 15px;
+$font-size-h6                               : 14px;
+
+// Screens
+$font-size-md                               : $font-size;
+$font-size-lg                               : 14;
+$font-size-sm                               : 12px;
+$font-size-xs                               : 11px;
+
+// Icons
+$font-size-icon                             : 14px;
+$font-size-icon-1p5x                        : 1.5em;
+$font-size-icon-2x                          : 2em;
+$font-size-icon-3x                          : 3em;
+$font-size-icon-4x                          : 4em;
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Opacity
+// ------------------------------------------------------------------------------------------------------------------- /
+
+$muted-opacity                              : .75;
+$placeholder-opacity                        : .7;
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Controls
+// ------------------------------------------------------------------------------------------------------------------- /
+
+$padding-md-v                               : 5px;
+$padding-md-h                               : 16px;
+
+$padding-lg-v                               : 7px;
+$padding-lg-h                               : 20px;
+
+$padding-sm-v                               : 4px;
+$padding-sm-h                               : 10px;
+
+$padding-xs-v                               : 2px;
+$padding-xs-h                               : 8px;
+
+$padding-md-v-table                         : 12px;
+$padding-md-h-table                         : 12px;
+
+$border-width                               : 1px;
+
+$border-radius-md                           : 2px;
+$border-radius-lg                           : 6px;
+$border-radius-sm                           : 1px;
+$border-radius-xs                           : 1px;
+$border-radius-rounded                      : 30px;
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Default Styles
+// ------------------------------------------------------------------------------------------------------------------- /
+
+$transition-function                        : ease-in-out;
+$transition-duration                        : .275s;
+$transition                                 : all $transition-duration $transition-function;
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Media queries breakpoints
+// ------------------------------------------------------------------------------------------------------------------- /
+
+$screen-xs-min                              : 480px;
+$screen-sm-min                              : 768px;
+$screen-md-min                              : 992px;
+$screen-lg-min                              : 1200px;
+
+$screen-xs-max                              : $screen-sm-min - 1;
+$screen-sm-max                              : $screen-md-min - 1;
+$screen-md-max                              : $screen-lg-min - 1;
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Layout variables
+// ------------------------------------------------------------------------------------------------------------------- /
+
+$navbar-height                              : 60px;
+$sidebar-width-expanded                     : 250px;
+$sidebar-width-collapsed                    : 90px;

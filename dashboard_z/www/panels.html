@@ -1,0 +1,151 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block content %}
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Page section: preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white demo-panel">
+                            <div class="panel-heading">
+                                <div class="panel-title">Panel title</div>
+                            </div>
+                            <div class="panel-body">Panel content</div>
+                            <div class="panel-footer">Panel footer</div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: preview -->
+
+        <!-- Page section: basic -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Basic</div>
+                    <p>
+                        Initially, the panel is a simple box, but you can optionally add a header and footer.
+                    </p>
+                </div>
+                <!-- /Left column -->
+
+                <!-- Right column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+
+                        <div class="panel panel-white demo-panel mb">
+                            <div class="panel-body">
+                                Base panel
+                            </div>
+                        </div>
+
+                        <div class="panel panel-white demo-panel mb">
+                            <div class="panel-heading">
+                                <div class="panel-title">Panel title</div>
+                            </div>
+                            <div class="panel-body">
+                                Panel with header
+                            </div>
+                            <div class="panel-footer">Panel footer</div>
+                        </div>
+
+                        <div class="panel panel-white demo-panel">
+                            <div class="panel-heading">
+                                <div class="panel-title">Panel title</div>
+                            </div>
+                            <div class="panel-body">
+                                Panel with header and footer
+                            </div>
+                            <div class="panel-footer">Panel footer</div>
+                        </div>
+
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right column -->
+
+            </div>
+        </div>
+        <!-- /Page section: basic -->
+
+        <!-- Page section: colors -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4">Colors</div>
+                    <p>You can highlight panels using the following classes:</p>
+                    <ul>
+                        <li><code>.panel-primary</code></li>
+                        <li><code>.panel-secondary</code></li>
+                        <li><code>.panel-default</code></li>
+                        <li><code>.panel-success</code></li>
+                        <li><code>.panel-info</code></li>
+                        <li><code>.panel-warning</code></li>
+                        <li><code>.panel-danger</code></li>
+                        <li><code>.panel-light</code></li>
+                        <li><code>.panel-dark</code></li>
+                        <li><code>.panel-white</code></li>
+                    </ul>
+                </div>
+                <!-- /Left column -->
+
+                <!-- Right column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements">
+
+                        <div class="panel panel-primary demo-panel mb">
+                            <div class="panel-heading">
+                                <div class="panel-title">Primary panel title</div>
+                            </div>
+                            <div class="panel-body">Panel content</div>
+                            <div class="panel-footer">Panel footer</div>
+                        </div>
+
+                        <div class="panel panel-info demo-panel mb">
+                            <div class="panel-heading">
+                                <div class="panel-title">Info panel title</div>
+                            </div>
+                            <div class="panel-body">Panel content</div>
+                            <div class="panel-footer">Panel footer</div>
+                        </div>
+
+                        <div class="panel panel-danger demo-panel">
+                            <div class="panel-heading">
+                                <div class="panel-title">Danger panel title</div>
+                            </div>
+                            <div class="panel-body">Panel content</div>
+                            <div class="panel-footer">Panel footer</div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /Right column -->
+
+            </div>
+        </div>
+        <!-- /Page section: colors -->
+
+
+    </div>
+    <!-- /Page content -->
+
+{%endblock%}

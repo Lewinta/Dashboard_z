@@ -1,0 +1,649 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block content %}
+    <div class="container-fluid">
+
+        <!-- Page section: preview -->
+        <section class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white demo-panel text-center" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-primary">Primary Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-default">Outline Primary</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-warning">Link Button</a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-light btn-success">Link Light Button</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-text btn-info">Link Text Button</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-text btn-link-underline btn-danger">Link Text Underline</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+            </div>
+        </section>
+        <!-- /Page section: preview -->
+
+        <!-- Page section: colors -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Colors. Supported classes</div>
+                    <ul>
+                        <li><code>.btn-primary</code></li>
+                        <li><code>.btn-secondary</code></li>
+                        <li><code>.btn-default</code></li>
+                        <li><code>.btn-success</code></li>
+                        <li><code>.btn-info</code></li>
+                        <li><code>.btn-warning</code></li>
+                        <li><code>.btn-danger</code></li>
+                    </ul>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white demo-panel text-center" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-primary">Primary Button</a>
+                                    <a href="#" class="demo-btn btn btn-secondary">Secondary Button</a>
+                                    <a href="#" class="demo-btn btn btn-default">Default Button</a>
+                                    <a href="#" class="demo-btn btn btn-info">Info Button</a>
+                                    <a href="#" class="demo-btn btn btn-success">Success Button</a>
+                                    <a href="#" class="demo-btn btn btn-warning">Warning Button</a>
+                                    <a href="#" class="demo-btn btn btn-danger">Danger Button</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: colors -->
+
+        <!-- Page section: outline -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Outline</div>
+                    <p>
+                        Add class <code>.btn-outline</code> | <code>.btn-outline-inverse</code> to get outlined buttons.<br>
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white demo-panel text-center" style="width: 700px">
+                            <div class="panel-body pt-2x">
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-outline btn-default">Default Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-primary">Primary Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-info">Info Button</a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-outline btn-success">Success Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-warning">Warning Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-danger">Danger Button</a>
+                                </div>
+                            </div>
+                            <div class="panel-body bg-primary pt-2x pb">
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-outline btn-outline-inverse btn-default">Default Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-outline-inverse btn-primary">Primary Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-outline-inverse btn-info">Info Button</a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-outline btn-outline-inverse btn-success">Success Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-outline-inverse btn-warning">Warning Button</a>
+                                    <a href="#" class="demo-btn btn btn-outline btn-outline-inverse btn-danger">Danger Button</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: outline -->
+
+        <!-- Page section: Square | Circle -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Square | Circle</div>
+                    <p>
+                        You can use circle|square buttons (icon buttons).
+                    </p>
+                    <p>
+                        Classes <code>.btn-circle</code> | <code>.btn-square</code>
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white demo-panel text-center" style="width: 700px">
+                            <div class="panel-body pt-2x pb-2x">
+
+                                <div class="mb">
+                                    <a href="#" class="btn btn-square btn-outline btn-default"><i class="icon fa fa-bolt"></i></a>
+                                    <a href="#" class="btn btn-square btn-outline btn-primary"><i class="icon fa fa-bell-o"></i></a>
+                                    <a href="#" class="btn btn-square btn-outline btn-info"><i class="icon fa fa-calendar"></i></a>
+                                    <a href="#" class="btn btn-square btn-default"><i class="icon fa fa-camera"></i></a>
+                                    <a href="#" class="btn btn-square btn-primary"><i class="icon fa fa-clone"></i></a>
+                                    <a href="#" class="btn btn-square btn-info"><i class="icon fa fa-code"></i></a>
+                                </div>
+                                <div class="mb">
+                                    <a href="#" class="btn btn-circle btn-outline btn-success"><i class="icon fa fa-cogs"></i></a>
+                                    <a href="#" class="btn btn-circle btn-outline btn-warning"><i class="icon fa fa-desktop"></i></a>
+                                    <a href="#" class="btn btn-circle btn-outline btn-danger"><i class="icon fa fa-gavel"></i></a>
+                                    <a href="#" class="btn btn-circle btn-success"><i class="icon fa fa-header"></i></a>
+                                    <a href="#" class="btn btn-circle btn-warning"><i class="icon fa fa-heart-o"></i></a>
+                                    <a href="#" class="btn btn-circle btn-danger"><i class="icon fa fa-magic"></i></a>
+                                </div>
+
+                                <div class="mb">
+                                    <a href="#" class="demo-btn btn btn-circle btn-outline btn-default"><i class="icon fa fa-bolt"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-outline btn-primary"><i class="icon fa fa-bell-o"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-outline btn-info"><i class="icon fa fa-calendar"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-default"><i class="icon fa fa-camera"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-primary"><i class="icon fa fa-clone"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-info"><i class="icon fa fa-code"></i></a>
+                                </div>
+                                <div class="">
+                                    <a href="#" class="demo-btn btn btn-circle btn-outline btn-success"><i class="icon fa fa-cogs"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-outline btn-warning"><i class="icon fa fa-desktop"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-outline btn-danger"><i class="icon fa fa-gavel"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-success"><i class="icon fa fa-header"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-warning"><i class="icon fa fa-heart-o"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-danger"><i class="icon fa fa-magic"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: Square | Circle -->
+
+        <!-- Page section: Custom Styles -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Custom Styles</div>
+                    <p>
+                        You can use the following class combinations:
+                    </p>
+                    <ul>
+                        <li><code>.btn-link</code></li>
+                        <li><code>.btn-link.btn-link-light</code></li>
+                        <li><code>.btn-link.btn-link-text</code></li>
+                    </ul>
+                    <p>
+                        Use class <code>.btn-link-underline</code> to emphasize a button while hovering.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white demo-panel text-center" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-link btn-default">.btn-link</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-primary">.btn-link</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-info">.btn-link</a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-light btn-success">.btn-link-light</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-light btn-warning">.btn-link-light</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-light btn-danger">.btn-link-light</a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-text btn-info">.btn-link-text</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-text btn-default">.btn-link-text</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-text btn-success">.btn-link-text</a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-text btn-link-underline btn-info">.btn-link-underline</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-text btn-link-underline btn-default">.btn-link-underline</a>
+                                    <a href="#" class="demo-btn btn btn-link btn-link-text btn-link-underline btn-success">.btn-link-underline</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: custom styles -->
+
+        <!-- Page section: sizes -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Sizes</div>
+                    <p>
+                        Use <code>.btn-lg</code>, <code>.btn-sm</code>, <code>.btn-xs</code> for fast change button size.
+                    </p>
+                    <p>
+                        <code>.btn-block</code> will make your button full-width unit.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo element -->
+                    <div class="demo-elements text-center">
+                        <div class="panel panel-white demo-panel" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-lg btn-primary">Large Button</a>
+                                    <a href="#" class="demo-btn btn btn-lg btn-o btn-primary">Large Button</a>
+                                    <a href="#" class="demo-btn btn btn-lg btn-circle btn-o btn-primary"><i class="icon fa fa-lemon-o"></i></a>
+                                    <a href="#" class="demo-btn btn btn-lg btn-circle btn-primary"><i class="icon fa fa-navicon"></i></a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-info">Default Button</a>
+                                    <a href="#" class="demo-btn btn btn-o btn-info">Default Button</a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-o btn-info"><i class="icon fa fa-phone"></i></a>
+                                    <a href="#" class="demo-btn btn btn-circle btn-info"><i class="icon fa fa-shield"></i></a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-sm btn-success">Small Button</a>
+                                    <a href="#" class="demo-btn btn btn-sm btn-o btn-success">Small Button</a>
+                                    <a href="#" class="demo-btn btn btn-sm btn-circle btn-o btn-success"><i class="icon fa fa-star"></i></a>
+                                    <a href="#" class="demo-btn btn btn-sm btn-circle btn-success"><i class="icon fa fa-wrench"></i></a>
+                                </div>
+                                <div>
+                                    <a href="#" class="demo-btn btn btn-xs btn-warning">Extra Small</a>
+                                    <a href="#" class="demo-btn btn btn-xs btn-o btn-warning">Extra Small</a>
+                                    <a href="#" class="demo-btn btn btn-xs btn-circle btn-o btn-warning"><i class="icon fa fa-cloud"></i></a>
+                                    <a href="#" class="demo-btn btn btn-xs btn-circle btn-warning"><i class="icon fa fa-share-alt"></i></a>
+                                </div>
+
+                                <a href="#" class="btn mb btn-block btn-danger">Block Danger Button</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo element -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: sizes -->
+
+
+        <!-- Page section: separator -->
+        <div class="section mb">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="h2 no-margin">Button groups</div>
+                    <p>Wrap a series of buttons into groups.</p>
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: separator -->
+
+        <!-- Page section: button groups -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Button groups</div>
+                    <p>
+                        Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements text-center">
+                        <div class="panel panel-white demo-panel" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+                                <div class="btn-group mb" role="group">
+                                    <button type="button" class="btn btn-primary">Left</button>
+                                    <button type="button" class="btn btn-primary">Middle</button>
+                                    <button type="button" class="btn btn-primary">Right</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: button groups -->
+
+
+        <!-- Page section: toolbars -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Toolbars</div>
+                    <p>
+                        Combine sets of <code>.btn-group</code> into a <code>.btn-toolbar</code> for more complex components.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements text-center">
+                        <div class="panel panel-white demo-panel" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+                                <div class="demo-btn-toolbar btn-toolbar mb" role="toolbar">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-info">
+                                            <i class="icon fa fa-pause"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-info">
+                                            <i class="icon fa fa-play"></i>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-info">
+                                            <i class="icon fa fa-fast-backward"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-info">
+                                            <i class="icon fa fa-fast-forward"></i>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-info">
+                                            <i class="icon fa fa-stop"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: toolbars -->
+
+        <!-- Page section: vertical orientation -->
+        <section class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Vertical orientation</div>
+                    <p>
+                        Make a set of buttons appear vertically stacked rather than horizontally
+                        (<code>.btn-group-vertical</code>).
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements text-center">
+                        <div class="panel panel-white demo-panel" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+                                <div class="btn-group-vertical mb" role="group">
+                                    <button type="button" class="btn btn-primary">Left</button>
+                                    <button type="button" class="btn btn-primary">Middle</button>
+                                    <button type="button" class="btn btn-primary">Right</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </section>
+        <!-- /Page section: vertical orientation -->
+
+        <!-- Page section: button groups sizes -->
+        <section class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Button groups sizes</div>
+                    <p>
+                        Instead of applying button sizing classes to every button in a group, just add
+                        <code>.btn-group-*</code> to each <code>.btn-group</code>, including when nesting multiple groups.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements text-center">
+                        <div class="panel panel-white demo-panel" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+
+                                <div class="mb">
+                                    <div class="btn-group btn-group-lg" role="group">
+                                        <button type="button" class="btn btn-primary">Left</button>
+                                        <button type="button" class="btn btn-primary">Middle</button>
+                                        <button type="button" class="btn btn-primary">Right</button>
+                                    </div>
+                                </div>
+                                <div class="mb">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-info">Left</button>
+                                        <button type="button" class="btn btn-info">Middle</button>
+                                        <button type="button" class="btn btn-info">Right</button>
+                                    </div>
+                                </div>
+                                <div class="mb">
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <button type="button" class="btn btn-warning">Left</button>
+                                        <button type="button" class="btn btn-warning">Middle</button>
+                                        <button type="button" class="btn btn-warning">Right</button>
+                                    </div>
+                                </div>
+                                <div class="mb">
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-danger">Left</button>
+                                        <button type="button" class="btn btn-danger">Middle</button>
+                                        <button type="button" class="btn btn-danger">Right</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </section>
+        <!-- /Page section: button groups sizes -->
+
+        <!-- Page section: button groups justify -->
+        <section class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Justify button group</div>
+                    <p>
+                        You can use <code>btn-group-justified</code> class.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements text-center">
+                        <div class="panel panel-white demo-panel" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+
+                                <div class="mb">
+                                    <div class="btn-group btn-group-justified" role="group">
+                                        <a href="#" class="btn btn-info">Left</a>
+                                        <a href="#" class="btn btn-info">Middle</a>
+                                        <a href="#" class="btn btn-info">Right</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </section>
+        <!-- /Page section: button groups justify -->
+
+        <!-- Page section: button groups nesting -->
+        <section class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Nesting</div>
+                    <p>
+                        Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want
+                        dropdown menus mixed with a series of buttons.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements text-center">
+                        <div class="panel panel-white demo-panel" style="width: 700px">
+                            <div class="panel-body pt-2x pb">
+
+                                <div class="mb">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-primary">1</button>
+                                        <button type="button" class="btn btn-primary">2</button>
+
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                DDown
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Dropdown link</a></li>
+                                                <li><a href="#">Dropdown link</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropup">
+                                            <button type="button" class="btn btn-primary">DUp</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle DUp</span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Action</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </section>
+        <!-- /Page section: button groups nesting -->
+
+    </div>
+    <!-- /Page content -->
+{%endblock%}

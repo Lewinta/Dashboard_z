@@ -1,0 +1,95 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Card Box]
+ *
+ *   + .widget-card-box-stat
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.widget-card-box-stat {
+
+  display: block;
+  @include border-radius(0);
+
+  .widget-body {
+    @include clearfix();
+  } // .widget-body
+
+  .wg-left {
+    width: 30%;
+    float: left;
+  } // .wg-left
+
+  .wg-right {
+    width: 70%;
+    float: left;
+  } // .wg-right
+
+  .wg-left .icon {
+    font-size: 32px;
+    margin-top: 10px;
+  } // .wg-left .icon
+
+  .wg-right {
+
+    color: #fff;
+    text-align: right;
+
+    .wg-value {
+
+      font-size: 18px;
+      font-weight: $font-weight-primary;
+
+    } // .wg-value
+
+    .wg-title {
+      color: $color-text-muted;
+    } // .wg-title
+
+  } // .wg-right
+
+} // .widget-card-box-stat
+
+//
+// Alternate colors
+// ================
+
+@include widget-card-box-stat-colored(wg-primary,   $color-primary  );
+@include widget-card-box-stat-colored(wg-secondary, $color-secondary);
+@include widget-card-box-stat-colored(wg-default,   $color-default  );
+@include widget-card-box-stat-colored(wg-success,   $color-success  );
+@include widget-card-box-stat-colored(wg-info,      $color-info     );
+@include widget-card-box-stat-colored(wg-warning,   $color-warning  );
+@include widget-card-box-stat-colored(wg-danger,    $color-danger   );
+@include widget-card-box-stat-colored(wg-light,     $color-light    );
+@include widget-card-box-stat-colored(wg-dark,      $color-dark     );
+
+
+
+.widget-card-box {
+
+  text-align: center;
+
+  .wg-title {
+
+    margin-bottom: $line-height-computed;
+
+    color: $color-text-muted;
+    font-size: $font-size-h5;
+
+  } // .wg-title
+
+  .wg-info {
+
+    margin-bottom: $line-height-computed;
+    font-size: 24px;
+
+    .icon {
+      font-size: 24px;
+    } // .icon
+
+  } // .wg-info
+
+} // .widget-card-box
+

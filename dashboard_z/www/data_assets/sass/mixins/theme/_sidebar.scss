@@ -1,0 +1,67 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Sidebar Colored Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+@mixin sidebar-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, #fff);
+
+  .#{$class} {
+
+    color: $_color-text;
+    background-color: $color;
+
+    .sidebar-menu {
+
+      .sidebar-nav-item .sidebar-nav-link {
+
+        color: $_color-text;
+
+        &:hover, &:focus {
+          color: $_color-text;
+          background: darken($color, $percents-darken);
+        } // &:hover, &:focus
+
+        &.sidebar-nav-dropdown-open {
+          color: $_color-text;
+        } // &.sidebar-nav-dropdown-open
+
+      } // .sidebar-nav-item .sidebar-nav-link
+
+    } // .sidebar-menu
+
+    .sidebar-title {
+      color: $_color-text;
+      border-bottom-color: fade-out($_color-text, .87);
+    } // .sidebar-title
+
+  } // .#{$class}
+
+} // @mixin sidebar-colored($class, $color)
+
+
+
+@mixin sidebar-menu-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text, #fff);
+
+  .#{$class} {
+
+    .sidebar-menu {
+
+      .sidebar-nav-item .sidebar-nav-link {
+
+        &.sidebar-nav-dropdown-open,
+        &.active {
+          color: $_color-text;
+          background-color: $color;
+        } // &.sidebar-nav-dropdown-open
+
+      } // .sidebar-nav-item .sidebar-nav-link
+
+    } // .sidebar-menu
+
+  } // .#{$class}
+
+} // @mixin sidebar-colored($class, $color)

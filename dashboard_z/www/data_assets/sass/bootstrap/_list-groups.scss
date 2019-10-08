@@ -1,0 +1,124 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [List Groups]
+ *
+ *   + .list-group
+ *   + .list-group-item
+ *   + a.list-group-item
+ *   + button.list-group-item
+ *   + .list-group.list-group-hover .list-group-item
+ *   + .list-group.list-group-no-border
+ *   + .list-group.list-group-colored .list-group-item
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Base Styles
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.list-group {
+  margin: 0 0 $line-height-computed;
+} // .list-group
+
+.list-group-item {
+
+  padding: 15px;
+  border-color: #ebebeb;
+
+  &:not(:first-child) {
+    border-top-color: lighten(#ebebeb, 3%);
+  } // &:not(:first-child)
+
+} // .list-group-item
+
+a.list-group-item,
+button.list-group-item {
+
+  color: $list-group-link-color;
+  background: $list-group-bg-color;
+
+  .list-group-item-heading {
+    color: $list-group-link-heading-color;
+  } // .list-group-item-heading
+
+  &:hover,
+  &:focus {
+    color: $list-group-link-hover-color;
+    background-color: $list-group-link-hover-bg;
+  } // &:hover, &:focus
+
+  &:active {
+    color: $list-group-link-active-color;
+    background-color: $list-group-link-active-bg;
+  } // &:active
+
+} // a.list-group-item, button.list-group-item
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Hover Effect
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.list-group.list-group-hover .list-group-item {
+
+  @include transition($transition);
+
+  &:hover, &:focus {
+    background-color: lighten($color-light, 2%);
+  } // &:hover, &:focus
+
+} // .list-group.list-group-hover .list-group-item
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// No Borders
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.list-group {
+
+  &:not(.list-group-colored) .list-group-item {
+    border-left-width: 0;
+  } // &:not(.list-group-colored) .list-group-item
+
+  &.list-group-no-border .list-group-item {
+
+    border-right-width: 0;
+
+    &:first-child {
+      border-top-width: 0;
+    } // &:first-child
+
+    &:last-child {
+      border-bottom-width: 0;
+    } // &:first-child
+
+    &, &:first-child, &:last-child {
+      @include border-radius(0);
+    } // &:first-child
+
+  } // list-group-no-border .list-group-item
+
+} // .list-group
+
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Colored
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.list-group.list-group-colored .list-group-item {
+  border-left-width: 2px;
+} // .list-group.list-group-colored .list-group-item
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Alternate Variants
+// ------------------------------------------------------------------------------------------------------------------- /
+
+
+@include list-group-item-variant(list-group-item-primary,    $color-primary  );
+@include list-group-item-variant(list-group-item-secondary,  $color-secondary);
+@include list-group-item-variant(list-group-item-success,    $color-success  );
+@include list-group-item-variant(list-group-item-info,       $color-info     );
+@include list-group-item-variant(list-group-item-warning,    $color-warning  );
+@include list-group-item-variant(list-group-item-danger,     $color-danger   );

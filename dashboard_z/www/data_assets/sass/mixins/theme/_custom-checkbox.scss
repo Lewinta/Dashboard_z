@@ -1,0 +1,40 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Custom Checkbox Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin custom-checkbox-colored($class, $color) {
+
+  .#{$class} {
+
+    input[type="checkbox"] {
+
+      & + label {
+
+        &::before {}
+        &::after  {}
+
+        &:hover {
+          &::before { border-color: $color; }
+          &::after  { border-color: $color; }
+        } // &:hover
+
+      } // & + label
+
+      &:checked + label {
+
+        &::before {
+          border-color: $color;
+          background-color: $color;
+        } // &::before
+
+        &::after {
+          border-color: #fff;
+        } // &::after
+
+      } // &:checked + label
+
+    } // input[type="checkbox"]
+
+  } // .#{$class}
+
+} // @mixin custom-checkbox-colored($class, $color)

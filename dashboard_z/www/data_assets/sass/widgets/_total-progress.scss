@@ -1,0 +1,26 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Total Progress]
+ *
+ *   + .widget-total-progress
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.widget-total-progress {
+
+  .progress-circle .content {
+    color: #fff;
+  } // .progress-circle .content
+
+  .wg-footer {
+
+    padding: 15px;
+    margin: 0 -15px -15px;
+
+    background-color: darken($color-dark, $percents-darken);
+
+  } // .wg-footer
+
+
+} // .widget-total-progress

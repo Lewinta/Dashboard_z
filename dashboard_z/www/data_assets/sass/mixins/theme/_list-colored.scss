@@ -1,0 +1,23 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [List Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin list-colored($class, $color) {
+
+  .list-colored .list-colored-item.#{$class} {
+
+    &::before {
+      border-color: $color;
+    } // &::before
+
+  } // .list-colored .list-colored-item.#{$class}
+
+  .list-colored.list-colored-square .list-colored-item.#{$class} {
+
+    &::before {
+      background-color: $color;
+    } // &::before
+
+  } // .list-colored.list-colored-square .list-colored-item.#{$class}
+
+} // @mixin list-colored($class, $color)

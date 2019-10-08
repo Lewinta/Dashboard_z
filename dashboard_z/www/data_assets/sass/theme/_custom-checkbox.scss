@@ -1,0 +1,139 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Custom Checkbox]
+ *
+ *   + .custom-checkbox
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Main styles
+// ===========
+
+.custom-checkbox {
+
+  display: block;
+  position: relative;
+
+  & + .custom-checkbox {
+    margin-top: $line-height-computed / -4;
+  } // & + .custom-checkbox
+
+  &.custom-checkbox-inline {
+
+    position: relative;
+    display: inline-block;
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    cursor: pointer;
+    font-weight: $font-weight-primary;
+
+    & + .custom-checkbox-inline,
+    & + .custom-checkbox-radio-inline {
+      margin-left: 10px;
+    } // & + .custom-checkbox-inline
+
+  } // &.custom-checkbox-inline
+
+  input[type="checkbox"] {
+
+    position: absolute;
+    opacity: 0;
+
+    & + label {
+
+      margin-bottom: 0;
+      padding-top: 2px;
+      padding-left: 26px;
+
+      cursor: pointer;
+      font-weight: $font-weight-primary;
+
+      &::before {
+
+        position: absolute;
+        top: 3px;
+        left: 0;
+
+        display: inline-block;
+        content: '';
+
+        width: 18px;
+        height: 18px;
+
+        margin-right: 5px;
+
+        background-color: transparent;
+        border: solid 1px $color-border;
+
+        @include transition($transition);
+        //@include border-radius($border-radius);
+
+      } // &::before
+
+      &::after {
+
+        display: block;
+        content: '';
+
+        //width: 12px;
+        width: 0;
+        height: 7px;
+
+        position: absolute;
+        top: 7px;
+        left: 3px;
+
+        opacity: .0;
+
+        background: transparent;
+
+        border: 2px solid $color-text;
+        border-top: none;
+        border-right: none;
+
+        @include transform(rotate(-45deg));
+        @include transition($transition);
+
+      } // &::after
+
+      &:hover {
+        &::before { }
+        &::after  { }
+      } // &:hover
+
+    } // & + label
+
+    &:checked {
+      & + label {
+
+        &::before { }
+        &::after  {
+          width: 12px;
+          opacity: 1.0;
+        }
+
+      } // & + label
+    } // &:checked
+
+  } // input[type="checkbox"]
+
+} // .custom-checkbox
+
+
+
+//
+// Alternate colors
+// ================
+
+@include custom-checkbox-colored(custom-checkbox-primary,   $color-primary  );
+@include custom-checkbox-colored(custom-checkbox-secondary, $color-secondary);
+@include custom-checkbox-colored(custom-checkbox-default,   $color-default  );
+@include custom-checkbox-colored(custom-checkbox-success,   $color-success  );
+@include custom-checkbox-colored(custom-checkbox-info,      $color-info     );
+@include custom-checkbox-colored(custom-checkbox-warning,   $color-warning  );
+@include custom-checkbox-colored(custom-checkbox-danger,    $color-danger   );
+@include custom-checkbox-colored(custom-checkbox-light,     $color-light    );
+@include custom-checkbox-colored(custom-checkbox-dark,      $color-dark     );

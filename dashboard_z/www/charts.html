@@ -1,0 +1,240 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block content %}
+    <div class="container-fluid">
+
+
+        <!-- Page section: preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo Elements -->
+                    <div class="demo-elements bg-custom-primary">
+                        <div class="panel panel-white demo-panel">
+                            <div class="panel-body">
+
+                                <div class="canvas-holder no-mb">
+                                    <canvas id="demo-chart-polar-area-preview" width="100%" height="100"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo Elements -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: preview -->
+
+        <!-- Page section: line chart -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Line chart</div>
+                    <p>
+                        A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or the comparison of two data sets.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+
+                                <div class="canvas-holder no-mb">
+                                    <canvas id="demo-chart-line" width="100%" height="60"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+        </div>
+        <!-- /Page section: line chart -->
+
+        <!-- Page section: Bar chart -->
+        <section id="bar-chart" class="section">
+
+            <!-- Section Content -->
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Bar chart</div>
+                    <p>
+                        A bar chart provides a way of showing data values represented as vertical bars. It is sometimes used to show trend data, and the comparison of multiple data sets side by side.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements">
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+
+                                <div class="canvas-holder no-mb">
+                                    <canvas id="demo-chart-bar" width="100%" height="60"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+            <!-- /Section Content -->
+
+        </section>
+        <!-- /Page section: Bar chart -->
+
+        <!-- Page section: Radar chart -->
+        <section id="radar-chart" class="section">
+
+            <!-- Section Content -->
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Radar chart</div>
+                    <p>
+                        A radar chart is a way of showing multiple data points and the variation between them.
+                        They are often useful for comparing the points of two or more different data sets.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements">
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+
+                                <div class="canvas-holder no-mb">
+                                    <canvas id="demo-chart-radar" width="100%" height="60"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+            <!-- /Section Content -->
+
+        </section>
+        <!-- /Page section: Radar chart -->
+
+        <!-- Page section: Polar area -->
+        <section id="polar-area" class="section">
+
+            <!-- Section Content -->
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Polar area</div>
+                    <p>
+                        Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value.
+                    </p>
+                    <p>
+                        This type of chart is often useful when we want to show a comparison data similar to a pie chart, but also show a scale of values for context.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements">
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+
+                                <div class="canvas-holder no-mb">
+                                    <canvas id="demo-chart-polar-area" width="100%" height="60"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+            <!-- /Section Content -->
+
+        </section>
+        <!-- /Page section: Polar area -->
+
+        <!-- Page section: Doughnut & Pie chart -->
+        <section id="doughnut-pie" class="section">
+
+            <!-- Section Content -->
+            <div class="row">
+
+                <!-- Left Column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Doughnut & Pie chart</div>
+                    <p>
+                        Pie and doughnut charts are probably the most commonly used charts. They are divided into segments, the arc of each segment shows the proportional value of each piece of data.
+                    </p>
+                </div>
+                <!-- /Left Column -->
+
+                <!-- Right Column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="demo-elements">
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+
+                                <div class="canvas-holder">
+                                    <canvas id="demo-chart-pie" width="100%" height="60"></canvas>
+                                </div>
+
+                                <div class="canvas-holder no-mb">
+                                    <canvas id="demo-chart-doughnut" width="100%" height="60"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /Right Column -->
+
+            </div>
+            <!-- /Section Content -->
+
+        </section>
+        <!-- /Page section: Doughnut & Pie chart -->
+
+
+    </div>
+    <!-- /Page content -->
+{% endblock %}

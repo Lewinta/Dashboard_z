@@ -1,0 +1,49 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Header]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.page-heading {
+
+  margin: -$line-height-computed 0 $line-height-computed * 2;
+  padding: $line-height-computed * 2 15px;
+
+  background-color: #fff;
+  border-bottom: solid 1px $color-border;
+
+} // .page-heading
+
+.page-heading .page-header {
+
+  position: relative;
+  margin: 0;
+  border: none;
+
+  .page-title {
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 30px;
+    color: $color-text-heading;
+    font-family: $font-family-primary;
+    font-weight: $font-weight-primary;
+
+  } // .page-title
+
+  .page-header-buttons {
+
+    position: absolute;
+    top: 7px;
+    right: 0;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      display: inline-block;
+    } // > li
+
+  } // .page-header-buttons
+
+} // .page-heading .page-header

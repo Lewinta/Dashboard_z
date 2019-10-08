@@ -1,0 +1,25 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Card Box Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin widget-card-box-stat-colored($class, $color) {
+
+  .widget-card-box-stat.#{$class} {
+
+    //$_color-text: pf-foreground-color($color, $color-text, $color-text-inverse);
+    //$_color-text-muted: pf-foreground-color($color, $color-text-muted, $color-text-inverse-muted);
+
+    $_color-text: $color-text-inverse;
+
+    .widget-layer {
+      color: $_color-text;
+      background: $color;
+    } // .widget-layer
+
+    .wg-right .wg-title {
+      color: $_color-text;
+    } // .wg-right .wg-title
+
+  } // .widget-card-box-stat.#{$class}
+
+} // @mixin widget-card-box-stat-colored($class, $color)

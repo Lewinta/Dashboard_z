@@ -1,0 +1,158 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block content %}
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Page section: demo -->
+        <section id="demo" class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo Elements -->
+                    <div class="demo-elements">
+                        <div class="panel panel-white demo-panel">
+                            <div class="panel-body">
+
+                                <table class="table table-bordered">
+
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Login</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Mcneil, Burke Q.</td>
+                                        <td><span class="label label-primary">Emery_Mullen</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Burris, Lesley T.</td>
+                                        <td><span class="label label-info">Eleanor_Cole</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sears, Drew G.</td>
+                                        <td><span class="label label-danger">Pandora_Bender</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Oconnor, Jocelyn A.</td>
+                                        <td><span class="label label-primary">Abdul_Logan</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Stewart, Anika M.</td>
+                                        <td><span class="label label-secondary">Eaton_Morris</span></td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo Elements -->
+
+                </div>
+            </div>
+        </section>
+        <!-- /Page section: demo -->
+
+        <!-- Page section: colors -->
+        <section id="colors" class="section">
+            <div class="row">
+
+                <!-- Left column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Contextual alternatives</div>
+                    <p>
+                        You can specify the color of the labels using contextual classes.
+                    </p>
+                </div>
+                <!-- /Left column -->
+
+                <!-- Right column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <div class="table-title">Table of label classes</div>
+
+                    <div class="panel panel-white">
+                        <div class="panel-body">
+
+                            <table class="table table-bordered demo-table">
+
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Label</th>
+                                    <th>Class</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>Primary</td>
+                                    <td><span class="label label-primary">primary</span></td>
+                                    <td><code>.label.label-primary</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Secondary | Default</td>
+                                    <td><span class="label label-default">default</span></td>
+                                    <td><code>.label.label-default</code> | <code>.label.label-secondary</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Success</td>
+                                    <td><span class="label label-success">success</span></td>
+                                    <td><code>.label.label-success</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Info</td>
+                                    <td><span class="label label-info">info</span></td>
+                                    <td><code>.label.label-info</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Warning</td>
+                                    <td><span class="label label-warning">warning</span></td>
+                                    <td><code>.label.label-warning</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Danger</td>
+                                    <td><span class="label label-danger">danger</span></td>
+                                    <td><code>.label.label-danger</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Dark</td>
+                                    <td><span class="label label-dark">dark</span></td>
+                                    <td><code>.label.label-dark</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Light</td>
+                                    <td><span class="label label-light">light</span></td>
+                                    <td><code>.label.label-light</code></td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Right column -->
+
+            </div>
+        </section>
+        <!-- /Page section: colors -->
+
+
+    </div>
+    <!-- /Page content -->
+{%endblock%}

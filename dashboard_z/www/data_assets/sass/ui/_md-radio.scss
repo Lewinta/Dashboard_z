@@ -1,0 +1,226 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [MD Radio]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+$radio-size: 18px;
+$radio-size-inner: 8px;
+
+$radio-color-size: 24px;
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Additional classes
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.md-radio-inline {
+  display: inline-block;
+} // .md-radio-inline
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Default style
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.md-radio {
+
+  label {
+
+    cursor: pointer;
+    position: relative;
+
+    margin-bottom: 0;
+    padding-left: $radio-size + 7px;
+    height: $radio-size * $line-height;
+
+    line-height: $radio-size * $line-height;
+    font-weight: $font-weight-primary-bold;
+
+    &::before, &::after {
+      display: block;
+      content: '';
+      @include transition($transition);
+    } // &::before, &::after
+
+    // Circle
+    &::before {
+
+      position: absolute;
+      top: ($radio-size * $line-height - $radio-size) / 2;
+      left: 0;
+
+      width: $radio-size;
+      height: $radio-size;
+
+      border: solid 1px $color-border;
+
+      @include border-radius(50%);
+
+    } // &::before
+
+    // Check
+    &::after {
+
+      position: absolute;
+
+      top: ($radio-size * $line-height - $radio-size-inner) / 2;
+      left: ($radio-size - $radio-size-inner) / 2;
+
+      width: $radio-size-inner;
+      height: $radio-size-inner;
+
+      text-align: center;
+
+      opacity: .0;
+
+      background: $color-border;
+      @include border-radius(50%);
+
+    } // &::after
+
+    &:hover, &:focus {
+      &::after {
+        opacity: .5;
+      } // &::after
+    } // &:hover, &:focus
+
+  } // label
+
+  input[type="radio"] {
+
+    position: absolute;
+    opacity: .0;
+
+    & + label {
+
+    } // & + label
+
+    &:checked + label {
+
+      &::after {
+        opacity: 1.0;
+      } // &::after
+
+    } // &:checked + label
+
+  } // input[type="checkbox"]
+
+} // .md-radio
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Colored circle
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.md-radio-color {
+
+  label {
+
+    cursor: pointer;
+    position: relative;
+
+    margin-bottom: 0;
+    padding-left: $radio-color-size + 7px;
+    height: $radio-color-size * $line-height;
+
+    line-height: $radio-color-size * $line-height;
+    font-weight: $font-weight-primary-bold;
+
+    &::before, &::after {
+      display: block;
+      content: '';
+      @include transition($transition);
+    } // &::before, &::after
+
+    // Circle
+    &::before {
+
+      position: absolute;
+      top: ($radio-color-size * $line-height - $radio-color-size) / 2;
+      left: 0;
+
+      width: $radio-color-size;
+      height: $radio-color-size;
+
+      background: #fff;
+      //border: solid 1px #fff;
+      @include border-radius(50%);
+
+    } // &::before
+
+    // Check
+    &::after {
+
+      position: absolute;
+
+      top: ($radio-color-size * $line-height - $radio-color-size) / 2;
+      left: 0;
+
+      width: $radio-color-size;
+      height: $radio-color-size;
+      text-align: center;
+
+      opacity: .0;
+
+      @include svg-check-12();
+
+    } // &::after
+
+    &:hover, &:focus {
+      &::after {
+        opacity: .5;
+      } // &::after
+    } // &:hover, &:focus
+
+  } // label
+
+  input[type="radio"] {
+
+    position: absolute;
+    opacity: .0;
+
+    & + label {
+
+    } // & + label
+
+    &:checked + label {
+
+      &::after {
+        opacity: 1.0;
+      } // &::after
+
+    } // &:checked + label
+
+  } // input[type="checkbox"]
+
+} // .md-radio-color
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Alternate colors
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@include md-radio-colored(md-radio-primary,    $color-primary   );
+@include md-radio-colored(md-radio-secondary,  $color-secondary );
+@include md-radio-colored(md-radio-default,    $color-default   );
+@include md-radio-colored(md-radio-success,    $color-success   );
+@include md-radio-colored(md-radio-info,       $color-info      );
+@include md-radio-colored(md-radio-warning,    $color-warning   );
+@include md-radio-colored(md-radio-danger,     $color-danger    );
+
+@include md-radio-color-colored(md-radio-color-primary,    $color-primary   );
+@include md-radio-color-colored(md-radio-color-secondary,  $color-secondary );
+@include md-radio-color-colored(md-radio-color-default,    $color-default   );
+@include md-radio-color-colored(md-radio-color-success,    $color-success   );
+@include md-radio-color-colored(md-radio-color-info,       $color-info      );
+@include md-radio-color-colored(md-radio-color-warning,    $color-warning   );
+@include md-radio-color-colored(md-radio-color-danger,     $color-danger    );
+
+
+// Custom colors for warning and orange
+.md-radio-color-warning  {
+  input[type="radio"] + label {
+    &::after {
+      background-color: #fff;
+    } // &::after
+  } // input[type="checkbox"]:checked + label
+} // .md-radio-color-warning

@@ -1,0 +1,115 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Alerts]
+ *
+ *   + .alert
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Main styles
+// ===========
+
+.alert {
+
+  margin-bottom: $line-height-computed;
+  padding: 0;
+
+  text-shadow: none;
+
+  border: none;
+  background: #fff;
+  border-left: solid 3px transparent;
+
+  @include border-radius(0);
+  @include box-shadow(0 2px 2px rgba(0, 0, 0, .07));
+
+
+  a, .alert-link {
+
+    color: $color-link;
+
+    &:hover, &:focus {
+      color: $color-link-hover;
+    } // &:hover, &:focus
+
+  } // a, .alert-link
+
+  &.alert-dismissable,
+  &.alert-dismissible {
+
+    .close {
+      color: $color-text;
+    } // .close
+
+  } // &.alert-dismissable, &.alert-dismissible
+
+
+  .alert-title {
+    margin: 0;
+    padding: 15px;
+  } // .alert-title
+
+  .alert-body {
+
+    //padding: 0 15px;
+    padding: 15px;
+
+    p:last-child {
+      margin-bottom: 0;
+    } // p:last-child
+
+    & + .alert-footer {
+      //margin-top: $offset / 2;
+    } // & + .alert-footer
+
+  } // .alert-body
+
+  .alert-footer {
+
+    //padding: 10px 15px;
+    padding: 15px;
+    margin-bottom: -15px;
+
+    text-align: right;
+
+    .btn {
+      //@include border-radius(0 !important);
+      @include box-shadow(none !important);
+    } // .btn
+
+  } // .alert-footer
+
+  &.alert-dismissable,
+  &.alert-dismissible {
+
+    .close {
+      top: 15px;
+      right: 15px;
+    } // .close
+
+  } // &.alert-dismissable, &.alert-dismissible
+
+  a, .alert-link {
+    font-weight: $font-weight-primary;
+    &:hover, &:focus {}
+  } // a, .alert-link
+
+} // .alert
+
+
+
+
+//
+// Alternate colors
+// ================
+
+@include alert-colored(alert-primary,   $color-primary  );
+@include alert-colored(alert-secondary, $color-secondary);
+@include alert-colored(alert-default,   $color-default  );
+@include alert-colored(alert-success,   $color-success  );
+@include alert-colored(alert-info,      $color-info     );
+@include alert-colored(alert-warning,   $color-warning  );
+@include alert-colored(alert-danger,    $color-danger   );
+@include alert-colored(alert-light,     $color-light    );
+@include alert-colored(alert-dark,      $color-dark     );

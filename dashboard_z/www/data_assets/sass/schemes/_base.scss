@@ -1,0 +1,47 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Base Color Scheme]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+// Modifications
+$percents-darken : 6.5%;
+$percents-lighten: 6.5%;
+
+// Theme base colors
+//$color-primary:         #3f51b5;
+//$color-secondary:       #33b7d8;
+$color-primary: #7863a0;
+$color-secondary: #00bdd5;
+
+// Bootstrap colors
+$color-default     : $color-secondary;
+$color-success     : #13b42b;
+$color-info        : #209ca9;
+$color-warning     : #ec531f;
+$color-danger      : #e31e62;
+
+// Additional colors
+$color-light: #f7f7f7;
+$color-dark : #333;
+
+// Text colors
+$color-text                : #333;
+$color-text-heading        : #111;
+$color-text-muted          : #888;
+$color-text-inverse        : rgba(255, 255, 255, .85);
+$color-text-inverse-heading: #fff;
+$color-text-inverse-muted  : rgba(255, 255, 255, .75);
+
+// Links
+$color-link        : darken($color-default, 10%);
+$color-link-hover  : lighten($color-link, $percents-lighten);
+$color-link-active : darken($color-link, $percents-darken);
+
+// Elements color values
+//$color-bg          : #fafafa;
+$color-bg          : #f8f8f8;
+$color-border      : #e7e7e7;
+$color-border-input: #e7e7e7;
+
+$color-bg-top-line: #fff;
+$color-bg-sidebar: #333645;
+$color-bg-sidebar-brand: #a48ad4;

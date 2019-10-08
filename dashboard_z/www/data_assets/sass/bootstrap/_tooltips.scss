@@ -1,0 +1,34 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Tooltips]
+ *
+ *   + .tooltip
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.tooltip {
+
+  font-size: $font-size;
+  color: $color-text-inverse;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-primary;
+
+  .tooltip-arrow {
+    display: none;
+  } // .tooltip-arrow
+
+  .tooltip-inner {
+    padding: 8px 15px;
+    background: $color-dark;
+    color: $color-text-inverse;
+    @include border-radius($border-radius-md);
+  } // .tooltip-inner
+
+  &.fade {
+  } // &.fade
+
+  &.fade.in {
+    opacity: 1.0;
+  } // &.fade.in
+
+} // .tooltip

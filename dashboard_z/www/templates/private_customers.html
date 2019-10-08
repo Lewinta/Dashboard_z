@@ -1,0 +1,71 @@
+<!-- Widget: Total Progress -->
+<div class="widget" style="height: 415px;">
+{%if not amt_fact_pri %}
+    {%set amt_fact_pri = 0 | int%}
+{%endif%}
+
+{%if not cant_fact_ttl %}
+    {%set cant_fact_ttl = 0 | int%}
+{%endif%}
+    <!-- Widget Layer: List -->
+    <div class="widget-layer widget-layer-active">
+        <div class="widget-layer-content">
+
+            <!-- Widget Layer Heading -->
+            <div class="widget-heading">
+             
+                <!-- Widget Title -->
+                <!-- <div class="widget-title">Consultas Privadas</div> -->
+                <!-- /Widget Title -->
+                 <div class="cb-title text-center">Consultas Privadas</div>
+                    <h3 class="cb-value text-center"><b>${{'{:20,.2f}'.format(amt_fact_pri)}}</b></h3>
+            </div>
+            <!-- /Widget Layer Heading -->
+
+            <!-- Widget Layer Body -->
+            <div class="widget-body">
+                <div class="widget-body-content-wrapper custom-scrollbar">
+                    <div class="widget-body-content">
+
+                        <!-- Progress circle -->
+                        <div class="progress-circle mt mb" data-value="
+                        {%if cant_fact_ttl > 0%}
+                            {{cant_fact_pri | flt * 100.0  / cant_fact_ttl | flt}}
+                        {%else%}
+                            {{0.00}}
+                        {%endif%}
+                        " data-color="info"></div>
+                        <!-- /Progress circle -->
+
+                        <!-- Text -->
+                        <!-- <p class="text-center text-muted" style="min-height: 62px; ">
+Esta es la sumatoria de los pacientes con seguros atendiodos el día de hoy.
+                        </p> -->
+                        <!-- /Text -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Widget Layer Body -->
+
+            <!-- Widget Layer Footer -->
+            <div class="widget-footer">
+
+ 
+
+                <!-- Value Column -->
+                <div class="col-xs-12 col-sm-12 text-center">
+                    <span class="text-muted text-small text-uppercase"> Diferencia</span>
+                    <div class="h4 no-margin">${{'{:20,.2f}'.format(amt_fact_pri)}}</div>
+                </div>
+                <!-- /Value Column -->
+
+            </div>
+            <!-- /Widget Layer Footer -->
+
+        </div>
+    </div>
+    <!-- /Widget Layer: List -->
+
+</div>
+<!-- /Widget: Total Progress->

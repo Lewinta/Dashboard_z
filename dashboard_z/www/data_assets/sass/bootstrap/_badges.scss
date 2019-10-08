@@ -1,0 +1,88 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Badges]
+ *
+ *   + .badge
+ *   + .badge-square
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// General
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.badge {
+
+  min-width: auto;
+  padding: 3px 5px;
+
+  text-align: center;
+  font-size: $font-size-small;
+  font-weight: $font-weight-primary;
+
+  @include border-radius($border-radius-md);
+  @include box-shadow(1px 2px 4px 4px rgba(0, 0, 0, .04));
+
+  &:empty {
+    display: inline-block;
+  } // &:empty
+
+} // .badge
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Dot | Dot-Outline (Ring Style)
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.badge.badge-dot {
+
+  padding: 0;
+  margin-top: -2px; // for font-size - 2px
+
+  width:  $font-size - 4px;
+  height: $font-size - 4px;
+
+
+  @include border-radius(50%);
+
+  &.badge-lg {
+    width:  $font-size-lg - 4px;
+    height: $font-size-lg - 4px;
+  } // &.badge-lg
+
+  &.badge-sm {
+    width:  $font-size-sm - 4px;
+    height: $font-size-sm - 4px;
+  } // &.badge-sm
+
+  &.badge-xs {
+    width:  $font-size-xs - 5px;
+    height: $font-size-xs - 5px;
+  } // &.badge-xs
+
+} // .badge.badge-dot
+
+.badge-dot-outline {
+  border: solid 1px transparent;
+  background: transparent !important;
+} // .badge-dot-outline
+
+.badge-state {
+  @include box-shadow(0 0 0 2px #fff);
+} // .badge-state
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Alternate colors
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@include badge-colored(badge-primary,   $color-primary  );
+@include badge-colored(badge-secondary, $color-secondary);
+@include badge-colored(badge-default,   $color-default  );
+@include badge-colored(badge-success,   $color-success  );
+@include badge-colored(badge-info,      $color-info     );
+@include badge-colored(badge-warning,   $color-warning  );
+@include badge-colored(badge-danger,    $color-danger   );
+@include badge-colored(badge-light,     $color-light    );
+@include badge-colored(badge-dark,      $color-dark     );

@@ -1,0 +1,70 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Custom Scrollbar]
+ *
+ *   + .mCustomScrollbar
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+// Scrollbar width
+$custom-scrollbar-width: 8px;
+
+
+//
+// Main styles
+// ===========
+
+.mCustomScrollbar {
+
+  .mCSB_container   { margin-right: 0; }
+  .mCustomScrollBox { }
+
+  .mCSB_scrollTools {
+
+    width: 0;
+    z-index: 9;
+
+    //@include transition(width .15s linear .5s);
+    @include transition(none);
+
+    .mCSB_dragger .mCSB_dragger_bar {
+
+      width: $custom-scrollbar-width;
+      background: rgba(255, 255, 255, .5);
+
+      @include border-radius(0);
+      @include transition(none);
+
+    } // .mCSB_dragger .mCSB_dragger_bar
+
+    .mCSB_draggerRail {
+      width: $custom-scrollbar-width;
+      @include border-radius(0);
+    } // .mCSB_draggerRail
+
+  } // .mCSB_scrollTools
+
+  .mCSB_scrollTools_onDrag,
+  &:hover .mCSB_scrollTools {
+    width: $custom-scrollbar-width;
+    //@include transition($default-transition);
+    //@include transition(width .15s linear .5s);
+    @include transition(none);
+  } // &:hover .mCSB_scrollTools
+
+  .mCSB_scrollTools_onDrag  { opacity: .8; }
+  &:hover .mCSB_scrollTools { opacity: .5; }
+
+} // .mCustomScrollbar
+
+
+//
+// System scroll on small screen media
+// ===================================
+
+@include media_sm() {
+  .custom-scrollbar {
+    overflow-y: scroll;
+  } // .custom-scrollbar
+} // @include media_sm()

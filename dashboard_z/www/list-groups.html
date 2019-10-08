@@ -1,0 +1,171 @@
+{% extends "dashboard_z/www/templates/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% block content %}
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Page section : preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements bg-custom-info">
+                        <div class="list-group demo-list-group">
+                            <a href="#" class="list-group-item">Inbox <span class="badge badge-secondary">3</span></a>
+                            <a href="#" class="list-group-item active">Starred</a>
+                            <a href="#" class="list-group-item">Important</a>
+                            <a href="#" class="list-group-item">Sent mail</a>
+                            <a href="#" class="list-group-item">Drafts</a>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: preview -->
+
+        <!-- Page section: basic example -->
+        <div id="basic" class="section">
+            <div class="row">
+
+                <!-- Left column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Basic example</div>
+                    <p>
+                        Create a list using the <code>div</code> element. It is not necessary to use <code>ul</code>.
+                    </p>
+                </div>
+                <!-- /Left column -->
+
+                <!-- Right column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+
+                        <div class="list-group">
+                            <div class="list-group-item">Cras justo odio</div>
+                            <div class="list-group-item">Dapibus ac facilisis in <span class="badge">14</span></div>
+                            <div class="list-group-item">Morbi leo risus</div>
+                            <div class="list-group-item">Porta ac consectetur ac</div>
+                            <div class="list-group-item">Vestibulum at eros <span class="badge">7</span></div>
+                        </div>
+
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right column -->
+
+            </div>
+        </div>
+        <!-- /Page section: basic example -->
+
+        <!-- Page section: custom content -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Flexibility</div>
+                    <p>
+                        In the list items you can put absolutely any HTML-code.
+                    </p>
+                    <p>
+                        Use the <code>.disable</code> class to turn off the item,
+                        use the links as a list item, add budges and more.
+                    </p>
+                </div>
+                <!-- /Left column -->
+
+                <!-- Right column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">
+                                <div class="h4 no-margin list-group-item-heading">Custom content Active</div>
+                                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget
+                                    metus. Maecenas sed diam eget risus varius blandit.
+                                </p>
+                            </a>
+                            <button type="button" class="list-group-item">Button item</button>
+                            <a href="#" class="list-group-item disabled">Disabled link item</a>
+                            <a href="#" class="list-group-item">Active link item <span class="badge badge-danger">3</span></a>
+                        </div>
+
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right column -->
+
+            </div>
+        </div>
+        <!-- /Page section: custom content -->
+
+        <!-- Page section: contextual alternatives -->
+        <div class="section">
+            <div class="row">
+
+                <!-- Left column -->
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="h4 text-dark">Contextual alternatives</div>
+                    <p>Highlight the list items using contextual classes.</p>
+                    <div class="h5">Supported classes</div>
+                    <ul>
+                        <li><code>.list-group-item-primary</code></li>
+                        <li><code>.list-group-item-secondary</code></li>
+                        <li><code>.list-group-item-default</code></li>
+                        <li><code>.list-group-item-success</code></li>
+                        <li><code>.list-group-item-info</code></li>
+                        <li><code>.list-group-item-warning</code></li>
+                        <li><code>.list-group-item-danger</code></li>
+                        <li><code>.list-group-item-dark</code></li>
+                    </ul>
+                </div>
+                <!-- /Left column -->
+
+                <!-- Right column -->
+                <div class="col-xs-12 col-sm-6 col-md-8">
+
+                    <!-- Demo elements -->
+                    <div class="demo-elements">
+                        <div class="list-group list-group-colored">
+                            <div class="list-group-item">Normal state item are many variations</div>
+                            <div class="list-group-item">Normal state item of Lorem Ipsum</div>
+                            <button class="list-group-item list-group-item-primary">Button item primary</button>
+                            <div class="list-group-item">Normal state item but the majority have</div>
+                            <div class="list-group-item list-group-item-secondary">Div item secondary | default</div>
+                            <div class="list-group-item">Normal state item suffered alteration in some form</div>
+                            <div class="list-group-item list-group-item-success">Div item success</div>
+                            <div class="list-group-item">Normal state item randomised words</div>
+                            <button class="list-group-item list-group-item-info">Button item info</button>
+                            <div class="list-group-item">Normal state item predefined chunks</div>
+                            <a href="#" class="list-group-item list-group-item-warning">Link item warning</a>
+                            <div class="list-group-item">Normal state item combined with a handful</div>
+                            <div class="list-group-item list-group-item-danger">Div item danger</div>
+                            <div class="list-group-item">Normal state item embarrassing hidden in the middle</div>
+                            <a href="#" class="list-group-item list-group-item-dark">Link item dark</a>
+                            <div class="list-group-item">Normal state item free from repetition</div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+                <!-- /Right column -->
+
+            </div>
+        </div>
+        <!-- /Page section: contextual alternatives -->
+
+
+    </div>
+    <!-- /Page content -->
+{%endblock%}

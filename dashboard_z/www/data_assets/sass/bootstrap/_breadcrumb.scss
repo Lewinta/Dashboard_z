@@ -1,0 +1,38 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Breadcrumbs]
+ *
+ *   + .breadcrumb
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.breadcrumb {
+
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  @include border-radius(0);
+
+  a {
+    //color: $color-link;
+  } // a
+
+  > .active {
+    color: $color-text-muted;
+  } // > .active
+
+  > li + li::before {
+
+    margin: 0 5px 0 4px;
+
+    font-size: 14px;
+    content: '\f105';
+    color: $color-text;
+    font-family: 'FontAwesome', sans-serif;
+
+  } // > li + li::before
+
+} // .breadcrumb

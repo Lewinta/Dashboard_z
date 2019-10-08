@@ -1,0 +1,45 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [List Group Item Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin list-group-item-variant($class, $color) {
+
+  .#{$class} {
+
+    color: $color-text;
+    background-color: $list-group-bg-color;
+
+    border-left-color: $color;
+
+  } // .#{$class}
+
+  a.#{$class},
+  button.#{$class} {
+
+    color: $color-text;
+
+    .list-group-item-heading {
+      color: $list-group-link-heading-color;
+    } // .list-group-item-heading
+
+    &:hover,
+    &:focus {
+      color: $list-group-link-hover-color;
+      background-color: $list-group-link-hover-bg;
+    } // &:hover, &:focus
+
+    &:active,
+    &.active {
+
+      &,
+      &:hover,
+      &:focus {
+        color: $list-group-link-active-color;
+        background-color: $list-group-link-active-bg;
+      } // &, &:hover, &:focus
+
+    } // &:active
+
+  } // a.#{$class}, button.#{$class}
+
+} // @mixin list-group-item-variant($class, $color)

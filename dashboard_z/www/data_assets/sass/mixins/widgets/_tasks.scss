@@ -1,0 +1,11 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Task Item Colored Mixin]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin widget-task-item-colored($class, $color) {
+
+  .widget-tasks .wg-task-item.#{$class} {
+    border-color: $color;
+  } // .widget-tasks .wg-task-item.#{$class}
+
+} // @mixin widget-task-item-colored($class, $color)

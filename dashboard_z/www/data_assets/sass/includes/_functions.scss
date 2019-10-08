@@ -1,0 +1,51 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Functions]
+ *
+ *   - function pf-brightness
+ *   - function pf-foreground-color
+ *   - function pf-control-height
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Foreground color functions
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@function pf-brightness($color) {
+
+  //
+  // https://www.w3.org/TR/AERT
+  // ((Red value X 299) + (Green value X 587) + (Blue value X 114)) / 1000
+  // =====================================================================
+
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  @return round(($r * 299 + $g * 587 + $b * 114) / 1000);
+
+} // @function pf-brightness($color)
+
+@function pf-foreground-color($color, $color-text-dark: #000, $color-text-light: #fff) {
+
+  $color-brightness:            pf-brightness($color);
+  $color-text-dark-brightness:  pf-brightness($color-text-dark);
+  $color-text-light-brightness: pf-brightness($color-text-light);
+
+  @if (abs($color-brightness - $color-text-light-brightness) > abs($color-brightness - $color-text-dark-brightness)) {
+    @return $color-text-light;
+  }
+
+  @return $color-text-dark;
+
+} // @function pf-foreground-color($color, $color-text-dark, $color-text-light)
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Control height function
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@function pf-control-height($_font-size, $_line-height, $_padding-v) {
+  @return ceil($_font-size * $_line-height) + 2 * $_padding-v;
+} // @function pf-control-height($_font-size, $_line-height, $_padding-v)

@@ -1,0 +1,242 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Sidebar]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.sidebar {
+  @include box-shadow(0 0 5px rgba(0, 0, 0, .08))
+} // .sidebar
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Menu
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.sidebar-menu {
+
+  @extend .nowrap;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .sidebar-menu {
+    overflow: hidden;
+    background: rgba(0, 0, 0, .07);
+  } // .sidebar-menu
+
+  > .sidebar-nav-item > .sidebar-nav-link {
+  } // > .sidebar-nav-item > .sidebar-nav-link
+
+  .sidebar-nav-item .sidebar-nav-link {
+
+    position: relative;
+    display: block;
+
+    height: 44px;
+    padding: 12px 15px 12px 60px;
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      right: 15px;
+    } // .badge
+
+    .icon {
+
+      position: absolute;
+      top: 0;
+      left: 25px;
+
+      width: 40px;
+      height: 44px;
+
+      color: inherit;
+      font-size: 14px;
+      line-height: 44px;
+      text-align: center;
+
+      @include transition($transition);
+
+    } // .icon
+
+    &:hover, &:focus {
+    } // &:hover, &:focus
+
+  } //.sidebar-nav-item > .sidebar-nav-link
+
+  .sidebar-nav-dropdown-toggle {
+
+    &::after {
+
+      display: block;
+      content: '\f105';
+
+      position: absolute;
+      top: 7px;
+      right: 20px;
+
+      font-size: 18px;
+      font-family: 'FontAwesome', sans-serif;
+
+      @include transition($transition);
+
+    } // &::after
+
+    &.sidebar-nav-dropdown-open {
+      &::after {
+        @include transform(rotate(90deg));
+      } // &::after
+    } // &.sidebar-nav-dropdown-open
+
+  } // .sidebar-nav-dropdown-toggle
+
+} // .sidebar-menu
+
+.sidebar-expanded .sidebar-menu {
+
+  .sidebar-nav-item .sidebar-nav-link {
+
+    .icon {
+      left: 15px;
+    } // .icon
+
+  } // .sidebar-nav-item .sidebar-nav-link
+
+} // .sidebar-expanded .sidebar-menu
+
+
+.sidebar-title {
+
+  font-size: $font-size-small;
+
+  margin: $line-height-computed 0 $line-height-computed * .5;
+  padding: 0 15px $line-height-computed * .5;
+
+  border-bottom: solid 1px transparent;
+
+} // .sidebar-title
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Search Form
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.sidebar-search-form {
+
+  @include clearfix();
+
+  display: block;
+  margin: $line-height-computed * .5 0;
+
+  border-bottom: solid 1px rgba(255, 255, 255, .3);
+  @include transition($transition);
+
+  .input-group {
+    //width: 100%;
+  } // .input-group
+
+  .form-control {
+
+    height: auto;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: -1px;
+
+    border: none;
+
+    @include transition($transition);
+
+  } // .form-control
+
+  .btn {
+
+    width: 0;
+    padding: 15px 0;
+    margin-bottom: -1px;
+    opacity: .0;
+    border: none;
+
+    @include box-shadow(none);
+    @include border-radius(0);
+
+    .icon {
+      opacity: .0;
+      @include transition($transition);
+    } // .icon
+
+  } // .btn
+
+  &.focus {
+
+    background: #fff;
+
+    .form-control {
+      padding-left: 15px;
+    } // .form-control
+
+    .btn {
+
+      width: 50px;
+      opacity: 1.0;
+
+      .icon {
+        opacity: 1.0;
+      } // .icon
+
+    } // .btn
+
+  } // &.focus
+
+} // .sidebar-search-form
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Sidebar summary progress
+// ------------------------------------------------------------------------------------------------------------------- /
+
+.sidebar-summary-progress {
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  .progress-title .value {
+    display: none;
+  } // .progress-title .value
+
+} // .sidebar-summary-progress
+
+// Expanded sidebar summary progress
+.sidebar-expanded .sidebar-summary-progress {
+
+  .progress-title .value {
+    display: block;
+  } // .progress-title .value
+
+} // .sidebar-expanded .sidebar-summary-progress
+
+
+// ------------------------------------------------------------------------------------------------------------------- /
+// Alternate colors
+// ------------------------------------------------------------------------------------------------------------------- /
+
+@include sidebar-colored(sidebar-red,        $color-red       );
+@include sidebar-colored(sidebar-orange,     $color-orange    );
+@include sidebar-colored(sidebar-green,      $color-green     );
+@include sidebar-colored(sidebar-light-blue, $color-light-blue);
+@include sidebar-colored(sidebar-blue,       $color-blue      );
+@include sidebar-colored(sidebar-purple,     $color-purple    );
+@include sidebar-colored(sidebar-dark,       $color-dark      );
+@include sidebar-colored(sidebar-light,      $color-light     );
+@include sidebar-colored(sidebar-white,      $color-white     );
+@include sidebar-colored(sidebar-black,      $color-black     );
+
+@include sidebar-menu-colored(sidebar-menu-red,        $color-red       );
+@include sidebar-menu-colored(sidebar-menu-orange,     $color-orange    );
+@include sidebar-menu-colored(sidebar-menu-green,      $color-green     );
+@include sidebar-menu-colored(sidebar-menu-light-blue, $color-light-blue);
+@include sidebar-menu-colored(sidebar-menu-blue,       $color-blue      );
+@include sidebar-menu-colored(sidebar-menu-purple,     $color-purple    );
+@include sidebar-menu-colored(sidebar-menu-dark,       $color-dark      );
+@include sidebar-menu-colored(sidebar-menu-light,      $color-light     );
+@include sidebar-menu-colored(sidebar-menu-white,      $color-white     );
+@include sidebar-menu-colored(sidebar-menu-black,      $color-black     );

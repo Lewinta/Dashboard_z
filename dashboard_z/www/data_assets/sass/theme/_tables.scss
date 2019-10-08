@@ -1,0 +1,55 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Tables]
+ *
+ *   + .table--actions
+ *   + .table--ids
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+//
+// Actions column: fixed width
+// ===========================
+
+.table--actions {
+
+  thead, tbody {
+    > tr {
+      > th, > td {
+
+        &:last-child {
+          width: 150px;
+          text-align: right;
+        } // &:last-child
+
+      } // > th, > td
+    } // > tr
+  } // thead, tbody
+
+  tbody > tr > td:last-child {
+    text-transform: uppercase;
+  } // tbody > tr > td:last-child
+
+} // .table--actions
+
+
+//
+// Id column: fixed width
+// ======================
+
+.table--ids {
+
+  thead, tbody {
+    > tr {
+      > th, > td {
+
+        &:first-child {
+          width: 50px;
+          text-align: right;
+        } // &:first-child
+
+      } // > th, > td
+    } // > tr
+  } // thead, tbody
+
+} // .table--ids

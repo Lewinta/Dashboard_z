@@ -1,0 +1,34 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Project Feed]
+ *
+ *   + .project-feed-item
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+
+.project-feed-item {
+
+  .wg-datetime {
+
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    text-align: right;
+    color: $color-text-muted;
+    font-size: $font-size-small;
+
+    span {
+      position: relative;
+      display: block;
+      margin-top: 5px;
+    } // span
+
+  } // .wg-datetime
+
+  .wg-body .wg-body-content {
+    padding-top: $line-height-computed * .5;
+  } // .wg-body
+
+} // .project-feed-item

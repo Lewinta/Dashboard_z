@@ -1,0 +1,67 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ *
+ * [Dropdowns]
+ *
+ *   + .dropdown-menu
+ *
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+.dropdown-menu {
+
+  font-size: $font-size;
+
+  border: none;
+  @include border-radius($border-radius-md);
+  @include box-shadow(0 1px 3px rgba(0, 0, 0, .11), 0 1px 2px rgba(0, 0, 0,.23));
+
+  li {
+
+    opacity: .5;
+    @include transform(translateX(-10px) scale(.9));
+    @include transition($transition);
+
+    &:nth-child(2)  { @include transition-delay(.05s) }
+    &:nth-child(3)  { @include transition-delay(.10s) }
+    &:nth-child(4)  { @include transition-delay(.15s) }
+    &:nth-child(5)  { @include transition-delay(.20s) }
+    &:nth-child(6)  { @include transition-delay(.25s) }
+    &:nth-child(7)  { @include transition-delay(.30s) }
+    &:nth-child(8)  { @include transition-delay(.35s) }
+    &:nth-child(9)  { @include transition-delay(.40s) }
+    &:nth-child(10) { @include transition-delay(.45s) }
+    &:nth-child(11) { @include transition-delay(.50s) }
+
+    .open & {
+      opacity: 1.0;
+      @include transform(none);
+    } // .open &
+
+    a {
+
+      padding: 8px 20px;
+      color: $color-text;
+      font-weight: $font-weight-primary;
+
+      .icon {
+        margin-right: 5px;
+        opacity: $muted-opacity;
+      } // .icon
+
+
+      &:hover, &:focus {
+
+        color: darken($color-text, $percents-darken);
+        background: darken($color-light, 2%);
+
+        .icon {
+          opacity: 1.0;
+        } // .icon
+
+      } // &:hover, &:focus
+
+    } // a
+
+  } // li
+
+} // .dropdown-menu
+

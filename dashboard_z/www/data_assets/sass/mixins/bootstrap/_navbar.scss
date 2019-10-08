@@ -1,0 +1,48 @@
+/* ------------------------------------------------------------------------------------------------------------------ *
+ * [Navbar Colored Mixins]
+ * ------------------------------------------------------------------------------------------------------------------ */
+
+@mixin navbar-colored($class, $color) {
+
+  $_color-text: pf-foreground-color($color, $color-text-muted, #fff);
+
+  .#{$class} {
+
+    background-color: $color;
+
+    .navbar-nav {
+
+      > li > a {
+
+        color: $_color-text;
+
+        &:hover, &:focus {
+          color: $_color-text;
+          background-color: transparent;
+        } // &:hover, &:focus
+
+        > .active > a {
+
+          &, &:hover, &:focus {
+            color: $_color-text;
+            background-color: transparent;
+          } // &, &:hover, &:focus
+
+        } // > .active > a
+
+      } // > li > a
+
+      > .disabled > a {
+
+        &, &:hover, &:focus {
+          color: lighten($_color-text, $percents-lighten);
+          background-color: transparent;
+        } // &, &:hover, &:focus
+
+      } // > .disabled > a
+
+    } // .navbar-nav
+
+  } // .#{$class}
+
+} // @mixin navbar-colored($class, $color)
