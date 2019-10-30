@@ -54,9 +54,9 @@ def get_fields(filters):
 		("Sales Invoice", "ars_name"),
 		("Sales Invoice", "authorization_no"),
 		("Sales Invoice", "nss"),
-		("Sales Invoice", "claimed_amount"),
-		("Sales Invoice", "authorized_amount"),
-		("Sales Invoice", "difference_amount"),
+		("Sales Invoice Item", "claimed_amount"),
+		("Sales Invoice Item", "authorized_amount"),
+		("Sales Invoice Item", "difference_amount"),
 	)
 		
 	sql_fields = []

@@ -11,6 +11,7 @@ def item_by_ars(doctype, txt, searchfield, start, page_len, filters):
 	result = frappe.db.sql("""
 		SELECT
 			item_code AS item,
+			item_name,
 			ars_name AS ars,
 			physician_name AS physician,
 			currency,
@@ -22,13 +23,13 @@ def item_by_ars(doctype, txt, searchfield, start, page_len, filters):
 		AND
 			physician = '{2}'
 		AND
-			item_code LIKE '%{0}%'
+			(item_code LIKE '%{0}%' OR item_name LIKE '%{0}%')
 		AND
 			item_code != 'Reclamaciones'
 		ORDER BY item_code LIMIT 20
 	""".format("%".join(txt.split()), filters.get("ars"), filters.get("physician")), as_dict=True)
 
-	return [[row.item, "{1} $ {0}".format(flt(row.price, 2), row.currency), row.ars, row.physician] for row in result]
+	return [[row.item, "{1} $ {0}".format(flt(row.price, 2), row.currency), row.item_name] for row in result]
 
 def customer_query(doctype, txt, searchfield, start, page_len, filters):
 	txt = "%".join(txt.split())

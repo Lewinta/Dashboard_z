@@ -90,6 +90,7 @@ on_session_creation = "dashboard_z.utils.api.on_session_creation"
 doc_events = {
 	"Sales Invoice": {
 		"on_submit": "dashboard_z.hook.sales_invoice.on_submit",
+		"on_cancel": "dashboard_z.hook.sales_invoice.on_cancel",
 	},
 	"Physician": {
 		"autoname": "dashboard_z.hook.physician.autoname",

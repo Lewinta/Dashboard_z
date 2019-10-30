@@ -4,10 +4,14 @@ frappe.ui.form.on("Sales Invoice", {
     refresh: frm => {
         // const events = ["set_physician_query"];
         const events = ["add_fetch_events"];
+        let show = frm.doc.invoice_type == "Suppliers";
         $.map(events, event => {
             frm.trigger(event);
         });
-        
+        frm.toggle_reqd("patient", !show);
+        frm.toggle_display("patient", !show);
+        frm.toggle_display("customer", show);
+
     },
     validate: frm => {
         const no_verif = ["Private Customers", "Insurance Customers"]
@@ -42,33 +46,33 @@ frappe.ui.form.on("Sales Invoice", {
     },
     set_item_queries: frm => {
         const {invoice_type, ars, physician} = frm.doc;
-        // console.log(ars);
-        // frm.set_query("item_code", "items", () => {
-        //         if (invoice_type == "Insurance Customers") {
-        //             return {
-        //                 "query": "dashboard_z.queries.item_by_ars",
-        //                 "filters": {
-        //                     "ars": ars,
-        //                     "physician": physician
-        //                 }
-        //             }
-        //         } else if (invoice_type == "Private Customers"){
-        //             return {
-        //                 "query": "dashboard_z.queries.item_by_ars",
-        //                 "filters": {
-        //                     "ars": "Venta estandar",
-        //                     "physician": physician
-        //                 }
-        //             }
-        //         }
-        //         else{
-        //             return{
-        //                 "filters":{
-        //                     "item_name": "Reclamaciones"
-        //                 }
-        //             }
-        //         }
-        //     });
+        console.log(ars);
+        frm.set_query("item_code", "items", () => {
+                if (invoice_type == "Insurance Customers") {
+                    return {
+                        "query": "dashboard_z.queries.item_by_ars",
+                        "filters": {
+                            "ars": ars,
+                            "physician": physician
+                        }
+                    }
+                } else if (invoice_type == "Private Customers"){
+                    return {
+                        "query": "dashboard_z.queries.item_by_ars",
+                        "filters": {
+                            "ars": "Venta estandar",
+                            "physician": physician
+                        }
+                    }
+                }
+                else{
+                    return{
+                        "filters":{
+                            "item_name": "Reclamaciones"
+                        }
+                    }
+                }
+            });
     },
     invoice_type: frm => {
         let show = frm.doc.invoice_type == "Suppliers";
@@ -77,6 +81,8 @@ frappe.ui.form.on("Sales Invoice", {
         frm.toggle_reqd("patient", !show);
         frm.toggle_display("patient", !show);
         frm.toggle_display("customer", show);
+
+        frm.set_value("is_pos", !show);
 
     },
     patient: frm => {
@@ -123,7 +129,7 @@ frappe.ui.form.on("Sales Invoice", {
                                     "customer_group": "Customers",
                                     "invoice_type": "Insurance Customers",
                                     "physician": frm.doc.physician,
-                                    // "payment_status": frm.doc.is_return == 1? "PAID": "UNPAID",
+                                    "payment_status": frm.doc.is_return == 1 ? "PAID": "UNPAID",
                                     "docstatus": 0,
                                 }
                             };
@@ -182,6 +188,10 @@ frappe.ui.form.on("Sales Invoice", {
                 filters.customer_group = condition
             } 
 
+            if (invoice_type != "Suppliers") {
+                filters.physician = physician
+            } 
+            console.log(filters);
             return {
                 "query": "erpnext.controllers.queries.customer_query",  
                 "filters": filters
@@ -195,6 +205,9 @@ frappe.ui.form.on("Sales Invoice", {
             return
         }
         frm.trigger("get_coverage");
+        frm.set_value("customer", "");
+        frm.set_value("patient", "");
+        frm.trigger("set_customer_query");
     },
     coverage: frm => {
         const {coverage, items} = frm.doc;
