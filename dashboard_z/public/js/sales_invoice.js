@@ -130,7 +130,7 @@ frappe.ui.form.on("Sales Invoice", {
                                     "invoice_type": "Insurance Customers",
                                     "physician": frm.doc.physician,
                                     "payment_status": frm.doc.is_return == 1 ? "PAID": "UNPAID",
-                                    "docstatus": 0,
+                                    "docstatus": ["<", "2"],
                                 }
                             };
                         },

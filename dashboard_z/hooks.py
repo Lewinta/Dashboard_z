@@ -33,6 +33,7 @@ doctype_js = {
 	"Patient" : "public/js/patient.js",
 	"Item Price" : "public/js/item_price.js",
 	"Customer" : "public/js/customer.js",
+	"Item" : "public/js/item.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -95,6 +96,7 @@ doc_events = {
 	"Physician": {
 		"autoname": "dashboard_z.hook.physician.autoname",
 		"validate": "dashboard_z.hook.physician.validate",
+		"after_insert": "dashboard_z.hook.physician.after_insert",
 	},
 	"Customer": {
 		"after_insert": "dashboard_z.hook.customer.after_insert",

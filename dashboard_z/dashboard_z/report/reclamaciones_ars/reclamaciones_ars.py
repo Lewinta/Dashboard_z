@@ -89,6 +89,8 @@ def get_conditions(filters):
 			`tabSales Invoice`.docstatus != 2 
 		And 
 			`tabSales Invoice`.invoice_type in ('Insurance Customers')
+		And
+			`tabSales Invoice`.payment_status != 'PAID'
 	"""]
 
 	if filters.get("from_date"):
