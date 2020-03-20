@@ -11,7 +11,7 @@ def execute(filters=None):
 
 def get_columns():
 	columns = (
-		# (_("Invoice"), "Link/Sales Invoice", 160),
+		(_("Invoice"), "Link/Sales Invoice", 160),
 		# (_("Status"), "Data", 80),
 		(_("Date"), "Date", 90),
 		(_("Customer"), "Data", 200),
@@ -45,7 +45,7 @@ def get_fields(filters):
 	Return sql fields ready to be used on query
 	"""
 	fields = (
-		# ("Sales Invoice", "name"),
+		("Sales Invoice", "name"),
 		# ("Sales Invoice", "status"),
 		("Sales Invoice", "posting_date"),
 		("Sales Invoice", "customer_name"),
@@ -133,7 +133,7 @@ def get_data(filters):
 	for row in data:
 		results.append(
 			(
-				# row.name,
+				row.name,
 				# row.status,
 				row.posting_date,
 				row.customer_name,

@@ -34,11 +34,15 @@ doctype_js = {
 	"Item Price" : "public/js/item_price.js",
 	"Customer" : "public/js/customer.js",
 	"Item" : "public/js/item.js",
+	"User" : "public/js/user.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-
+website_context = {
+"favicon": "/assets/dashboard_z/images/favicon32.png",
+"splash_image": "/assets/dashboard_z/images/favicon.png"
+}
 # Home Pages
 # ----------
 
@@ -90,6 +94,7 @@ on_session_creation = "dashboard_z.utils.api.on_session_creation"
 
 doc_events = {
 	"Sales Invoice": {
+		"validate": "dashboard_z.hook.sales_invoice.validate",
 		"on_submit": "dashboard_z.hook.sales_invoice.on_submit",
 		"on_cancel": "dashboard_z.hook.sales_invoice.on_cancel",
 	},
@@ -101,7 +106,11 @@ doc_events = {
 	"Customer": {
 		"after_insert": "dashboard_z.hook.customer.after_insert",
 		"on_trash": "dashboard_z.hook.customer.on_trash",
+	},
+	"Journal Entry": {
+		"on_cancel": "dashboard_z.hook.journal_entry.on_cancel",
 	}
+
 }
 
 # Scheduled Tasks

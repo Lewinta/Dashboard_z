@@ -11,7 +11,15 @@ frappe.ui.form.on("Customer", {
 			return
 		frm.set_value("tax_id", mask_ced_pas_rnc(tax_id.trim()));
 
-	}
+	},
+    customer_group: frm => {
+        if (!frm.doc.customer_group)
+            return
+
+        if (frm.doc.customer_group == "ARS")
+            frm.set_value("naming_series", "ARS-");
+    }
+
 });
 
 

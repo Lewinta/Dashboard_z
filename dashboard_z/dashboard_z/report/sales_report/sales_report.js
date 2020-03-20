@@ -8,7 +8,7 @@ frappe.query_reports["Sales Report"] = {
 			"label": __("From Date"),
 			"fieldname": "from_date",
 			"fieldtype": "Date",
-			"default": frappe.datetime.get_today(),
+			"default": frappe.datetime.month_start(),
 			"reqd": 1,
 		},
 		{

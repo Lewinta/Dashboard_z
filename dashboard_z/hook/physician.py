@@ -1,6 +1,6 @@
 import frappe
 from frappe.model.naming import make_autoname
-from frappe.permissions import add_user_permission
+# from frappe.permissions import add_user_permission
 
 def autoname(doc, event):
 	doc.name = make_autoname("PHY-.#####")	
@@ -126,3 +126,17 @@ def add_permissions(doc, event):
 def generate_username(doc):
 	return "{}_{}".format(doc.first_name.capitalize(), doc.last_name.capitalize())
 
+def add_user_permission(doctype, name, user, apply=False):
+	'''Add user permission'''
+	from frappe.core.doctype.user_permission.user_permission import get_user_permissions
+	if name not in get_user_permissions(user).get(doctype, []):
+		if not frappe.db.exists(doctype, name):
+				frappe.throw(_("{0} {1} not found").format(_(doctype), name), frappe.DoesNotExistError)
+
+		frappe.get_doc(dict(
+				doctype='User Permission',
+				user=user,
+				allow=doctype,
+				for_value=name,
+				apply_for_all_roles=apply
+		)).save(ignore_permissions=True)

@@ -89,8 +89,6 @@ def get_conditions(filters):
 			`tabSales Invoice`.docstatus != 2 
 		And 
 			`tabSales Invoice`.invoice_type in ('Insurance Customers')
-		And
-			`tabSales Invoice`.payment_status != 'PAID'
 	"""]
 
 	if filters.get("from_date"):
@@ -113,11 +111,24 @@ def get_conditions(filters):
 				filters.get('physician')
 			)
 		)
+	if filters.get("clinic"):
+		query.append(
+			"`tabSales Invoice`.clinic = '{}'".format(
+				filters.get('clinic')
+			)
+		)
 
 	if filters.get("ars"):
 		query.append(
 			"`tabSales Invoice`.ars = '{}'".format(
 				filters.get('ars')
+			)
+		)
+
+	if filters.get("payment_status"):
+		query.append(
+			"`tabSales Invoice`.payment_status = '{}'".format(
+				filters.get('payment_status')
 			)
 		)
 
@@ -152,7 +163,7 @@ def get_data(filters):
 		Order By 
 			`tabSales Invoice`.posting_date
 		""".format(fields=fields, conditions=conditions or "1 = 1"),
-	filters, as_dict=True, debug=True)
+	filters, as_dict=True, debug=False)
 
 	for row in data:
 		results.append(

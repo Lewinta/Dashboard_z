@@ -1,5 +1,12 @@
 import frappe
 
+def before_insert():
+	if doc.customer_group == "Customers":
+		doc.naming_series = "CUST-"
+
+	if doc.customer_group == "ARS":
+		doc.naming_series = "ARS-"
+
 def after_insert(doc, event):
 	if not doc.customer_group == "ARS" or\
 		frappe.db.exists("Price List", doc.name):

@@ -1,0 +1,48 @@
+<h3>List of Users for {{user_name}}</h3>
+<ol>
+	{% for user in users %}
+		<li>{{user.first_name}} {{user.email}}</li>
+	{% endfor %}
+</ol>
+
+<br>
+<br>
+ <table class="table .table-condensed table-bordered table-hover">
+
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>NCF</th>
+                                        <th>ARS</th>
+                                        <th>Fecha Enviada ARS</th>
+                                        <th>M&eacutetodo de Pago</th>
+                                        <th>Monto Radicado</th>
+                                        <th>Monto Recibido</th>
+                                        <th>Total Pendiente</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if facturas_fiscal%}
+                                    {% for row in facturas_fiscal %}
+                                    <tr>
+                                        <!-- <td>{{row.idx}}</td> -->
+                                        <td>1</td>
+                                        <td>{{row.customer_name}}</td>
+                                        <td>{{row.posting_date}}</td>
+                                        <td>{{row.voucher_type}}</td>
+                                        <td>{{row.grand_total}}</td>
+                                        <td>{{row.paid_amount}}</td>
+                                        <td>{{row.posting_date}}</td>
+                                        <td>{{row.grand_total - row.paid_amount}}</td>
+                                        <!-- <td><span class="label label-primary">Pendiente</span></td> -->
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="8" style="text-align:center"> No hay Records</td>
+                                    </tr>
+                                    {% endif %}
+
+                                    </tbody>
+
+                                </table>

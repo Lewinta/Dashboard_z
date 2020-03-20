@@ -45,22 +45,21 @@ frappe.ui.form.on("Sales Invoice", {
         frm.add_fetch("patient", "nss", "nss");
     },
     set_item_queries: frm => {
-        const {invoice_type, ars, physician} = frm.doc;
-        console.log(ars);
+        const {invoice_type, ars, physician, selling_price_list} = frm.doc;
+        let pl = selling_price_list;
+        
+        if(invoice_type == "Insurance Customers")
+            pl = ars;
+
+        if(invoice_type == "Private Customers")
+            pl = physician;
+             
         frm.set_query("item_code", "items", () => {
-                if (invoice_type == "Insurance Customers") {
+                if ( ["Insurance Customers", "Private Customers"].includes(invoice_type)) {
                     return {
                         "query": "dashboard_z.queries.item_by_ars",
                         "filters": {
-                            "ars": ars,
-                            "physician": physician
-                        }
-                    }
-                } else if (invoice_type == "Private Customers"){
-                    return {
-                        "query": "dashboard_z.queries.item_by_ars",
-                        "filters": {
-                            "ars": "Venta estandar",
+                            "ars": pl,
                             "physician": physician
                         }
                     }
@@ -75,7 +74,9 @@ frappe.ui.form.on("Sales Invoice", {
             });
     },
     invoice_type: frm => {
-        let show = frm.doc.invoice_type == "Suppliers";
+        const {physician, customer, invoice_type} = frm.doc;
+
+        let show = invoice_type == "Suppliers";
         frm.trigger("set_customer_query");
         frm.trigger("set_default_serie");
         frm.toggle_reqd("patient", !show);
@@ -84,6 +85,8 @@ frappe.ui.form.on("Sales Invoice", {
 
         frm.set_value("is_pos", !show);
 
+        if (customer && physician && invoice_type == "Private Customers")
+            frm.set_value("selling_price_list", physician)
     },
     patient: frm => {
         const {patient} = frm.doc;
@@ -104,7 +107,7 @@ frappe.ui.form.on("Sales Invoice", {
         });
     },
     customer: frm => {
-        let price_list = frm.doc.invoice_type == "Insurance Customers" ? frm.doc.ars : "Venta estandar"
+        let price_list = frm.doc.invoice_type == "Insurance Customers" ? frm.doc.ars : frm.doc.physician
         frappe.run_serially([
             () => frm.trigger("set_item_queries"),
             () => frm.set_value("selling_price_list", price_list),
@@ -124,15 +127,21 @@ frappe.ui.form.on("Sales Invoice", {
                             "ars": frm.doc.customer,
                         },
                         "get_query": () => {
-                            return {
+                            let filters = {
                                 "filters": {
                                     "customer_group": "Customers",
                                     "invoice_type": "Insurance Customers",
+                                    "clinic": frm.doc.clinic,
                                     "physician": frm.doc.physician,
                                     "payment_status": frm.doc.is_return == 1 ? "PAID": "UNPAID",
                                     "docstatus": ["<", "2"],
                                 }
                             };
+                            
+                            if (frm.doc.clinic)
+                                filters.clinic = frm.doc.clinic
+                            
+                            return filters
                         },
                         "action": (selections, args) => {
 
@@ -253,19 +262,15 @@ frappe.ui.form.on("Sales Invoice", {
     item_table_update: (frm, cdt, cdn) => {
         frappe.run_serially([
             () => row = frappe.get_doc(cdt, cdn),
+            () => console.log(row),
             () => frappe.timeout(0.5),
             () => {if(row && !row.item_code) return},
-            () => row.difference_amount = 0.00 ? isNaN(row.difference_amount) : row.difference_amount,
-            () => row.rate = 0.00 ? isNaN(row.rate) : row.rate,
+            () => row.difference_amount = isNaN(row.difference_amount) ? 0.00 : row.difference_amount,
+            () => row.rate = isNaN(row.rate) ? 0.00 : row.rate,
             // () => apply_percent = apply_percent(row),
-            () => coverage = eval(row.coverage) ? row.coverage  : frm.doc.coverage,
             // () => row.authorized_amount = apply_percent ? row.rate * coverage : 0,
             () => row.price_list_rate = row.price_list_rate && !row.rate ? row.price_list_rate : row.rate,
-            () => row.authorized_amount = frm.doc.invoice_type == "Insurance Customers" ? row.price_list_rate * flt(coverage / 100.00) : 0.00,
-            () => row.claimed_amount = frm.doc.invoice_type == "Insurance Customers" ? row.price_list_rate : 0.00 ,
-            // () => row.difference_amount = aplicar_copago(row, frm) ? 0 : row.rate - row.authorized_amount,
-            () => row.difference_amount = row.price_list_rate - row.authorized_amount,
-            // () => row.difference_amount += row.adjustment - row.copago,
+            () => calculate_totals(frm, cdt, cdn),
             // () => row.difference_amount += row.margin_rate_or_amount,
             // () => row.amount += row.adjustment,
             () => refresh_field("items"),
@@ -287,11 +292,12 @@ frappe.ui.form.on("Sales Invoice", {
         let {invoice_type, total_taxes_and_charges} = frm.doc;
 
         $.map(frm.doc.items, row => {
+            let adj_percentage = row.price_list_rate * (row.adjustment_percentage / 100.0)
             total_authorized_amount += row.authorized_amount;
             total_claimed_amount += row.claimed_amount;
             total_difference_amount += row.difference_amount;
             // total_copago_amount += row.copago;
-            total_adjustment += row.margin_rate_or_amount;
+            total_adjustment += row.adjustment_type == "Amount" ? row.adjustment_amount : adj_percentage;
         });
         frappe.run_serially([
             frm.set_value("claimed_amount", total_claimed_amount),
@@ -303,7 +309,7 @@ frappe.ui.form.on("Sales Invoice", {
             update_payment_table(frm, {
                 "total_authorized_amount": total_authorized_amount, 
                 "total_copago": total_copago_amount, 
-                "total_difference_amount": total_difference_amount + total_taxes + total_adjustment}),
+                "total_difference_amount": total_difference_amount + total_taxes }),
             // frm.set_value("grand_total", frm.doc.grand_total += frm.doc.total_adjustment),
             frm.trigger("calculate_payments"),
             // () => frappe.timeout(0.5),
@@ -350,6 +356,19 @@ frappe.ui.form.on("Sales Invoice Item", {
         ]);
 
         frm.trigger("refresh_outside_amounts");
+    },
+    adjustment_amount: (frm, cdt, cdn) => {
+       frappe.run_serially([
+            () => frappe.timeout(0.3),
+            () => frm.events.item_table_update(frm, cdt, cdn),
+        ]);
+
+    },
+    adjustment_percentage: (frm, cdt, cdn) => {
+       frappe.run_serially([
+            () => frappe.timeout(0.3),
+            () => frm.events.item_table_update(frm, cdt, cdn),
+        ]);
     },
     margin_rate_or_amount: (frm, cdt, cdn) => {
         row = frappe.model.get_doc(cdt,cdn);
@@ -417,6 +436,39 @@ function update_payment_table(frm, opts){
 
         refresh_field("payments");
     }
+
+function calculate_totals(frm, cdt, cdn){
+    let row = frappe.get_doc(cdt, cdn);
+    let coverage = eval(row.coverage) ? row.coverage  : frm.doc.coverage;
+    let adj_percentage = row.price_list_rate * (flt(row.adjustment_percentage) / 100.0)
+    console.log("Let's Cal totals")
+    if (frm.doc.invoice_type == "Insurance Customers")
+        row.authorized_amount = row.price_list_rate * flt(coverage / 100.00)
+    else
+        row.authorized_amount = 0.00;
+
+    
+    if (frm.doc.invoice_type == "Insurance Customers") 
+        row.claimed_amount = row.price_list_rate;
+    else
+        row.claimed_amount = 0.00;
+
+    if (frm.doc.invoice_type == "Insurance Customers") 
+        row.difference_amount = row.price_list_rate - row.authorized_amount;
+    
+    if (frm.doc.invoice_type == "Private Customers") 
+        row.difference_amount = row.price_list_rate;
+    
+    if (!row.adjustment_type)
+        return
+    console.log("****************\n");
+    console.log(row);
+    row.difference_amount += row.adjustment_type == "Amount" ? flt(row.adjustment_amount)  : flt(adj_percentage);
+    row.amount            += row.adjustment_type == "Amount" ? flt(row.adjustment_amount)  : flt(adj_percentage);
+    row.rate            += row.adjustment_type == "Amount" ? flt(row.adjustment_amount)  : flt(adj_percentage);
+    console.log(row);
+    console.log("****************\n");
+}
 
 function apply_percent(row){
 

@@ -2,7 +2,8 @@ import frappe
 
 import json
 from frappe.defaults import get_global_default
-
+from frappe.utils import flt
+from frappe import _
 def on_session_creation():
 	usr_profile = frappe.get_value(
 		"User",
@@ -51,6 +52,40 @@ def update_sales_invoice(doc, selections, args):
 	sinv.set_missing_values()
 
 	return sinv.as_dict()
+
+def invoice_to_claim(sinv_name):
+	if not sinv_name:
+		frappe.throw(_("Sales Invoice name can't be empty!"))
+
+	fields = [
+		"name",
+		"posting_date",
+		"ars",
+		"customer_name",
+		"authorization_no",
+		"nss",
+		"authorized_amount",
+		"received_amount",
+	]
+	sinv = frappe.db.get_value("Sales Invoice", sinv_name, fields, as_dict=True)
+	if not sinv:
+		frappe.throw("Factura {} no encontrada".format(sinv_name))
+	if not sinv.get('ars'):
+		frappe.throw("Factura <b> <a href='/desk#Form/Sales%20Invoice/{}'></b> no tiene ARS".format(sinv_name))
+	fee = frappe.db.get_value("Customer", sinv.ars, "fee_percentage") / 100.00
+	return  {
+		"document": sinv.name,
+		"date": sinv.posting_date,
+		"customer": sinv.customer_name,
+		"authorization": sinv.authorization_no,
+		"nss": sinv.nss,
+		"claimed_amount": flt(sinv.authorized_amount),
+		"paid_amount": flt(sinv.received_amount),
+		"fee_amount": flt(sinv.authorized_amount) * fee ,
+		"pending_amount": sinv.authorized_amount - sinv.received_amount,
+		"fee": fee,
+	}
+	
 
 def create_service_item():
 	default_company = get_global_default("company")

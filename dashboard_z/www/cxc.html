@@ -1,0 +1,92 @@
+{%extends "dashboard_z/www/templates/base.html"%}
+{% block title %} Cuentas por Cobrar{% endblock %} 
+{% block content %}
+
+{% if not total_fact_fiscal %}
+    {% set total_fact_fiscal = 0.00 %}
+{% endif %}
+
+{% if not paid_fact_fiscal %}
+    {% set paid_fact_fiscal = 0.00 %}
+{% endif %}
+    <!-- Page content -->
+    <div class="container-fluid">
+
+
+        <!-- Page section: Preview -->
+        <div class="section">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- Demo elements -->
+                    <div>
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+                                <table class="table .table-condensed table-bordered table-hover">
+
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>NCF</th>
+                                        <th>ARS</th>
+                                        <th>Fecha Enviada ARS</th>
+                                        <!-- <th>M&eacutetodo de Pago</th> -->
+                                        <th>Monto Radicado</th>
+                                        <th>Monto Recibido</th>
+                                        <th>Fecha Recibido</th>
+                                        <th>Total Pendiente</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if facturas_fiscal%}
+                                    {% for row in facturas_fiscal %}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td><a href="/desk#Form/Sales Invoice/{{row.name}}">{{row.ncf}}</a></td>
+                                        <td>{{row.customer_name}}</td>
+                                        <td>{{row.send_date}}</td>
+                                        <!-- <td>{{row.voucher_type or "-"}}</td> -->
+                                        <td>{{'{:20,.2f}'.format(row.grand_total)}}</td>
+                                        <td>{{'{:20,.2f}'.format(row.paid_amount)}}</td>
+                                        <td>{{row.paid_on or "-"}}</td>
+                                        {%set total = row.grand_total | float - row.paid_amount | float%}
+                                        {% if row.paid_on and total > 0.00 %}
+                                            <td style="color:red;font-weight:bold;">{{'{:20,.2f}'.format(total)}}</td>
+                                        {%else%}
+                                            <td>{{'{:20,.2f}'.format(total)}}</td>
+
+                                        {%endif%}
+                                        <!-- <td><span class="label label-primary">Pendiente</span></td> -->
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td>{{facturas_fiscal | length + 1}}</td>
+                                        <td colspan="3" style="text-align:center"><strong>TOTAL</strong></td>
+                                        <td><strong>{{'{:20,.2f}'.format(total_fact_fiscal) or 0.00}}</strong></td>
+                                        <td><strong>{{'{:20,.2f}'.format(paid_fact_fiscal) or 0.00}}</strong></td>
+                                        <td></td>
+                                        <td><strong>{{'{:20,.2f}'.format(total_fact_fiscal - paid_fact_fiscal)}}</strong></td>
+                                        <!-- <td><span class="label label-primary">Pendiente</span></td> -->
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="8" style="text-align:center"> No hay Records</td>
+                                    </tr>
+                                    {% endif %}
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Demo elements -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Page section: Preview -->
+    </div>
+    <!-- /Page content -->
+{% endblock %}

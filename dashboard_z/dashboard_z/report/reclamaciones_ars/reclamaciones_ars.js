@@ -8,12 +8,14 @@ frappe.query_reports["Reclamaciones ARS"] = {
 			"label": __("From Date"),
 			"fieldname": "from_date",
 			"fieldtype": "Date",
+			"default": frappe.datetime.month_start(),
 			"reqd": 1,
 		},
 		{
 			"label": __("To Date"),
 			"fieldname": "to_date",
 			"fieldtype": "Date",
+			"default": frappe.datetime.now_date(),
 			"reqd": 1,
 		},
 		{
@@ -28,6 +30,19 @@ frappe.query_reports["Reclamaciones ARS"] = {
 			"fieldname": "ars",
 			"fieldtype": "Link",
 			"options": "Customer",
+		},
+		{
+			"label": __("Clinic"),
+			"fieldname": "clinic",
+			"fieldtype": "Link",
+			"options": "Clinic",
+		},
+		{
+			"label": __("Payment Status"),
+			"fieldname": "payment_status",
+			"fieldtype": "Select",
+			"options": "PAID\nPARTIALLY PAID\nUNPAID",
+			"default": "UNPAID",
 		},
 		{
 			"label": __("Item Group"),
