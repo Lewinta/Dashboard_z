@@ -5,7 +5,6 @@ def validate(doc, event):
 	validate_authorization_no(doc)
 
 def on_submit(doc, event):
-
 	if not doc.invoice_type:
 		frappe.throw(_("Please set Invoice Type before proceed!"))
 
@@ -45,6 +44,26 @@ def on_cancel(doc, event):
 
 	frappe.db.commit()
 
+@frappe.whitelist()
+def get_parent_invoice(name):
+	if not name:
+		return False
+
+	data =  frappe.db.sql("""
+		SELECT
+			`tabSales Invoice Item`.parent
+		FROM
+			`tabSales Invoice Item`
+		WHERE 
+			`tabSales Invoice Item`.docstatus < 2
+		AND
+			`tabSales Invoice Item`.paid_sales_invoices like '%{}%'
+		""".format(name))
+	if data:
+		return data[0][0]
+	else:
+		return False
+
 def validate_authorization_no(doc):
 	# Let's validate there is no other invoice with the same
 	# authorization_no same ARS and same docstatus
@@ -52,7 +71,7 @@ def validate_authorization_no(doc):
 		"ars": doc.ars,
 		"authorization_no": doc.authorization_no,
 		"invoice_type": "Insurance Customers",
-		"docstatus": [">=", 0],
+		"docstatus": ["<=", 1],
 	}
 	invoice_qty = frappe.db.count("Sales Invoice", filters)
 

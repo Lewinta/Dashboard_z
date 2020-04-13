@@ -13,6 +13,9 @@ from dashboard_z.utils.api import invoice_to_claim
 
 class PaymentProcessingTool(Document):
 	def validate(self):
+		if frappe.db.get_value("Sales Invoice", self.invoice, "docstatus") > 1:
+			frappe.throw("No es posible recibir pagos a una factura cancelada!")
+			
 		self.calculate_totals()
 		self.update_status()
 	
@@ -86,7 +89,14 @@ class PaymentProcessingTool(Document):
 			
 			recvd = frappe.get_value(dt, claim.document, "received_amount")
 			recvd +=  claim.received_amount
-			frappe.set_value(dt,claim.document, "received_amount", recvd)
+			frappe.db.sql("""
+				UPDATE
+					`tabSales Invoice`
+				SET
+					received_amount = %s
+				where 
+					name = %s
+				""", (recvd, claim.document))
 	def generate_payment_dict(self):
 		inv_dict = []
 		for claim in self.claims:

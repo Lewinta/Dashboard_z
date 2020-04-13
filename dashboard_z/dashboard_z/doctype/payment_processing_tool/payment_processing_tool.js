@@ -115,6 +115,7 @@ frappe.ui.form.on('Payment Processing Tool', {
 					"invoice_type": "Suppliers",
 					"customer": frm.doc.supplier,
 					"physician": frm.doc.physician,
+					"docstatus": 1,
 				}
 			}
 		})

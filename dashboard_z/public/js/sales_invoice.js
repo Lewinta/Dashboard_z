@@ -2,8 +2,7 @@ frappe.provide("dashboard_z.sales_invoice");
 
 frappe.ui.form.on("Sales Invoice", {
     refresh: frm => {
-        // const events = ["set_physician_query"];
-        const events = ["add_fetch_events"];
+        const events = ["add_fetch_events", "add_buttons"];
         let show = frm.doc.invoice_type == "Suppliers";
         $.map(events, event => {
             frm.trigger(event);
@@ -11,7 +10,6 @@ frappe.ui.form.on("Sales Invoice", {
         frm.toggle_reqd("patient", !show);
         frm.toggle_display("patient", !show);
         frm.toggle_display("customer", show);
-
     },
     validate: frm => {
         const no_verif = ["Private Customers", "Insurance Customers"]
@@ -37,6 +35,42 @@ frappe.ui.form.on("Sales Invoice", {
             }
         ])
         frm.set_value("title", frm.doc.customer_name);
+    },
+    add_buttons: frm => {
+        if (frm.doc.invoice_type == "Insurance Customers"){
+            console.log(frm.doc.invoice_type);
+            let opts = {
+                "method": "dashboard_z.hook.sales_invoice.get_parent_invoice"
+            };
+
+            opts.args = {
+                "name": frm.doc.name,
+            };
+
+            frappe.call(opts).done(({message}) =>{
+                
+                if (message) {
+                    frm.doc.related_invoice = message
+                    frm.add_custom_button(__("View Invoice"), message => {
+                        
+                        frappe.set_route("Form", "Sales Invoice", frm.doc.related_invoice)
+                    })
+                }
+            }).fail(() => frappe.msgprint("¡Ha ocurrido un error!"));
+        }
+        if (frm.doc.invoice_type == "Suppliers"){
+            console.log(frm.doc.invoice_type);
+            frappe.route_options = {
+                "physician": frm.doc.physician,
+                "from_date": frm.doc.posting_date,
+                "to_date": frm.doc.posting_date,
+                "sales_invoice": frm.doc.name,
+            }  
+            frm.add_custom_button(__("Claims"), message => {        
+                frappe.set_route("query-report", "Claim Report")
+            }, "View") 
+            
+        }
     },
     add_fetch_events: frm => {
         frm.add_fetch("physician", "hospital", "clinic");

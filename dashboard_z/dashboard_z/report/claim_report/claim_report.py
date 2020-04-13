@@ -18,9 +18,10 @@ def get_columns(filters):
 		(_("NCF"), "ncf", "Data", 100),
 		(_("Authorization No"), "authorization_no", "Data", 100),
 		(_("NSS"), "nss", "Data", 100),
-		(_("Claimed Amount"), "claimed_amount", "Currency", 120),
+		(_("Authorized Amount"), "authorized_amount", "Currency", 120),
 		(_("Fee Amount"), "fee_amount", "Currency", 100),
-		(_("Paid Amount"), "received_amount", "Currency", 100),
+		(_("Paid Amount"), "paid_amount", "Currency", 100),
+		(_("Received Amount"), "received_amount", "Currency", 100),
 		(_("Pending Amount"), "pending_amount", "Currency", 100),
 		(_("Status"), "status", "Data", 90),
 	)
@@ -39,81 +40,46 @@ def get_data(filters):
 	fields = get_fields(filters)
 	conditions = get_conditions(filters)
 	results = []
-	if filters.get('summarize'):
+	data = frappe.db.sql("""
+		Select
+			{fields}
+		FROM 
+			`tabSales Invoice`
+		Where
+			{conditions}
+		""".format(fields=fields, conditions=conditions or "1 = 1"),
+		filters, as_dict=True, debug=False
+	)
+	for row in data:
+		status = "ERROR"
+		
+		if flt(row.received_amount) == .00:
+			status = _("UNPAID") 
+		if flt(row.authorized_amount, 2)  > .00:
+			status = _("PARTIALLY") 
+		if flt(row.received_amount, 2) ==  flt(row.authorized_amount, 2):
+			status = _("PAID")
 
-		query = frappe.db.sql("""
-			Select
-				SUM(1) as total_points,
-				SUM(total_score) total_submitted,
-				SUM(IF(DATEDIFF(DATE(`tabAppraisal`.modified), `tabAppraisal`.end_date) < 5, total_score,0)) total_earned,
-				`tabAppraisal`.employee,
-				`tabAppraisal`.employee_name
-			FROM 
-				`tabAppraisal`
-			Where
-				{conditions}
-			GROUP BY 
-				`tabAppraisal`.employee
-			""".format(
-				fields=fields,
-				conditions=conditions or "1 = 1",
-			), filters, as_dict=True, debug=False
-		)
+		ncf, customer = frappe.db.get_value("Sales Invoice", filters.get("sales_invoice"), ["ncf", "customer"])
+		fee = flt(frappe.db.get_value("Customer", customer, "fee_percentage")) / 100.00
 
-		total_points = filters.get('weeks') * 5
-		for data in query:
-			results.append(
-				(
-					data.employee,
-					data.employee_name,
-					data.total_submitted,
-					data.total_earned,
-					total_points,
-					data.total_submitted / total_points * 100,
-					data.total_earned / total_points * 100,
-				)
+		results.append(
+			(
+				row.name,
+				row.posting_date,
+				row.customer_name,
+				row.ars_name,
+				ncf,
+				row.authorization_no,
+				row.nss,
+				row.authorized_amount,
+				row.received_amount * fee, # Fee amount
+				row.received_amount, # Paid Amount
+				row.received_amount * (1 - fee), # Received Amount
+				(flt(row.authorized_amount) - flt(row.received_amount)) or "0.0", # Pending Amount
+				status
 			)
-
-	else:
-		data = frappe.db.sql("""
-			Select
-				{fields}
-			FROM 
-				`tabSales Invoice`
-			Where
-				{conditions}
-			""".format(fields=fields, conditions=conditions or "1 = 1"),
-			filters, as_dict=True, debug=False
 		)
-		for row in data:
-			status = "ERROR"
-			
-			if flt(row.received_amount) == .00:
-				status = _("UNPAID") 
-			if flt(row.claimed_amount, 2)  > .00:
-				status = _("PARTIALLY") 
-			if flt(row.received_amount, 2) ==  flt(row.claimed_amount, 2):
-				status = _("PAID")
-
-			ncf, customer = frappe.db.get_value("Sales Invoice", filters.get("sales_invoice"), ["ncf", "customer"])
-			fee = flt(frappe.db.get_value("Customer", customer, "fee_percentage")) / 100.00
-
-			results.append(
-				(
-					row.name,
-					row.posting_date,
-					row.customer_name,
-					row.ars_name,
-					ncf,
-					row.authorization_no,
-					row.nss,
-					row.authorized_amount,
-					row.received_amount * fee,
-					row.received_amount * (1 - fee),
-					flt(row.claimed_amount) - flt(row.received_amount),
-					status
-				)
-			)
 	return results
 
 def get_conditions(filters):
@@ -134,7 +100,11 @@ def get_conditions(filters):
 			"Sales Invoice Item",
 			filters,
 			"paid_sales_invoices"
-		).split(',')
+		)
+		if not paid_invoices:
+			frappe.throw("Esta Factura no tiene reclamaciones!")
+
+		paid_invoices = paid_invoices.split(',')
 		# Let's remove the u prefix for unicode
 		paid_invoices = [str(r) for r in paid_invoices]
 		conditions.append(
