@@ -139,6 +139,88 @@ class InvoiceCreationTool(Document):
 		# persist the parsed rows so the client can reload_doc() and see them
 		self.save()
 
+	def _import_context(self):
+		"""Everything the import needs that does not change from row to row."""
+		company = frappe.db.get_single_value("Global Defaults", "default_company")
+		income_account, receivable_account, expense_account, cash_account = frappe.get_value(
+			"Company",
+			company,
+			["default_income_account", "default_receivable_account",
+			 "default_expense_account", "default_cash_account"],
+		)
+
+		return frappe._dict({
+			"company": company,
+			"income_account": income_account,
+			"receivable_account": receivable_account,
+			"expense_account": expense_account,
+			"cash_account": cash_account,
+			"avail_ncf": frappe.get_doc("DGII Settings", self.physician).get_remaining_ncf("B02.########"),
+		})
+
+	def _row_error(self, row, message):
+		return {
+			"idx": row.idx,
+			"customer": row.customer or "",
+			"authorization_no": str(row.authorization_no or "").strip(),
+			"message": message,
+		}
+
+	def _validate_rows(self, ctx):
+		"""Classify every row before anything is written.
+
+		A duplicate is not an error: it is an authorization already invoiced, so
+		we skip it. That is what makes retrying a half-done batch safe.
+		"""
+		pattern = re.compile(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$")
+		to_create, duplicated, errors = [], [], []
+		seen = set()
+
+		for row in self.invoices:
+			authorization_no = str(row.authorization_no or "").strip()
+			row_date = str(row.date or "")
+			problem = None
+
+			if not str(row.customer or "").strip():
+				problem = _("Falta el nombre del paciente")
+			elif not authorization_no:
+				problem = _("Falta el no. de autorización")
+			elif not row_date:
+				problem = _("Falta la fecha")
+			elif not pattern.match(row_date):
+				problem = _("Fecha inválida: {0}").format(row_date)
+			elif row_date > nowdate():
+				problem = _("La fecha {0} es futura").format(row_date)
+			elif row.ars and not frappe.db.exists("Customer", row.ars):
+				problem = _("La ARS {0} no existe como cliente").format(row.ars)
+			elif flt(row.claimed) <= 0:
+				problem = _("El monto reclamado debe ser mayor que cero")
+			elif authorization_no in seen:
+				problem = _("El no. de autorización {0} se repite en el archivo").format(authorization_no)
+
+			if problem:
+				errors.append(self._row_error(row, problem))
+				continue
+
+			seen.add(authorization_no)
+
+			if invoice_exists(authorization_no):
+				duplicated.append(row)
+			else:
+				to_create.append(row)
+
+		if not errors and len(to_create) > ctx.avail_ncf:
+			errors.append({
+				"idx": 0,
+				"customer": "",
+				"authorization_no": "",
+				"message": _("No hay suficientes B02 para {0}: se necesitan {1} y quedan {2}").format(
+					self.physician_name, len(to_create), ctx.avail_ncf
+				),
+			})
+
+		return to_create, duplicated, errors
+
 	@frappe.whitelist()
 	def import_invoices(self):
 		dgii_settings = frappe.get_doc("DGII Settings", self.physician)
@@ -154,7 +236,7 @@ class InvoiceCreationTool(Document):
 			frappe.throw("No hay suficientes B02 para {0}".format(self.physician_name))
 
 		for row in self.invoices:
-			if exists(row):
+			if invoice_exists(str(row.authorization_no).strip()):
 				row.status = "Duplicate"
 				continue
 			
@@ -279,16 +361,13 @@ class InvoiceCreationTool(Document):
 			row.status = "Imported"	
 
 
-def exists(row):
-	# dedup by authorization_no (unique per authorization). The old monto_* fields
-	# no longer exist (made this always False), and nss is unreliable due to
-	# leading-zero formatting differences between the CSV and stored invoices.
-	filters = {
-		"authorization_no": str(row.authorization_no).strip(),
+def invoice_exists(authorization_no):
+	# dedup by authorization_no (unique per authorization). nss is unreliable due
+	# to leading-zero formatting differences between the CSV and stored invoices.
+	return bool(frappe.db.exists("Sales Invoice", {
+		"authorization_no": authorization_no,
 		"docstatus": ["<", 2],
-	}
-
-	return not not frappe.db.exists("Sales Invoice", filters)
+	}))
 	
 
 
