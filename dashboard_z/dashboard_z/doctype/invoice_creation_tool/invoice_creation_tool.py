@@ -8,7 +8,7 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import get_site_path
 from . import UnicodeReader
-from frappe.utils import nowdate, add_days, flt
+from frappe.utils import nowdate, add_days, flt, strip_html
 import re
 import io
 
@@ -221,144 +221,178 @@ class InvoiceCreationTool(Document):
 
 		return to_create, duplicated, errors
 
+	def _resolve_patient(self, row):
+		"""Find the Patient for this row, creating it when it is new."""
+		if row.nss and frappe.db.exists("Patient", {"nss": row.nss}):
+			return frappe.get_doc("Patient", {"nss": row.nss})
+
+		if frappe.db.exists("Patient", {"patient_name": row.customer}):
+			return frappe.get_doc("Patient", {"patient_name": row.customer})
+
+		patient = frappe.new_doc("Patient")
+		patient.update({
+			# healthcare Patient requires first_name and derives patient_name
+			# from it; keep the full name so the lookup above keeps matching
+			"first_name": row.customer,
+			"patient_name": row.customer,
+			"customer_group": "Customers",
+			"physician": self.physician,
+			"physician_name": self.physician_name,
+			"ars": row.ars,
+			"ars_name": row.ars_name,
+			"sex": 'Femenino',
+			"nss": row.nss or "",
+		})
+		patient.save()
+		return patient
+
+	def _create_invoice(self, row, ctx):
+		patient = self._resolve_patient(row)
+
+		# legacy/new patients may not be linked to a Customer (Healthcare only
+		# auto-links when 'link_customer_to_patient' is on) -> ensure one exists
+		if not patient.customer:
+			from healthcare.healthcare.doctype.patient.patient import create_customer
+			create_customer(patient)
+			patient.reload()
+
+		# the invoice's ars/ars_name are fetched from the customer (read-only),
+		# so stamp the ARS on the customer or the fetch overwrites it with None
+		if row.ars and row.ars != 'PACIENTE PRIVADO':
+			frappe.db.set_value("Customer", patient.customer, {
+				"ars": row.ars,
+				"nombre_ars": row.ars_name,
+			}, update_modified=False)
+
+		doc = frappe.new_doc("Sales Invoice")
+		doc.update({
+			"customer": patient.customer,
+			"patient": patient.name,
+			"set_posting_time": 1,
+			"naming_series": "B02.########",
+			"ars": '' if row.ars == 'PACIENTE PRIVADO' else row.ars,
+			"ars_name": '' if row.ars == 'PACIENTE PRIVADO' else row.ars_name,
+			"invoice_type": 'Private Customers' if not row.ars else 'Insurance Customers',
+			"against_income_account": ctx.income_account,
+			"posting_date": row.date,
+			"authorization_no": str(row.authorization_no).strip(),
+			"nss": str(row.nss).strip(),
+			"physician": self.physician,
+			"physician_name": self.physician_name,
+			"clinic": self.clinic.strip(),
+			"debit_to": ctx.receivable_account,
+			"due_date": add_days(row.date, 20),
+			"authorized_amount": flt(row.authorized),
+			"claimed_amount": flt(row.claimed),
+			"difference_amount": row.difference,
+		})
+
+		doc.append("items", {
+			"claimed_amount": flt(row.claimed),
+			"authorized_amount": flt(row.authorized),
+			"difference_amount": row.difference,
+			"coverage": 0 if not row.ars else 80.0,
+			"qty": 1,
+			"print_qty": 1,
+			"rate": flt(row.claimed),
+			"net_rate": flt(row.claimed),
+			"base_rate": flt(row.claimed),
+			"amount": flt(row.claimed),
+			"net_amount": flt(row.claimed),
+			"base_amount": flt(row.claimed),
+			"parent": doc.name,
+			"conversion_factor": 1,
+			"item_name": row.service,
+			"description": row.service,
+			"uom": "Unidad(es)",
+			"expense_account": ctx.expense_account,
+			"income_account": ctx.income_account,
+		})
+
+		if row.ars:
+			doc.append("payments", {
+				"account": ctx.cash_account,
+				"amount": flt(row.authorized),
+				"base_amount": flt(row.authorized),
+				"mode_of_payment": "Seguro",
+				"type": "Cash",
+			})
+
+		doc.append("payments", {
+			"account": ctx.cash_account,
+			"amount": row.difference,
+			"base_amount": row.difference,
+			"mode_of_payment": "Efectivo",
+			"type": "Cash",
+		})
+
+		doc.set_missing_values()
+		# crear la factura validada (enviada), no en borrador
+		doc.submit()
+		return doc
+
 	@frappe.whitelist()
 	def import_invoices(self):
-		dgii_settings = frappe.get_doc("DGII Settings", self.physician)
-		avail_ncf = dgii_settings.get_remaining_ncf("B02.########")
-		company = frappe.db.get_single_value("Global Defaults", "default_company")
-		income_account, default_receivable_account, default_expense_account, default_cash_account  = frappe.get_value(
-			"Company",
-			company,
-			["default_income_account", "default_receivable_account", "default_expense_account", "default_cash_account"]
-		)
+		ctx = self._import_context()
+		to_create, duplicated, errors = self._validate_rows(ctx)
 
-		if len(self.invoices) > avail_ncf:
-			frappe.throw("No hay suficientes B02 para {0}".format(self.physician_name))
+		# nada se escribe si el archivo trae problemas: el lote es todo o nada
+		if errors:
+			return self._report([], duplicated, errors)
+
+		created = []
+		try:
+			for row in to_create:
+				self._create_invoice(row, ctx)
+				created.append(row)
+				frappe.publish_realtime(
+					'import_invoice_progress',
+					{"progress": [len(created), len(to_create),
+						"{0} {1}".format(row.authorization_no, row.customer)]},
+					doctype="Invoice Creation Tool",
+					user=frappe.session.user,
+				)
+		except Exception as exc:
+			# the whole batch shares one transaction, so this undoes the invoices,
+			# the patients and the NCF numbers taken so far
+			frappe.db.rollback()
+			failed_row = to_create[len(created)]
+			message = strip_html(str(exc)) or exc.__class__.__name__
+			return self._report([], duplicated, [self._row_error(failed_row, message)])
+
+		return self._report(created, duplicated, [])
+
+	def _report(self, created, duplicated, errors):
+		"""Persist the per-row outcome and hand a summary to the client.
+
+		Deliberately runs after the rollback and commits on its own: raising
+		here (frappe.throw) would roll the report back along with the batch.
+		"""
+		failed = {e["idx"]: e["message"] for e in errors}
+		created_idx = set(row.idx for row in created)
+		duplicated_idx = set(row.idx for row in duplicated)
 
 		for row in self.invoices:
-			if invoice_exists(str(row.authorization_no).strip()):
-				row.status = "Duplicate"
-				continue
-			
-			doc = frappe.new_doc("Sales Invoice")
-
-			# row.date may be a datetime.date (loaded from DB) or a str (from the client)
-			if not str(row.customer or "").strip() or not row.date:
-				frappe.throw("Didn't receive a customer or date  Please add Manually")
-	
-			if row.nss and frappe.db.exists("Patient", {"nss": row.nss}):
-				cust = frappe.get_doc("Patient", {"nss": row.nss})
-			elif frappe.db.exists("Patient", {"patient_name": row.customer}):
-				cust = frappe.get_doc("Patient", {"patient_name": row.customer})
+			if row.idx in failed:
+				row.status, row.error_message = "Error", failed[row.idx]
+			elif row.idx in created_idx:
+				row.status, row.error_message = "Imported", ""
+			elif row.idx in duplicated_idx:
+				row.status, row.error_message = "Duplicate", ""
 			else:
-				cust = frappe.new_doc("Patient")
+				row.status, row.error_message = "", ""
 
-				cust.update({
-					# healthcare Patient requires first_name and derives patient_name
-					# from it; keep the full name so the lookup above keeps matching
-					"first_name": row.customer,
-					"patient_name": row.customer,
-					"customer_group": "Customers",
-					"physician": self.physician,
-					"physician_name": self.physician_name,
-					"ars": row.ars,
-					"ars_name": row.ars_name,
-					"sex": 'Femenino',
-					"nss": row.nss or "",
-				})
-				
-				cust.save()
-				frappe.db.sql("commit")
-				frappe.local.rollback_observers = []				
+		# physician/clinic are mandatory on the doctype; the report must persist regardless
+		self.flags.ignore_mandatory = True
+		self.save()
+		frappe.db.commit()
 
-			# legacy/new patients may not be linked to a Customer (Healthcare only
-			# auto-links when 'link_customer_to_patient' is on) -> ensure one exists
-			if not cust.customer:
-				from healthcare.healthcare.doctype.patient.patient import create_customer
-				create_customer(cust)
-				cust.reload()
-
-			# the invoice's ars/ars_name are fetched from the customer (read-only),
-			# so stamp the ARS on the customer or the fetch overwrites it with None
-			if row.ars and row.ars != 'PACIENTE PRIVADO':
-				frappe.db.set_value("Customer", cust.customer, {
-					"ars": row.ars,
-					"nombre_ars": row.ars_name,
-				}, update_modified=False)
-
-			doc.update({
-				"customer": cust.customer,
-				"patient": cust.name,
-				"set_posting_time": 1,
-				"naming_series": "B02.########",
-				# "ncf": row.ncf or "NO COMP",
-				"ars": '' if row.ars == 'PACIENTE PRIVADO' else row.ars,
-				"ars_name": '' if row.ars == 'PACIENTE PRIVADO' else row.ars_name,
-				"invoice_type": 'Private Customers' if not row.ars else 'Insurance Customers',
-				"against_income_account": income_account,
-				"posting_date" : row.date,
-				"authorization_no" : str(row.authorization_no).strip(),
-				"nss" : str(row.nss).strip(),
-				"physician" : self.physician,
-				"physician_name" : self.physician_name,
-				"clinic" : self.clinic.strip(),
-				"debit_to" : default_receivable_account,
-				"due_date": add_days(row.date, 20),
-				"authorized_amount": flt(row.authorized),
-				"claimed_amount": flt(row.claimed),
-				"difference_amount": row.difference,
-			})
-	
-			doc.append("items", {
-				"claimed_amount": flt(row.claimed),
-				"authorized_amount": flt(row.authorized),
-				"difference_amount": row.difference,
-				"coverage": 0 if not row.ars else 80.0,
-				"qty": 1,
-				"print_qty": 1,
-				"rate": flt(row.claimed),
-				"net_rate": flt(row.claimed),
-				"base_rate": flt(row.claimed),
-				"amount": flt(row.claimed),
-				"net_amount": flt(row.claimed),
-				"base_amount": flt(row.claimed),
-				"base_rate": flt(row.claimed),
-				"parent": doc.name,
-				"conversion_factor": 1,
-				"item_name": row.service,
-				"description": row.service,
-				"uom": "Unidad(es)",
-				"expense_account": default_expense_account,
-				"income_account": income_account,
-			})
-	
-			if row.ars:
-				doc.append("payments", {
-					"account": default_cash_account,
-					"amount": flt(row.authorized),
-					"base_amount": flt(row.authorized),
-					"mode_of_payment": "Seguro",
-					"type": "Cash"
-				})
-			
-			doc.append("payments", {
-				"account": default_cash_account,
-				"amount": row.difference,
-				"base_amount": row.difference,
-				"mode_of_payment": "Efectivo",
-				"type": "Cash"
-			})
-			
-			doc.set_missing_values()
-			# crear la factura validada (enviada), no en borrador
-			doc.submit()
-			frappe.publish_realtime(
-				'import_invoice_progress',
-				{"progress": [row.idx, len(self.invoices)-1, "{authorization_no} {customer}".format(**row.as_dict())]},
-				doctype="Invoice Creation Tool",
-				user=frappe.session.user
-			)
-			row.status = "Imported"	
+		return {
+			"ok": not errors,
+			"created": len(created),
+			"duplicated": len(duplicated),
+			"errors": errors,
+		}
 
 
 def invoice_exists(authorization_no):
