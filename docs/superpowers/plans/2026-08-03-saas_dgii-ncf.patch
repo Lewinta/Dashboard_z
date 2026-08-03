@@ -1,0 +1,37 @@
+--- apps-backup/saas_dgii.bak-2026-08-03/saas_dgii/saas_dgii/doctype/dgii_settings/dgii_settings.py	2026-07-06 12:47:07.202591848 -0400
++++ apps/saas_dgii/saas_dgii/saas_dgii/doctype/dgii_settings/dgii_settings.py	2026-08-03 15:06:41.657764437 -0400
+@@ -29,18 +29,28 @@
+ 			)
+ 
+ 		row = row[0]
+-		frappe.errprint(row)
+ 
+-		if row.current == row.max:
++		# Lock the counter row for the rest of the transaction. Two invoices for
++		# the same physician serialise here instead of racing on a stale in-memory
++		# copy. Deliberately no commit: if the caller rolls back, the number is
++		# released instead of burnt, so the fiscal sequence keeps no gaps.
++		cfg = frappe.db.sql(
++			"""SELECT `current`, `max` FROM `tabNCF Configuration` WHERE name = %s FOR UPDATE""",
++			row.name,
++			as_dict=True,
++		)[0]
++
++		if cint(cfg.current) >= cint(cfg.max):
+ 			frappe.throw(
+ 				_("Serie {} reached it's limit please reload".format(serie))
+ 			)
+ 
+-		new_seq = cint(row.current)
+-		row.current += 1
++		new_seq = cint(cfg.current)
++		frappe.db.set_value(
++			"NCF Configuration", row.name, "current", new_seq + 1, update_modified=False
++		)
++		row.current = new_seq + 1   # keep the in-memory child row in sync
+ 
+-		row.db_update()
+-		frappe.db.commit()
+ 		return '{0}{1:08d}'.format(serie.split(".")[0], new_seq)
+ 
+ 	def get_remaining_ncf(self, serie):
