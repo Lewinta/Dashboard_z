@@ -81,6 +81,7 @@ def invoice_to_claim(sinv_name):
 		"nss": sinv.nss,
 		"claimed_amount": flt(sinv.authorized_amount),
 		"paid_amount": flt(sinv.received_amount),
+		"billed_amount": flt(sinv.authorized_amount) + flt(sinv.received_amount),
 		"fee_amount": flt(sinv.authorized_amount) * fee ,
 		"pending_amount": sinv.authorized_amount - sinv.received_amount,
 		"fee": fee,

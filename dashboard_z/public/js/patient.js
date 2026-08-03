@@ -6,7 +6,7 @@ frappe.ui.form.on("Patient", {
 		frm.set_query("ars", event => {
             let condition = ["in", "ARS"]
             return {
-                "query": "erpnext.controllers.queries.customer_query",  
+                "query": "dashboard_z.queries.customer_query",
                 "filters": {
                     "customer_group": condition,
                 }

@@ -117,10 +117,10 @@ def get_last_6_months():
 
 		ins = ins_row[0].grand_total  if ins_row else .000
 		pri = pri_row[0].grand_total  if pri_row else .000
-	 	
-	 	headers.append(month_to_letter(month))
-	 	ins_amt.append(ins)
-	 	pri_amt.append(pri)
+		
+		headers.append(month_to_letter(month))
+		ins_amt.append(ins)
+		pri_amt.append(pri)
 
 	headers.reverse()
 	ins_amt.reverse()

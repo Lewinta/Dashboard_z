@@ -38,7 +38,6 @@ frappe.ui.form.on("Sales Invoice", {
     },
     add_buttons: frm => {
         if (frm.doc.invoice_type == "Insurance Customers"){
-            console.log(frm.doc.invoice_type);
             let opts = {
                 "method": "dashboard_z.hook.sales_invoice.get_parent_invoice"
             };
@@ -59,16 +58,19 @@ frappe.ui.form.on("Sales Invoice", {
             }).fail(() => frappe.msgprint("¡Ha ocurrido un error!"));
         }
         if (frm.doc.invoice_type == "Suppliers"){
-            console.log(frm.doc.invoice_type);
             frappe.route_options = {
                 "physician": frm.doc.physician,
                 "from_date": frm.doc.posting_date,
                 "to_date": frm.doc.posting_date,
                 "sales_invoice": frm.doc.name,
             }  
-            frm.add_custom_button(__("Claims"), message => {        
+            frm.add_custom_button(__("Reclamaciones"), message => {        
                 frappe.set_route("query-report", "Claim Report")
-            }, "View") 
+            }, __("View")) 
+
+            frm.add_custom_button(__("Relacion de Pacientes"), message => {        
+                frappe.set_route("query-report", "Relacion Reclamaciones")
+            }, __("View")) 
             
         }
     },
@@ -155,47 +157,65 @@ frappe.ui.form.on("Sales Invoice", {
                     let d = new frappe.ui.form.MultiSelectDialog({
                         "doctype": "Sales Invoice",
                         "target": frm,
-                        "date_field": "posting_date",
-                        "page_length": 10000,
-                        "setters": {
-                            "ars": frm.doc.customer,
-                        },
-                        "get_query": () => {
-                            let filters = {
-                                "filters": {
-                                    "customer_group": "Customers",
-                                    "invoice_type": "Insurance Customers",
-                                    "clinic": frm.doc.clinic,
-                                    "physician": frm.doc.physician,
-                                    "payment_status": frm.doc.is_return == 1 ? "PAID": "UNPAID",
-                                    "docstatus": ["<", "2"],
-                                }
-                            };
-                            
-                            if (frm.doc.clinic)
-                                filters.clinic = frm.doc.clinic
-                            
-                            return filters
-                        },
+                        "size": "extra-large",
+                        "page_length": 500,
+                        "primary_action_label": __("Cargar Facturas"),
+                        "columns": ["name", "fecha", "paciente", "autorizacion", "monto"],
+                        "setters": [
+                            { fieldtype: "Date", fieldname: "from_date", label: __("Desde") },
+                            { fieldtype: "Date", fieldname: "to_date", label: __("Hasta") }
+                        ],
+                        // una factura de proveedor es siempre para UN solo ARS (su customer),
+                        // así que fijamos el ars aquí (no como filtro editable que puede quedar vacío)
+                        "get_query": () => ({
+                            query: "dashboard_z.queries.supplier_load_invoices",
+                            filters: {
+                                customer_group: "Customers",
+                                invoice_type: "Insurance Customers",
+                                clinic: frm.doc.clinic,
+                                physician: frm.doc.physician,
+                                ars: frm.doc.customer,
+                                payment_status: frm.doc.is_return == 1 ? "PAID" : "UNPAID"
+                            }
+                        }),
                         "action": (selections, args) => {
-
                             if (selections.length == 0) {
                                 frappe.throw("Favor de seleccionar las facturas!");
                             }
-
                             d.dialog.hide();
                             dashboard_z.sales_invoice.add_row_and_update_sales_invoices(frm, selections, args);
                         }
                     });
 
-                    d.dialog.fields_dict.ars.df.get_query = () => {
-                        return {
-                            "query": "dashboard_z.queries.customer_query",
-                            "filters": {
-                                "customer_group": "ARS"
-                            }
-                        };
+                    // muestra la cantidad de facturas seleccionadas en el botón principal
+                    const update_count = () => {
+                        const n = d.dialog.$wrapper.find(".list-item-container input.list-row-check:checked").length;
+                        d.dialog.get_primary_btn().text(__("Cargar Facturas") + (n ? " (" + n + ")" : ""));
                     };
+                    d.dialog.$wrapper.on("change", "input:checkbox", () => setTimeout(update_count, 50));
+
+                    // al cambiar cualquier filtro, deseleccionar todas las casillas
+                    // (el usuario debe volver a seleccionarlas)
+                    d.dialog.$wrapper.on("change", ".input-with-feedback", () => {
+                        if (d.selected_fields) d.selected_fields.clear();
+                        d.dialog.$wrapper.find("input.list-row-check:checked, input.list-check-all:checked")
+                            .prop("checked", false);
+                        setTimeout(update_count, 60);
+                    });
+
+                    // todos los filtros en una sola línea horizontal + diálogo más ancho
+                    setTimeout(() => {
+                        const $w = d.dialog.$wrapper;
+                        $w.find(".modal-dialog").css("max-width", "1100px");
+                        const $body = $w.find(".form-section").first().find(".section-body");
+                        ["search_term", "from_date", "to_date"].forEach((fn) => {
+                            $body.find('.frappe-control[data-fieldname="' + fn + '"]')
+                                .appendTo($body)
+                                .css({ flex: "1 1 0", "min-width": 0, "margin-bottom": 0 });
+                        });
+                        $body.find(".form-column").remove();
+                        $body.css({ display: "flex", "flex-wrap": "nowrap", gap: "12px", "align-items": "flex-end" });
+                    }, 400);
                 });
             }
         ]);
@@ -234,9 +254,8 @@ frappe.ui.form.on("Sales Invoice", {
             if (invoice_type != "Suppliers") {
                 filters.physician = physician
             } 
-            console.log(filters);
             return {
-                "query": "erpnext.controllers.queries.customer_query",  
+                // "query": "dashboard_z.queries.customer_query",
                 "filters": filters
             }
         });
@@ -244,13 +263,17 @@ frappe.ui.form.on("Sales Invoice", {
     physician: frm => {
         if (!frm.doc.physician){
             frm.set_value("coverage", 0.00);
-            
+            frm.set_value("rnc_emisor", "");
             return
         }
         frm.trigger("get_coverage");
         frm.set_value("customer", "");
-        frm.set_value("patient", "");
+        // frm.set_value("patient", "");
         frm.trigger("set_customer_query");
+        // traer rnc_cedula del physician -> rnc_emisor (sin espacios ni guiones)
+        frappe.db.get_value("Physician", frm.doc.physician, "rnc_cedula", ({ rnc_cedula }) => {
+            frm.set_value("rnc_emisor", (rnc_cedula || "").replace(/[\s-]/g, ""));
+        });
     },
     coverage: frm => {
         const {coverage, items} = frm.doc;
@@ -296,7 +319,7 @@ frappe.ui.form.on("Sales Invoice", {
     item_table_update: (frm, cdt, cdn) => {
         frappe.run_serially([
             () => row = frappe.get_doc(cdt, cdn),
-            () => console.log(row),
+            // () => console.log(row),
             () => frappe.timeout(0.5),
             () => {if(row && !row.item_code) return},
             () => row.difference_amount = isNaN(row.difference_amount) ? 0.00 : row.difference_amount,
@@ -475,7 +498,6 @@ function calculate_totals(frm, cdt, cdn){
     let row = frappe.get_doc(cdt, cdn);
     let coverage = eval(row.coverage) ? row.coverage  : frm.doc.coverage;
     let adj_percentage = row.price_list_rate * (flt(row.adjustment_percentage) / 100.0)
-    console.log("Let's Cal totals")
     if (frm.doc.invoice_type == "Insurance Customers")
         row.authorized_amount = row.price_list_rate * flt(coverage / 100.00)
     else
@@ -495,13 +517,13 @@ function calculate_totals(frm, cdt, cdn){
     
     if (!row.adjustment_type)
         return
-    console.log("****************\n");
-    console.log(row);
+    // console.log("****************\n");
+    // console.log(row);
     row.difference_amount += row.adjustment_type == "Amount" ? flt(row.adjustment_amount)  : flt(adj_percentage);
     row.amount            += row.adjustment_type == "Amount" ? flt(row.adjustment_amount)  : flt(adj_percentage);
     row.rate            += row.adjustment_type == "Amount" ? flt(row.adjustment_amount)  : flt(adj_percentage);
-    console.log(row);
-    console.log("****************\n");
+    // console.log(row);
+    // console.log("****************\n");
 }
 
 function apply_percent(row){

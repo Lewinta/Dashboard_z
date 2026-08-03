@@ -9,7 +9,7 @@ from frappe import _
 from frappe.utils import nowdate
 from frappe.model.document import Document
 from dashboard_z.utils.api import invoice_to_claim
-
+from frappe.utils import flt
 
 class PaymentProcessingTool(Document):
 	def validate(self):
@@ -27,6 +27,7 @@ class PaymentProcessingTool(Document):
 		if self.grand_total_paid >= self.total_claimed:
 			self.status = "PAID"
 
+	@frappe.whitelist()
 	def get_claims(self):
 		if not self.invoice:
 			return 
@@ -57,22 +58,24 @@ class PaymentProcessingTool(Document):
 		fee = self.claims[0].fee
 
 		self.total_claimed = self.total_paid = \
-			self.total_received = self.total_pending = self.grand_total_paid =.00		
+			self.total_received = self.total_pending = \
+			self.grand_total_paid = self.total_billed = .00		
 		
 		for row in self.claims:
-			self.total_claimed += row.claimed_amount or .00
-			self.total_paid += row.received_amount or .00
+			self.total_claimed += row.claimed_amount  or .00
+			self.total_paid    += row.received_amount or .00
+			self.total_billed  += row.billed_amount   or .00
 			
 			self.total_received += row.received_amount or .00
-			self.total_pending += row.pending_amount or .00
+			self.total_pending  += row.pending_amount  or .00
 			
 			self.grand_total_paid += row.paid_amount or .00
 		
-		self.total_to_receive = self.total_claimed * (1 - fee)
-		self.total_fee = self.total_claimed * fee
+		self.total_to_receive = flt(self.total_claimed * (1 - fee), 2)
+		self.total_fee = flt(self.total_claimed * fee, 2)
 		
-		self.total_received = self.total_paid * (1 - fee)
-		self.total_fee_paid = self.total_paid * fee
+		self.total_received = flt(self.total_paid * (1 - fee), 2)
+		self.total_fee_paid = flt(self.total_paid * fee, 2)
 
 	@frappe.whitelist()
 	def make_payment_entry(self):
@@ -134,13 +137,13 @@ class PaymentProcessingTool(Document):
 		if self.other_discounts < 0:
 			frappe.throw("Other Discounts must be greater than 0")
 
-		add_account(pe, bank_acct, self.total_paid - self.other_discounts - self.total_fee_paid, True)
+		add_account(pe, bank_acct, self.total_paid - self.other_discounts - self.total_fee_paid, True, payment_type="net_received")
 		
 		if self.other_discounts:
-			add_account(pe, fee_account, self.other_discounts, True)
+			add_account(pe, discount_acct, self.other_discounts, True, payment_type="other_discounts")
 		
 		if self.total_fee_paid:
-			add_account(pe, discount_acct, self.total_fee_paid, True)
+			add_account(pe, fee_account, self.total_fee_paid, True, payment_type="ars_fee")
 
 		add_account(pe, receivable_account, self.total_paid, False, "Customer", self.supplier, "Sales Invoice", self.invoice)
 		
@@ -148,13 +151,14 @@ class PaymentProcessingTool(Document):
 		pe.submit()
 		self.payment = pe.name
 
-def add_account(doc, account, amount, debit=True, party_type=None, party=None, reference_type=None, reference_name=None):
+def add_account(doc, account, amount, debit=True, party_type=None, party=None, reference_type=None, reference_name=None, payment_type=None):
 		doc.append("accounts",{
 		"account": account,
-		"credit_in_account_currency": 0.000 if debit else amount,
-		"debit_in_account_currency":  amount if debit else 0.000,
+		"credit_in_account_currency": 0.000 if debit else flt(amount, 2),
+		"debit_in_account_currency":  flt(amount, 2) if debit else 0.000,
 		"reference_type": reference_type,
 		"reference_name": reference_name,
 		"party_type": party_type,
+		"payment_field": payment_type,
 		"party": party,
 	})

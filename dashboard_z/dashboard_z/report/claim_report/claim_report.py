@@ -48,7 +48,7 @@ def get_data(filters):
 		Where
 			{conditions}
 		""".format(fields=fields, conditions=conditions or "1 = 1"),
-		filters, as_dict=True, debug=False
+		filters, as_dict=True, debug=True
 	)
 	for row in data:
 		status = "ERROR"
@@ -107,9 +107,14 @@ def get_conditions(filters):
 		paid_invoices = paid_invoices.split(',')
 		# Let's remove the u prefix for unicode
 		paid_invoices = [str(r) for r in paid_invoices]
-		conditions.append(
-			("Sales Invoice", "name", "in", tuple(paid_invoices)),
-		)
+		if len(paid_invoices) == 1:
+			conditions.append(
+				("Sales Invoice", "name", "=", paid_invoices[0]),
+			)
+		else:
+			conditions.append(
+				("Sales Invoice", "name", "in", tuple(paid_invoices)),
+			)
 
 	for doctype, fieldname, compare, value in conditions:
 

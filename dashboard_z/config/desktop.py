@@ -10,5 +10,6 @@ def get_data():
 			"icon": "fa fa-tachometer",
 			"type": "link",
 			"label": _("Dashboard Z")
-		}
+		},
+
 	]
