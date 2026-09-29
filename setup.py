@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 import re, ast
 
 with open('requirements.txt') as f:
-	install_requires = f.read().strip().split('\n')
+	install_requires = [l for l in f.read().splitlines() if l.strip() and not l.startswith("#")]
 
 # get version from __version__ variable in dashboard_z/__init__.py
 _version_re = re.compile(r'__version__\s+=\s+(.*)')

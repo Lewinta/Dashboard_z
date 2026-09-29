@@ -1,1 +1,1 @@
-frappe
+# frappe is installed via bench init; declaring it here breaks installs on frappe >= 16.35
